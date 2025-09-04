@@ -16,3 +16,7 @@ anyhow = "1.0"
 serde = { workspace = true }
 # Used for md5sum calculation
 md5 = "0.7"
+# Required for subscribers to implement into_stream
+futures-core = "0.3"
+# Used for implementation of into_stream for subscribers
+async-stream = "0.3"

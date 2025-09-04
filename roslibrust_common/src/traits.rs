@@ -12,12 +12,37 @@ pub trait Publish<T: RosMessageType> {
     fn publish(&self, data: &T) -> impl Future<Output = Result<()>> + Send;
 }
 
-/// Indicates that something is a subscriber and has our expected subscribe method
-/// Implementors of this trait are expected to auto-cleanup the subscriber when dropped
-pub trait Subscribe<T: RosMessageType> {
+/// Represents that an object can act as a subscriber.
+/// Types returned by calling [TopicProvider::subscribe], implement this trait.
+/// Types implementing this trait are expected to auto-cleanup the subscriber when dropped, and de-register themselves with ROS as needed.
+pub trait Subscribe<T: RosMessageType>
+where
+    Self: Sized,
+{
     // TODO need to solidify how we want errors to work with subscribers...
     // TODO ros1 currently requires mut for next, we should change that
+
+    /// Returns the next message on the topic, or an Err as appropriate.
+    /// [crate::Error] is currently quite generic, and the different backends can return different error variantes in different circumstances.
+    /// We hope to clean-up this error type substantially in the future.
     fn next(&mut self) -> impl Future<Output = Result<T>> + Send;
+
+    /// Converts the subscriber into an async [futures_core::Stream].
+    /// This allows using the various adaptors in either [tokio_stream::StreamExt](https://docs.rs/tokio-stream/latest/tokio_stream/trait.StreamExt.html)
+    /// or  [futures::stream::StreamExt](https://docs.rs/futures/latest/futures/stream/trait.StreamExt.html) to manipulate the stream.
+    ///
+    /// See [examples/tokio_stream_operations.rs](https://github.com/RosLibRust/roslibrust/blob/master/roslibrust/examples/tokio_stream_operations.rs) for usage.
+    ///
+    /// Warning: The returned stream is infinite, and will automatically reconnect if the connection is lost.
+    /// Calling collect() or fold() on the stream is likely to result in a deadlock.
+    fn into_stream(mut self) -> impl futures_core::Stream<Item = Result<T>> {
+        use async_stream::stream;
+        stream! {
+            loop {
+                yield self.next().await;
+            }
+        }
+    }
 }
 
 /// This trait generically describes the capability of something to act as an async interface to a set of topics
