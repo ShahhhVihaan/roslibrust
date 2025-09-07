@@ -46,6 +46,9 @@ pub use smart_default::SmartDefault; // Used in generated code for default value
 pub struct MessageFile {
     pub(crate) parsed: ParsedMessageFile,
     pub(crate) md5sum: String,
+    // NOTE: ros2 hash is only being set to optional, while we're developing it
+    // Once it's more stable, we can make it required
+    pub(crate) ros2_hash: Option<String>,
     // This is the expanded definition of the message for use in message_definition field of
     // a connection header.
     // See how https://wiki.ros.org/ROS/TCPROS references gendeps --cat
@@ -57,11 +60,13 @@ pub struct MessageFile {
 impl MessageFile {
     fn resolve(parsed: ParsedMessageFile, graph: &BTreeMap<String, MessageFile>) -> Option<Self> {
         let md5sum = Self::compute_md5sum(&parsed, graph)?;
+        let ros2_hash = calculate_ros2_hash(&parsed, graph);
         let definition = Self::compute_full_definition(&parsed, graph)?;
         let is_fixed_length = Self::determine_if_fixed_length(&parsed, graph)?;
         Some(MessageFile {
             parsed,
             md5sum,
+            ros2_hash,
             definition,
             is_fixed_length,
         })
@@ -155,9 +160,9 @@ impl MessageFile {
             if is_intrinsic_type(parsed.version.unwrap_or(RosVersion::ROS1), field_type) {
                 continue;
             }
-            let sub_message = graph.get(field.get_full_name().as_str())?;
+            let sub_message = graph.get(field.get_full_type_name().as_str())?;
             // Note: need to add both the field that is referenced AND its sub-dependencies
-            unique_field_types.insert(field.get_full_name());
+            unique_field_types.insert(field.get_full_type_name());
             let mut sub_deps = Self::get_unique_field_types(&sub_message.parsed, graph)?;
             unique_field_types.append(&mut sub_deps);
         }
@@ -207,7 +212,7 @@ impl MessageFile {
                     return Some(false);
                 }
             } else {
-                let field_msg = graph.get(field.get_full_name().as_str())?;
+                let field_msg = graph.get(field.get_full_type_name().as_str())?;
                 let field_is_fixed_length =
                     Self::determine_if_fixed_length(&field_msg.parsed, graph)?;
                 if !field_is_fixed_length {
@@ -360,13 +365,26 @@ impl PartialEq for FieldInfo {
 }
 
 impl FieldInfo {
-    pub fn get_full_name(&self) -> String {
+
+    // Returns the full name of the type of this field in ROS1 format, e.g. std_msgs/String or example_interfaces/Int32
+    pub fn get_full_type_name(&self) -> String {
         let field_package = self
             .field_type
             .package_name
             .as_ref()
             .unwrap_or(&self.field_type.source_package);
         format!("{field_package}/{}", self.field_type.field_type)
+    }
+
+    // Returns the full name of the type of this field in ROS2 format, e.g. std_msgs/msg/String or example_interfaces/msg/Int32
+    pub fn get_ros2_full_type_name(&self) -> String {
+        let field_package = self
+            .field_type
+            .package_name
+            .as_ref()
+            .unwrap_or(&self.field_type.source_package);
+        // Not sure this is a safe assumption, but I think we can safely shove msg here?
+        format!("{field_package}/msg/{}", self.field_type.field_type)
     }
 }
 
@@ -606,7 +624,7 @@ pub fn resolve_dependency_graph(
                 ROS_2_TYPE_TO_RUST_TYPE_MAP.contains_key(field.field_type.field_type.as_str());
             let is_primitive = is_ros1_primitive || is_ros2_primitive;
             if !is_primitive {
-                let is_resolved = resolved_messages.contains_key(field.get_full_name().as_str());
+                let is_resolved = resolved_messages.contains_key(field.get_full_type_name().as_str());
                 is_resolved
             } else {
                 true
@@ -752,7 +770,6 @@ mod test {
 
     /// Confirms we don't panic on ros1_test_msgs parsing
     #[test_log::test]
-    #[cfg_attr(not(feature = "ros1_test"), ignore)]
     fn generate_ok_on_ros1_test_msgs() {
         // Note: because our test msgs depend on std_message this test will fail unless ROS_PACKAGE_PATH includes std_msgs
         // To avoid that we add std_messsages to the extra paths.
@@ -770,7 +787,6 @@ mod test {
 
     /// Confirms we don't panic on ros2_test_msgs parsing
     #[test_log::test]
-    #[cfg_attr(not(feature = "ros2_test"), ignore)]
     fn generate_ok_on_ros2_test_msgs() {
         let assets_path = concat!(env!("CARGO_MANIFEST_DIR"), "/../assets/ros2_test_msgs");
 

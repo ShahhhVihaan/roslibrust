@@ -88,6 +88,8 @@ pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
     let struct_name = format_ident!("{}", msg.parsed.name);
     let md5sum = msg.md5sum;
     let definition = msg.definition;
+    // TODO MAJOR: when finished with ROS2 hashing logic this should be required
+    let ros2_hash = msg.ros2_hash.unwrap_or_else(|| String::from(""));
 
     // Raw here is only used to make the generated code look better.
     let raw_message_definition = generate_raw_string_literal(&definition);
@@ -103,6 +105,7 @@ pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
             const ROS_TYPE_NAME: &'static str = #ros_type_name;
             const MD5SUM: &'static str = #md5sum;
             const DEFINITION: &'static str = #raw_message_definition;
+            const ROS2_HASH: &'static str = #ros2_hash;
         }
     };
 
