@@ -12,8 +12,8 @@ pub use srv::{parse_ros_service_file, ParsedServiceFile};
 
 // List of types which are "individual data fields" and not containers for other data
 pub const ROS_PRIMITIVE_TYPE_LIST: [&str; 15] = [
-    "bool", "int8", "uint8", "byte", "char", "int16", "uint16", "int32", "uint32", "int64", "uint64",
-    "float32", "float64", "string", "wstring"
+    "bool", "int8", "uint8", "byte", "char", "int16", "uint16", "int32", "uint32", "int64",
+    "uint64", "float32", "float64", "string", "wstring",
 ];
 
 lazy_static::lazy_static! {

@@ -2827,12 +2827,12 @@ dependencies = [
 name = "roslibrust_ros2"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "cdr",
  "env_logger 0.11.5",
- "roslibrust_codegen",
+ "roslibrust_common",
+ "roslibrust_test",
  "serde",
- "serde_json",
- "sha2",
  "tokio",
  "zenoh",
 ]

@@ -365,7 +365,6 @@ impl PartialEq for FieldInfo {
 }
 
 impl FieldInfo {
-
     // Returns the full name of the type of this field in ROS1 format, e.g. std_msgs/String or example_interfaces/Int32
     pub fn get_full_type_name(&self) -> String {
         let field_package = self
@@ -624,7 +623,8 @@ pub fn resolve_dependency_graph(
                 ROS_2_TYPE_TO_RUST_TYPE_MAP.contains_key(field.field_type.field_type.as_str());
             let is_primitive = is_ros1_primitive || is_ros2_primitive;
             if !is_primitive {
-                let is_resolved = resolved_messages.contains_key(field.get_full_type_name().as_str());
+                let is_resolved =
+                    resolved_messages.contains_key(field.get_full_type_name().as_str());
                 is_resolved
             } else {
                 true

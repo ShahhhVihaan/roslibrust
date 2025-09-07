@@ -1,6 +1,5 @@
 // Just a test bed file to start playing with ROS2 Zenoh interaction
 
-
 /// rmw_zenoh stores all ros metadata under a @ros2_lv liveness tokens
 /// This is a quick way to dump all of it to see what's available
 /// Eventually this would feed a lot of APIs around discovery
@@ -97,4 +96,3 @@ async fn main() {
 
     attempt_subscribe().await;
 }
-

@@ -54,15 +54,19 @@ pub trait RosMessageType:
     /// Expected to be the combination pkg_name/type_name string describing the type to ros
     /// Example: std_msgs/Header
     const ROS_TYPE_NAME: &'static str;
-    /// The computed ROS2 hash of the message file and its dependencies
-    /// This field is optional, and only needed when using ros2 native communication
-    const ROS2_HASH: &'static str = "";
     /// The computed md5sum of the message file and its dependencies
     /// This field is optional, and only needed when using ros1 native communication
     const MD5SUM: &'static str = "";
     /// The definition from the msg, srv, or action file
     /// This field is optional, and only needed when using ros1 native communication
     const DEFINITION: &'static str = "";
+    /// The fully qualified type name we need to work with ROS2 zenoh
+    /// e.g. std_msgs::msg::dds_::String_
+    /// This field is optional, and only needed when using ros2 native communication
+    const ROS2_TYPE_NAME: &'static str = "";
+    /// The computed ROS2 hash of the message file and its dependencies
+    /// This field is optional, and only needed when using ros2 native communication
+    const ROS2_HASH: &'static str = "";
 }
 
 // This special impl allows for services with no args / returns

@@ -46,6 +46,12 @@ impl ParsedMessageFile {
             .expect("All parent directory names should be valid unicode");
         format!("{}/{}/{}", self.package, parent, self.name)
     }
+
+    /// Returns the fully qualified type name for use with ROS2 zenoh
+    /// This is used in the mangling of topic names to subscribe to ros2 topics over zenoh
+    pub fn get_ros2_dds_type_name(&self) -> String {
+        format!("{}::msg::dds_::{}_", self.package, self.name)
+    }
 }
 
 /// Converts a ros message file into a struct representation

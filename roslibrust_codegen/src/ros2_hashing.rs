@@ -347,12 +347,12 @@ fn get_field_type_id(field_type: &crate::FieldType) -> u8 {
         }
         None => {
             // Not an array
-             match FIELD_TYPE_NAME_TO_ID.get(core_name) {
+            match FIELD_TYPE_NAME_TO_ID.get(core_name) {
                 Some(id) => *id,
                 None => {
                     panic!("Failed to find field type ID for {}", core_name);
                 }
-             }
+            }
         }
     }
 }

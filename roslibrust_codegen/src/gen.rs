@@ -59,6 +59,7 @@ pub fn generate_raw_string_literal(value: &str) -> TokenStream {
 
 pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
     let ros_type_name = msg.get_full_name();
+    let ros2_type_name = msg.parsed.get_ros2_dds_type_name();
     let attrs = derive_attrs();
     let fields = msg
         .parsed
@@ -106,6 +107,7 @@ pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
             const MD5SUM: &'static str = #md5sum;
             const DEFINITION: &'static str = #raw_message_definition;
             const ROS2_HASH: &'static str = #ros2_hash;
+            const ROS2_TYPE_NAME: &'static str = #ros2_type_name;
         }
     };
 
