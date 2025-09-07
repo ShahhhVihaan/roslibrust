@@ -10,6 +10,12 @@ pub use msg::{parse_ros_message_file, ParsedMessageFile};
 mod srv;
 pub use srv::{parse_ros_service_file, ParsedServiceFile};
 
+// List of types which are "individual data fields" and not containers for other data
+pub const ROS_PRIMITIVE_TYPE_LIST: [&str; 15] = [
+    "bool", "int8", "uint8", "byte", "char", "int16", "uint16", "int32", "uint32", "int64", "uint64",
+    "float32", "float64", "string", "wstring"
+];
+
 lazy_static::lazy_static! {
     pub static ref ROS_TYPE_TO_RUST_TYPE_MAP: HashMap<&'static str, &'static str> = vec![
         ("bool", "bool"),

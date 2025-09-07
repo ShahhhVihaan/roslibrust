@@ -23,6 +23,8 @@ mod parse;
 use parse::*;
 pub mod utils;
 use utils::RosVersion;
+mod ros2_hashing;
+use ros2_hashing::*;
 
 pub mod integral_types;
 pub use integral_types::*;
@@ -329,6 +331,14 @@ impl std::fmt::Display for FieldType {
             Some(None) => f.write_fmt(format_args!("{}[]", self.field_type)),
             None => f.write_fmt(format_args!("{}", self.field_type)),
         }
+    }
+}
+
+impl FieldType {
+    /// Returns true iff this field type is a primitive type in ROS1 & ROS2, and not referenced sub-type
+    /// Time, Duration, and Header are not considered primitive types
+    pub fn is_primitive(&self) -> bool {
+        crate::parse::ROS_PRIMITIVE_TYPE_LIST.contains(&self.field_type.as_str())
     }
 }
 
@@ -648,7 +658,7 @@ pub fn resolve_dependency_graph(
 /// The returned collection will contain all messages files including those buried with the
 /// service or action files, and will have fully expanded and resolved referenced types in other packages.
 /// * `msg_paths` -- List of tuple (Package, Path to File) for each file to parse
-fn parse_ros_files(
+pub(crate) fn parse_ros_files(
     msg_paths: Vec<(Package, PathBuf)>,
 ) -> Result<
     (

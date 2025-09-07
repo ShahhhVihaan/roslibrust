@@ -2743,6 +2743,7 @@ dependencies = [
  "serde-big-array",
  "serde_bytes",
  "serde_json",
+ "sha2",
  "simple-error",
  "smart-default",
  "syn 1.0.109",
@@ -2828,6 +2829,7 @@ version = "0.1.0"
 dependencies = [
  "cdr",
  "env_logger 0.11.5",
+ "roslibrust_codegen",
  "serde",
  "serde_json",
  "sha2",
