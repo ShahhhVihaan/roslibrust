@@ -25,6 +25,8 @@ test-log = { workspace = true }
 abort-on-drop = "0.2"
 log = { workspace = true }
 tokio = { workspace = true }
+# Used in examples
+tokio-stream = "0.1"
 serde = { workspace = true }
 # Used to generate messages for the examples
 roslibrust_codegen = { path = "../roslibrust_codegen" }
