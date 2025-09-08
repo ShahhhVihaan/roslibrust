@@ -143,7 +143,7 @@ mod tests {
     #[test]
     fn test_deserialize_hello_world() {
         // Test data was taken from a manual zenoh subscription against `ros2 topic pub /chatter std_msgs/msg/String 'data: Hello World'`
-        let zenoh_bytes: [u8; _] = [
+        let zenoh_bytes: [u8; 20] = [
             0x00, 0x01, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20,
             0x57, 0x6f, 0x72, 0x6c, 0x64, 0x00,
         ];
