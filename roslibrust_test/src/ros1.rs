@@ -39,7 +39,8 @@ time stamp
 # result message with specific goal requests. The id
 # specified must be unique.
 string id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_fbfc57a3ed460af3146247e816a152e4fdff4a967940af4d11ac57fd9c834723";
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalID_";
     }
     #[allow(non_snake_case)]
@@ -93,7 +94,8 @@ time stamp
 # result message with specific goal requests. The id
 # specified must be unique.
 string id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_1ca4d475772fb73b1f8cbbab8e6031db7ee6f2fef7d5a139af2f9ee3d6a1c22f";
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalStatus_";
     }
     #[allow(unused)]
@@ -191,7 +193,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_fb3e9f9c97353244f531c640d3b172d24074e2c669048ac9947f4a4fc11fadda";
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalStatusArray_";
     }
 }
@@ -269,7 +272,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_fd7d849d56d0dba54afc9e862cd51a41f1d395f667c4f4d5310c6490501a951e";
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
     }
     #[allow(non_snake_case)]
@@ -415,6 +419,7 @@ string message"####;
     impl ::roslibrust::RosServiceType for AddDiagnostics {
         const ROS_SERVICE_NAME: &'static str = "diagnostic_msgs/AddDiagnostics";
         const MD5SUM: &'static str = "e6ac9bbde83d0d3186523c3687aecaee";
+        const ROS2_HASH: &'static str = "";
         type Request = AddDiagnosticsRequest;
         type Response = AddDiagnosticsResponse;
     }
@@ -483,7 +488,7 @@ MSG: diagnostic_msgs/KeyValue
 string key # what to label this value when viewing
 string value # a value to track over time"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_f93e8cba5e3ff89c8e5b2d2f4a741522c7931b718394463e06a26ebeec45afa9";
+            "RIHS01_4b6dd70ee9f20cebad759331530fd0de79bcf3dc8b6372783ef935366bc4ce46";
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::SelfTestResponse_";
     }
     #[allow(dead_code)]
@@ -491,6 +496,7 @@ string value # a value to track over time"####;
     impl ::roslibrust::RosServiceType for SelfTest {
         const ROS_SERVICE_NAME: &'static str = "diagnostic_msgs/SelfTest";
         const MD5SUM: &'static str = "ac21b1bab7ab17546986536c22eb34e9";
+        const ROS2_HASH: &'static str = "";
         type Request = SelfTestRequest;
         type Response = SelfTestResponse;
     }
@@ -543,7 +549,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_5d5531b2f85bd265ffc2544c6ec4296b211b0461a53e96a63ba9d818daad3e6c";
+            "RIHS01_871bdd2147ce80af103fc5a5686e21396cbe2329eb19f4a12f2829c718d88792";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Accel_";
     }
     #[allow(non_snake_case)]
@@ -610,7 +616,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_14336fd276a9232278e9f29ddd878dbb2887e4a60054f8586433750d3587e0ce";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelStamped_";
     }
     #[allow(non_snake_case)]
@@ -671,7 +678,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_36b4232b887ece168a41f145f8e9fc50a82ce0bddd8a932da65d294992cfb887";
+            "RIHS01_31f6b7ff967f900b97c2be0a5fd6e46c7c9d83850ddbd453a2a7d36f3dc26d52";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -778,7 +785,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_157247743ca0ad595bc0a1657b120ce92a974bb1bdf031d75d092c5e816d87dc";
         const ROS2_TYPE_NAME: &'static str =
             "geometry_msgs::msg::dds_::AccelWithCovarianceStamped_";
     }
@@ -913,7 +921,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_d5819ff915da663568c43ab5ec0694cdaac35290a204031461e6bd8f98226683";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::InertiaStamped_";
     }
     #[allow(non_snake_case)]
@@ -1016,7 +1025,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_80e1833bfd7e74d613e4f54e18e33d5e453a55c24efaca99720ad0627ca3edac";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PointStamped_";
     }
     #[allow(non_snake_case)]
@@ -1119,7 +1129,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_e76dc9608b0872269ac8b805f6ebf07ed5b190d55c9d90931b277d56da2ba859";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PolygonStamped_";
     }
     #[allow(non_snake_case)]
@@ -1265,7 +1276,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_2f9223217b4890799267a150e6292fc961dc4725a67716968487f9cdea5ac5ca";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseArray_";
     }
     #[allow(non_snake_case)]
@@ -1336,7 +1348,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_67136176a354ef8e7731b2ed03e326726631455e9706542a63b655d8bb328013";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseStamped_";
     }
     #[allow(non_snake_case)]
@@ -1401,7 +1414,7 @@ float64 y
 float64 z
 float64 w"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_a5b9ebd54259173148fad1902dab439231bc7a5a891e233f5978995f641b8a82";
+            "RIHS01_e96cb9417c4c507a036c01124975c0d64aa221611c2517dc9587694bc77023f9";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -1517,7 +1530,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_cb31bbbb1d425c49acc3c05341c75095b30a0777b4e1785402ef2b502fa6a734";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovarianceStamped_";
     }
     #[allow(non_snake_case)]
@@ -1593,7 +1607,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_5c9eca7eef9ede8362f47ba1d6671de16df4e3edff044cc165c9754adb69b8f7";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::QuaternionStamped_";
     }
     #[allow(non_snake_case)]
@@ -1638,7 +1653,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_32d5f0a946a3d26163e30087687c20be75b97a2ab45cac4c78dea88c5d900e6e";
+            "RIHS01_81d2a48f88ed6b57952b1ad274b4a5792b031cd3522c70b7dba16dc8336a1cf0";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Transform_";
     }
     #[allow(non_snake_case)]
@@ -1730,7 +1745,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_36ed0494b7f699d68b86a3a5e32bc66ed41b0249dbec60279ac347b354b85d21";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TransformStamped_";
     }
     #[allow(non_snake_case)]
@@ -1766,7 +1782,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_afb9ceb2e120aa53eeeaa7be1dc6eed25659342663e3525a4bfb52af8622e89e";
+            "RIHS01_8b1d45e7caed3dd71c758122b309466126acb246bb4b6e2dba177c47c3bc79c7";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Twist_";
     }
     #[allow(non_snake_case)]
@@ -1833,7 +1849,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_8e767d6000abee7f37b8988edf1bd679cb3645e1bbac8f97e801f1c647ae5e7f";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistStamped_";
     }
     #[allow(non_snake_case)]
@@ -1894,7 +1911,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_a1c3071e8cbee84cc771334e43033ca734f4b170bd3e54044c27cc63eedc4e93";
+            "RIHS01_016c33d6451b6e72fc956706a238b6f1d7c90ccdd28af8cd8f2e63a8f5dd931d";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -2001,7 +2018,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_f51fa43306e5e8e280d99012acf058846d16d912c74fc8dbed2fa774385f83e9";
         const ROS2_TYPE_NAME: &'static str =
             "geometry_msgs::msg::dds_::TwistWithCovarianceStamped_";
     }
@@ -2084,7 +2102,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_ad39fc981b5d7b707778c4fcfe5963e6bd78cd741f4180736a03fde6327f0c02";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Vector3Stamped_";
     }
     #[allow(non_snake_case)]
@@ -2121,7 +2140,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_46833c8782c52281e9c709c46432d2707f55216e830fc70802d7b8bb378897f5";
+            "RIHS01_9c42d1ac0b2af3c24b07ea51a23a7a5ba412a8f91233b25137aa2bc775a61d2d";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Wrench_";
     }
     #[allow(non_snake_case)]
@@ -2189,7 +2208,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_baeb7a521667a8a13db386f6ba2aa74e1fe32d5872cb56cc971fc36759484cb0";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::WrenchStamped_";
     }
 }
@@ -3261,7 +3281,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_6d696da11f58d2b8bf31aa82784ac48a31bfba5ecbf49bd0fb9e9068cfc8d1bd";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapAction_";
     }
     #[allow(non_snake_case)]
@@ -3349,7 +3370,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_6faa93a6c13bef0db0e42b0c80a1a32a4fd221a27a01149325cc45c0aa9a6e8e";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapActionFeedback_";
     }
     #[allow(non_snake_case)]
@@ -3402,7 +3424,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_14f7ef58e776a135bd26ad339ac721bb35d3a16da22839d7a90878759b6dfebb";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapActionGoal_";
     }
     #[allow(non_snake_case)]
@@ -3885,7 +3908,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_aada436b267f24cb1909d2391aa982084d0933d4c0608619adf35fb45c268ac4";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapActionResult_";
     }
     #[allow(non_snake_case)]
@@ -4148,7 +4172,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_bc0984cbb468f8683699d269a210c4357f87ee86ad40827781265e14db14325e";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapResult_";
     }
     #[allow(non_snake_case)]
@@ -4196,7 +4221,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_2ea23d5befde45065a1e069bbaed16d87e1ff223ef5e67337f2336e1ba3bd5ec";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GridCells_";
     }
     #[allow(non_snake_case)]
@@ -4265,7 +4291,8 @@ float64 x
 float64 y
 float64 z
 float64 w"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_e8c95ce141347ebf2ce62ea14de16d19089ce3423ae184874dff44271de90420";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::MapMetaData_";
     }
     #[allow(non_snake_case)]
@@ -4393,7 +4420,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_9c35c72b0471eb49c75550208c5b4702291d563d7872286319c6c0383310aa40";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::OccupancyGrid_";
     }
     #[allow(non_snake_case)]
@@ -4583,7 +4611,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_8ee97bd5239909f08bc4688acc79d4b3a4b11b17f0922d54bc2abfd1bb1dacda";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::Odometry_";
     }
     #[allow(non_snake_case)]
@@ -4707,7 +4736,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_948008888c4d839dd65ee173130f02daa4e53fd8d5a2666f4a81abbb4bb008ad";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::Path_";
     }
     #[allow(non_snake_case)]
@@ -4951,7 +4981,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_5caacf5847a72f2c4b2a7041c0b1dfa63e029e8ded5551667d438761c1483753";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapResponse_";
     }
     #[allow(dead_code)]
@@ -4959,6 +4990,7 @@ string frame_id"####;
     impl ::roslibrust::RosServiceType for GetMap {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/GetMap";
         const MD5SUM: &'static str = "6cdd0a18e0aff5b0a3ca2326a89b54ff";
+        const ROS2_HASH: &'static str = "";
         type Request = GetMapRequest;
         type Response = GetMapResponse;
     }
@@ -5092,7 +5124,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_979044eeae293b4379cd5e11e000baad5237a8b4209ac2aa7e819938b201c650";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetPlanRequest_";
     }
     #[allow(non_snake_case)]
@@ -5319,7 +5352,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_c9593097090da9d21d672a7df18e8b6f120fd1c95f2fc4314c13d1180e4b97ed";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetPlanResponse_";
     }
     #[allow(dead_code)]
@@ -5327,6 +5361,7 @@ string frame_id"####;
     impl ::roslibrust::RosServiceType for GetPlan {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/GetPlan";
         const MD5SUM: &'static str = "421c8ea4d21c6c9db7054b4bbdf1e024";
+        const ROS2_HASH: &'static str = "";
         type Request = GetPlanRequest;
         type Response = GetPlanResponse;
     }
@@ -5586,7 +5621,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_016137b5c761e95f69f4cd18aa993fb8cd92b3b2d595fb2200982621eb90986d";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::LoadMapResponse_";
     }
     #[allow(unused)]
@@ -5602,6 +5638,7 @@ string frame_id"####;
     impl ::roslibrust::RosServiceType for LoadMap {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/LoadMap";
         const MD5SUM: &'static str = "22e647fdfbe3b23c8c9f419908afaebd";
+        const ROS2_HASH: &'static str = "";
         type Request = LoadMapRequest;
         type Response = LoadMapResponse;
     }
@@ -5972,7 +6009,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_e0383df2c346ee5fe40a05749d4d06fd9106fe6a6851621e6a1accb5f1ea2f4a";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::SetMapRequest_";
     }
     #[allow(non_snake_case)]
@@ -6001,6 +6039,7 @@ string frame_id"####;
     impl ::roslibrust::RosServiceType for SetMap {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/SetMap";
         const MD5SUM: &'static str = "c36922319011e63ed7784112ad4fdd32";
+        const ROS2_HASH: &'static str = "";
         type Request = SetMapRequest;
         type Response = SetMapResponse;
     }
@@ -6098,6 +6137,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for DeleteParam {
         const ROS_SERVICE_NAME: &'static str = "rosapi/DeleteParam";
         const MD5SUM: &'static str = "c1f3d28f1b044c871e6eff2e9fc3c667";
+        const ROS2_HASH: &'static str = "";
         type Request = DeleteParamRequest;
         type Response = DeleteParamResponse;
     }
@@ -6146,6 +6186,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for GetActionServers {
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetActionServers";
         const MD5SUM: &'static str = "46807ba271844ac5ba4730a47556b236";
+        const ROS2_HASH: &'static str = "";
         type Request = GetActionServersRequest;
         type Response = GetActionServersResponse;
     }
@@ -6198,6 +6239,7 @@ string default"####;
     impl ::roslibrust::RosServiceType for GetParam {
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetParam";
         const MD5SUM: &'static str = "e36fd90759dbac1c5159140a7fa8c644";
+        const ROS2_HASH: &'static str = "";
         type Request = GetParamRequest;
         type Response = GetParamResponse;
     }
@@ -6246,6 +6288,7 @@ string default"####;
     impl ::roslibrust::RosServiceType for GetParamNames {
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetParamNames";
         const MD5SUM: &'static str = "dc7ae3609524b18034e49294a4ce670e";
+        const ROS2_HASH: &'static str = "";
         type Request = GetParamNamesRequest;
         type Response = GetParamNamesResponse;
     }
@@ -6285,7 +6328,8 @@ string default"####;
         const ROS_TYPE_NAME: &'static str = "rosapi/GetTimeResponse";
         const MD5SUM: &'static str = "556a4fb76023a469987922359d08a844";
         const DEFINITION: &'static str = r####"time time"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_15357474a7c30880f730500d43c9e20532837185a26bb13ca53d42ff4b25011a";
         const ROS2_TYPE_NAME: &'static str = "rosapi::msg::dds_::GetTimeResponse_";
     }
     #[allow(dead_code)]
@@ -6293,6 +6337,7 @@ string default"####;
     impl ::roslibrust::RosServiceType for GetTime {
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetTime";
         const MD5SUM: &'static str = "556a4fb76023a469987922359d08a844";
+        const ROS2_HASH: &'static str = "";
         type Request = GetTimeRequest;
         type Response = GetTimeResponse;
     }
@@ -6343,6 +6388,7 @@ string default"####;
     impl ::roslibrust::RosServiceType for HasParam {
         const ROS_SERVICE_NAME: &'static str = "rosapi/HasParam";
         const MD5SUM: &'static str = "ed3df286bd6dff9b961770f577454ea9";
+        const ROS2_HASH: &'static str = "";
         type Request = HasParamRequest;
         type Response = HasParamResponse;
     }
@@ -6402,6 +6448,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for MessageDetails {
         const ROS_SERVICE_NAME: &'static str = "rosapi/MessageDetails";
         const MD5SUM: &'static str = "f9c88144f6f6bd888dd99d4e0411905d";
+        const ROS2_HASH: &'static str = "";
         type Request = MessageDetailsRequest;
         type Response = MessageDetailsResponse;
     }
@@ -6456,6 +6503,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for NodeDetails {
         const ROS_SERVICE_NAME: &'static str = "rosapi/NodeDetails";
         const MD5SUM: &'static str = "e1d0ced5ab8d5edb5fc09c98eb1d46f6";
+        const ROS2_HASH: &'static str = "";
         type Request = NodeDetailsRequest;
         type Response = NodeDetailsResponse;
     }
@@ -6504,6 +6552,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for Nodes {
         const ROS_SERVICE_NAME: &'static str = "rosapi/Nodes";
         const MD5SUM: &'static str = "3d07bfda1268b4f76b16b7ba8a82665d";
+        const ROS2_HASH: &'static str = "";
         type Request = NodesRequest;
         type Response = NodesResponse;
     }
@@ -6554,6 +6603,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for Publishers {
         const ROS_SERVICE_NAME: &'static str = "rosapi/Publishers";
         const MD5SUM: &'static str = "cb37f09944e7ba1fc08ee38f7a94291d";
+        const ROS2_HASH: &'static str = "";
         type Request = PublishersRequest;
         type Response = PublishersResponse;
     }
@@ -6604,6 +6654,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for SearchParam {
         const ROS_SERVICE_NAME: &'static str = "rosapi/SearchParam";
         const MD5SUM: &'static str = "dfadc39f113c1cc6d7759508d8461d5a";
+        const ROS2_HASH: &'static str = "";
         type Request = SearchParamRequest;
         type Response = SearchParamResponse;
     }
@@ -6654,6 +6705,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for ServiceHost {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceHost";
         const MD5SUM: &'static str = "a1b60006f8ee69637c856c94dd192f5a";
+        const ROS2_HASH: &'static str = "";
         type Request = ServiceHostRequest;
         type Response = ServiceHostResponse;
     }
@@ -6704,6 +6756,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for ServiceNode {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceNode";
         const MD5SUM: &'static str = "bd2a0a45fd7a73a86c8d6051d5a6db8a";
+        const ROS2_HASH: &'static str = "";
         type Request = ServiceNodeRequest;
         type Response = ServiceNodeResponse;
     }
@@ -6754,6 +6807,7 @@ string[] services"####;
     impl ::roslibrust::RosServiceType for ServiceProviders {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceProviders";
         const MD5SUM: &'static str = "f30b41d5e347454ae5483ee95eef5cc6";
+        const ROS2_HASH: &'static str = "";
         type Request = ServiceProvidersRequest;
         type Response = ServiceProvidersResponse;
     }
@@ -6813,6 +6867,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for ServiceRequestDetails {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceRequestDetails";
         const MD5SUM: &'static str = "f9c88144f6f6bd888dd99d4e0411905d";
+        const ROS2_HASH: &'static str = "";
         type Request = ServiceRequestDetailsRequest;
         type Response = ServiceRequestDetailsResponse;
     }
@@ -6872,6 +6927,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for ServiceResponseDetails {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceResponseDetails";
         const MD5SUM: &'static str = "f9c88144f6f6bd888dd99d4e0411905d";
+        const ROS2_HASH: &'static str = "";
         type Request = ServiceResponseDetailsRequest;
         type Response = ServiceResponseDetailsResponse;
     }
@@ -6922,6 +6978,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for ServiceType {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceType";
         const MD5SUM: &'static str = "0e24a2dcdf70e483afc092a35a1f15f7";
+        const ROS2_HASH: &'static str = "";
         type Request = ServiceTypeRequest;
         type Response = ServiceTypeResponse;
     }
@@ -6970,6 +7027,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for Services {
         const ROS_SERVICE_NAME: &'static str = "rosapi/Services";
         const MD5SUM: &'static str = "e44a7e7bcb900acadbcc28b132378f0c";
+        const ROS2_HASH: &'static str = "";
         type Request = ServicesRequest;
         type Response = ServicesResponse;
     }
@@ -7020,6 +7078,7 @@ string[] constvalues"####;
     impl ::roslibrust::RosServiceType for ServicesForType {
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServicesForType";
         const MD5SUM: &'static str = "93e9fe8ae5a9136008e260fe510bd2b0";
+        const ROS2_HASH: &'static str = "";
         type Request = ServicesForTypeRequest;
         type Response = ServicesForTypeResponse;
     }
@@ -7070,6 +7129,7 @@ string value"####;
     impl ::roslibrust::RosServiceType for SetParam {
         const ROS_SERVICE_NAME: &'static str = "rosapi/SetParam";
         const MD5SUM: &'static str = "bc6ccc4a57f61779c8eaae61e9f422e0";
+        const ROS2_HASH: &'static str = "";
         type Request = SetParamRequest;
         type Response = SetParamResponse;
     }
@@ -7120,6 +7180,7 @@ string value"####;
     impl ::roslibrust::RosServiceType for Subscribers {
         const ROS_SERVICE_NAME: &'static str = "rosapi/Subscribers";
         const MD5SUM: &'static str = "cb387b68f5b29bc1456398ee8476b973";
+        const ROS2_HASH: &'static str = "";
         type Request = SubscribersRequest;
         type Response = SubscribersResponse;
     }
@@ -7170,6 +7231,7 @@ string value"####;
     impl ::roslibrust::RosServiceType for TopicType {
         const ROS_SERVICE_NAME: &'static str = "rosapi/TopicType";
         const MD5SUM: &'static str = "0d30b3f53a0fd5036523a7141e524ddf";
+        const ROS2_HASH: &'static str = "";
         type Request = TopicTypeRequest;
         type Response = TopicTypeResponse;
     }
@@ -7220,6 +7282,7 @@ string[] types"####;
     impl ::roslibrust::RosServiceType for Topics {
         const ROS_SERVICE_NAME: &'static str = "rosapi/Topics";
         const MD5SUM: &'static str = "d966d98fc333fa1f3135af765eac1ba8";
+        const ROS2_HASH: &'static str = "";
         type Request = TopicsRequest;
         type Response = TopicsResponse;
     }
@@ -7272,6 +7335,7 @@ string[] typedefs_full_text"####;
     impl ::roslibrust::RosServiceType for TopicsAndRawTypes {
         const ROS_SERVICE_NAME: &'static str = "rosapi/TopicsAndRawTypes";
         const MD5SUM: &'static str = "e1432466c8f64316723276ba07c59d12";
+        const ROS2_HASH: &'static str = "";
         type Request = TopicsAndRawTypesRequest;
         type Response = TopicsAndRawTypesResponse;
     }
@@ -7322,6 +7386,7 @@ string[] typedefs_full_text"####;
     impl ::roslibrust::RosServiceType for TopicsForType {
         const ROS_SERVICE_NAME: &'static str = "rosapi/TopicsForType";
         const MD5SUM: &'static str = "56f77ff6da756dd27c1ed16ec721072a";
+        const ROS2_HASH: &'static str = "";
         type Request = TopicsForTypeRequest;
         type Response = TopicsForTypeResponse;
     }
@@ -7361,7 +7426,8 @@ pub mod rosgraph_msgs {
 # This message simply communicates the current time.
 # For more information, see http://www.ros.org/wiki/Clock
 time clock"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_6b0621f2e1b2e3e22c32013a77c6db28a104403f937622c425a4a3823063b8e4";
         const ROS2_TYPE_NAME: &'static str = "rosgraph_msgs::msg::dds_::Clock_";
     }
     #[allow(non_snake_case)]
@@ -7421,7 +7487,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_5c0f95cb3b25123603ef38c15aede088ca5da54c507385a22ae08e278f6c966e";
         const ROS2_TYPE_NAME: &'static str = "rosgraph_msgs::msg::dds_::Log_";
     }
     #[allow(unused)]
@@ -7493,7 +7560,8 @@ duration period_max
 duration stamp_age_mean
 duration stamp_age_stddev
 duration stamp_age_max"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_1a05b40fe8403f51a928cce60c63f14bfe138a2ef8ce6eeb16295637ab97f605";
         const ROS2_TYPE_NAME: &'static str = "rosgraph_msgs::msg::dds_::TopicStatistics_";
     }
 }
@@ -7609,7 +7677,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_548b3c9f73d4be3804f0ac89dd6f4d2dad97038fe60ef8e4c7a95844766ad7c8";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::BatteryState_";
     }
     #[allow(unused)]
@@ -7829,7 +7898,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_fd4b07e18ce5feac4b98061e0ea377febb7f02403f23c7fbb89de3a6ece3b528";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::CameraInfo_";
     }
     #[allow(non_snake_case)]
@@ -7924,7 +7994,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_4af0554e9085188ddd48ef5b152684b8a8db92882289bfb0882d0af8bba6613e";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::CompressedImage_";
     }
     #[allow(non_snake_case)]
@@ -7972,7 +8043,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_3912637514e49abb4cdda9536d45015c1e07aaf67fc66f7ed9de748b9fd8816d";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::FluidPressure_";
     }
     #[allow(non_snake_case)]
@@ -8029,7 +8101,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_747585f8eb87f380a16667233ad479e5a6e446816a5fa1c2a07a2601a0398e83";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Illuminance_";
     }
     #[allow(non_snake_case)]
@@ -8097,7 +8170,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_c13fc6161b630205026cd8d0d930ff866e6ca162c23f0b3b7fda23b0f5bb930b";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Image_";
     }
     #[allow(non_snake_case)]
@@ -8181,7 +8255,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_d218a9eda732ceeaad870ae0b0cf9764efad5a09ea5f6f5b4112259c119e9570";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Imu_";
     }
     #[allow(non_snake_case)]
@@ -8245,7 +8320,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_0d867fddca5340c313ee606bf4a45f985ebfe42170372ca802bd16b9c7a54159";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::JointState_";
     }
     #[allow(non_snake_case)]
@@ -8285,7 +8361,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_c0f6552805ecd49596cdb24d0b356b480ce94563cdba48a3913580e6345fe69f";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Joy_";
     }
     #[allow(non_snake_case)]
@@ -8462,7 +8539,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_093181116876bf3a841b325067ff3dd809915d091851c20df63052a7b7ab827e";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::LaserScan_";
     }
     #[allow(non_snake_case)]
@@ -8532,7 +8610,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_bba4c4748ef539e2add02d96ea71a09671617f7458ca07486cb88a47a9d78e9b";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MagneticField_";
     }
     #[allow(non_snake_case)]
@@ -8677,7 +8756,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_3405b7cf52c3618f40528921d3edae70a0153895f9ff02de921eed5cb1f31fdd";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MultiDOFJointState_";
     }
     #[allow(non_snake_case)]
@@ -8758,7 +8838,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_1df383590f5cc8d57c5e890cc38f3360527c341f48c77212f71643ed93c18a43";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MultiEchoLaserScan_";
     }
     #[allow(non_snake_case)]
@@ -8868,7 +8949,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_e360f189da5b9bfea86088df05e711225a972b6387f1c50ddf107233cbc94688";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::NavSatFix_";
     }
     #[allow(unused)]
@@ -9018,7 +9100,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_86313d1249e6119e4b6b281820baa1b1c06b6e415e36de8dcf96928b57a390e5";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::PointCloud_";
     }
     #[allow(non_snake_case)]
@@ -9105,7 +9188,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_7f8ffedde19c4261ace431566fabf6cd60641cfd607c80ffcf6f529f494bdb44";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::PointCloud2_";
     }
     #[allow(non_snake_case)]
@@ -9233,7 +9317,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_4559ae8f498839f4f8ee9f05e07f393f827bddb027e4277707be40e4db2822e6";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Range_";
     }
     #[allow(unused)]
@@ -9329,7 +9414,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_ed5b36c395e42f1add9dd7f6cc50ae42cc678a038aa57bef83ab8535870b170d";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::RelativeHumidity_";
     }
     #[allow(non_snake_case)]
@@ -9373,7 +9459,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_484fbdd884c2c9f2d13714c86c61912074c809e4a4dd65208bd658a580a4a106";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Temperature_";
     }
     #[allow(non_snake_case)]
@@ -9416,7 +9503,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_26703fd8830b3c5c371171ec7d70d25e7607c638a8bf8796a7367b4de3401e28";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::TimeReference_";
     }
     #[allow(non_snake_case)]
@@ -9649,7 +9737,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_fea51d877a9b7fc274310f025f80b0f4c6fc8db91bce56b9a8c02e9dbee578b8";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::SetCameraInfoRequest_";
     }
     #[allow(non_snake_case)]
@@ -9680,6 +9769,7 @@ string status_message # Used to give details about success"####;
     impl ::roslibrust::RosServiceType for SetCameraInfo {
         const ROS_SERVICE_NAME: &'static str = "sensor_msgs/SetCameraInfo";
         const MD5SUM: &'static str = "bef1df590ed75ed1f393692395e15482";
+        const ROS2_HASH: &'static str = "";
         type Request = SetCameraInfoRequest;
         type Response = SetCameraInfoResponse;
     }
@@ -9734,7 +9824,7 @@ MSG: shape_msgs/MeshTriangle
 # Definition of a triangle's vertices
 uint32[3] vertex_indices"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_cd509dcdf75695db6863a4e037001339f249664d93c8735cc0f32164d052f86a";
+            "RIHS01_6b3bd337f740eb857b9c8774d59a1063dca75c8971b6fffaeeac13d8b1843de8";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::Mesh_";
     }
     #[allow(non_snake_case)]
@@ -9984,7 +10074,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_0c8a7ec4c534c1406da390fa9d6e9169ef9e9290f07d0b1928dcad21806cda51";
+            "RIHS01_692eff26dd8ca7623e4e90a082f7d83f1cf5deb0b7ba748a2d4d5fbca791db7d";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::ByteMultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10005,7 +10095,7 @@ uint32 stride  # stride of given dimension"####;
         const MD5SUM: &'static str = "1bf77f25acecdedba0e224b162199717";
         const DEFINITION: &'static str = r####"char data"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8914cecc0520f475fc3f8767a9f9e529341a75440e1b184a7e152195b2ffce5f";
+            "RIHS01_3ad2d04dd29ba19d04b16659afa3ccaedd691914b02a64e82e252f2fa6a586a9";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Char_";
     }
     #[allow(non_snake_case)]
@@ -10052,7 +10142,8 @@ float32 a"####;
         const ROS_TYPE_NAME: &'static str = "std_msgs/Duration";
         const MD5SUM: &'static str = "3e286caf4241d664e55f3ad380e2ae46";
         const DEFINITION: &'static str = r####"duration data"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_6412d7f26b75c8bdcd9b9feae3a8a1157f395068a40e97c0437f1a34fe1a3794";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Duration_";
     }
     #[allow(non_snake_case)]
@@ -10156,7 +10247,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_ce656046831c23d8de16fff51c0ecc2635906109342c0b524f3afb8cee5f9d3a";
+            "RIHS01_01f652bc19258c4403888aecaa04c25a0986a7ce6f11c914ea1bf12368895084";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float32MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10241,7 +10332,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_9cdba3870b9b7017dd8272c63398813363c155916923087acb1085f2cd602177";
+            "RIHS01_2a32c6f35b23cfac3e36ffce09d3fa54992f73a4fc3520b68b7f9cd7968116dd";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float64MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10275,7 +10366,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_fcd1246188efb14597365889d5adcd52acb6892929a1d27705efcd343dc7960f";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Header_";
     }
     #[allow(non_snake_case)]
@@ -10360,7 +10452,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_329ddb5685667f77d9e13ac69fe67316023bf7c4dc9c6416fbe8d3719da3b5fe";
+            "RIHS01_b58810e8e5b90fb19a5062469eb8409f5ab11a446d60de7157a1457e52a076ce";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int16MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10445,7 +10537,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_d34a39bc8b7b235486310e6773915666c97e060111c29d0bd533f07c2df341b8";
+            "RIHS01_84a7346323525d1b4dfca899df3820f245e54009dac5a6b69217d14fdefd1701";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int32MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10530,7 +10622,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8c02da3af017a8e5e6fc1d91264c866bb88e9b3dc425aa813a4354e4b050b1d1";
+            "RIHS01_e60f9fe34d697f0939ad49d33158693c1277fbac0e2f04b7c2995dc21c89b422";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int64MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10615,7 +10707,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_e0b074065396ebb48ced7ea58243410ad03f5447f426356c2005bb27b752d550";
+            "RIHS01_f21998d4b492abd63330765d75d5831238d400740386f651f13a872a4d2188db";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int8MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10733,7 +10825,8 @@ uint32 stride  # stride of given dimension"####;
         const ROS_TYPE_NAME: &'static str = "std_msgs/Time";
         const MD5SUM: &'static str = "cd7166c74c552c311fbcc2fe5a7bc289";
         const DEFINITION: &'static str = r####"time data"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_e577c461306cfd1cbf5bbf5c874b038b7f3dcd6f16a19b7fe66963c23d4784a0";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Time_";
     }
     #[allow(non_snake_case)]
@@ -10818,7 +10911,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8189f5805dd2160b533914f9e0027d8c29dae7adc5de67a234d13de13dd07ce2";
+            "RIHS01_94fe73428ec63baecc774f8fb82406123e9291cf728f1b7c91caf5335129492b";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt16MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10903,7 +10996,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_57d8b0b3e75a497f1aaaf644480b0861bbfdbc60c5456cc67d5cb065806d2e5f";
+            "RIHS01_6c2577c7ad3cbdcc2164a41c12f1d5ad314ea320f3fb1ee47e78019fe16bb5b0";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt32MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -10988,7 +11081,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_416aaa31129a049f998dfcd3af75e532275918849ad7220594a12a0027cae503";
+            "RIHS01_fc1c685c2f76bdc6983da025cb25d2db5fb5157b059e300f6d957d86f981b366";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt64MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -11074,7 +11167,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_82493c3f1a153e10db88a3ca89410d3c78d2371685dfd5029b7e9a982db812da";
+            "RIHS01_5687e861b8d307a5e48b7515467ae7a5fc2daf805bd0ce6d8e9e604bade9f385";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt8MultiArray_";
     }
 }
@@ -11136,6 +11229,7 @@ pub mod std_srvs {
     impl ::roslibrust::RosServiceType for Empty {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/Empty";
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
+        const ROS2_HASH: &'static str = "";
         type Request = EmptyRequest;
         type Response = EmptyResponse;
     }
@@ -11189,6 +11283,7 @@ string message # informational, e.g. for error messages"####;
     impl ::roslibrust::RosServiceType for SetBool {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/SetBool";
         const MD5SUM: &'static str = "09fb03525b03e7ea1fd3992bafd87e16";
+        const ROS2_HASH: &'static str = "";
         type Request = SetBoolRequest;
         type Response = SetBoolResponse;
     }
@@ -11239,6 +11334,7 @@ string message # informational, e.g. for error messages"####;
     impl ::roslibrust::RosServiceType for Trigger {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/Trigger";
         const MD5SUM: &'static str = "937c9679a518e3a18d831e57125ea522";
+        const ROS2_HASH: &'static str = "";
         type Request = TriggerRequest;
         type Response = TriggerResponse;
     }
@@ -11390,7 +11486,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_f03666bd2192c1539120357f075ad1baa1720e7cb2071d834b6f4a4b85c6cad5";
         const ROS2_TYPE_NAME: &'static str = "stereo_msgs::msg::dds_::DisparityImage_";
     }
 }
@@ -11532,7 +11629,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_9a027604f15edb3d873d0a77cd541598178a77e89c9f2d78b23dd8d76cd2e70f";
         const ROS2_TYPE_NAME: &'static str = "test_msgs::msg::dds_::ADSBVehicle_";
     }
     #[allow(unused)]
@@ -11636,7 +11734,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_a0d2ef5e0c3ddf4c7388d6d4fc9bf4c4a5d9f956c3c3fc445edf334139ea3958";
         const ROS2_TYPE_NAME: &'static str = "test_msgs::msg::dds_::Float64Stamped_";
     }
     #[allow(non_snake_case)]
@@ -11819,6 +11918,7 @@ int64 sum"####;
     impl ::roslibrust::RosServiceType for AddTwoInts {
         const ROS_SERVICE_NAME: &'static str = "test_msgs/AddTwoInts";
         const MD5SUM: &'static str = "6a2e34150c00229791cc89ff309fff21";
+        const ROS2_HASH: &'static str = "";
         type Request = AddTwoIntsRequest;
         type Response = AddTwoIntsResponse;
     }
@@ -11872,6 +11972,7 @@ uint8[] bytes"####;
     impl ::roslibrust::RosServiceType for RoundTripArray {
         const ROS_SERVICE_NAME: &'static str = "test_msgs/RoundTripArray";
         const MD5SUM: &'static str = "6a66b36cb6abf834a48739776dfbe789";
+        const ROS2_HASH: &'static str = "";
         type Request = RoundTripArrayRequest;
         type Response = RoundTripArrayResponse;
     }
@@ -11938,7 +12039,8 @@ float64[] velocities
 float64[] accelerations
 float64[] effort
 duration time_from_start"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_8c0f2f7807035a561bca8732899921f11734b4a806101d2c93e6336c9c304ae7";
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::JointTrajectory_";
     }
     #[allow(non_snake_case)]
@@ -11970,7 +12072,8 @@ float64[] velocities
 float64[] accelerations
 float64[] effort
 duration time_from_start"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_bd68d089e568b9c24716f54c1af573f59f72314850cef788187fbb2047966eeb";
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::JointTrajectoryPoint_";
     }
     #[allow(non_snake_case)]
@@ -12154,7 +12257,8 @@ MSG: geometry_msgs/Vector3
 float64 x
 float64 y
 float64 z"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_964758fe202fa1952270d2009fea82c109bc379a805edd2a4ff19a152e84a3ed";
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectory_";
     }
     #[allow(non_snake_case)]
@@ -12249,7 +12353,8 @@ MSG: geometry_msgs/Vector3
 float64 x
 float64 y
 float64 z"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_795e16b5d6c879ad0cef860014e71dede1a9698d7dc4c51d33ac8a21bf080b8f";
         const ROS2_TYPE_NAME: &'static str =
             "trajectory_msgs::msg::dds_::MultiDOFJointTrajectoryPoint_";
     }
@@ -12348,7 +12453,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_ae576ad91229e50b16f5edde2f9d3f612992a04116130af4cafb6753532af21f";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::ImageMarker_";
     }
     #[allow(unused)]
@@ -12900,7 +13006,8 @@ uint8 FEEDBACK=0
 uint8 ROSRUN=1
 uint8 ROSLAUNCH=2
 uint8 command_type"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_0b78310200a96d11b670572893fead52287011fdee6aa6862752fb60f31e26a9";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::InteractiveMarker_";
     }
     #[allow(non_snake_case)]
@@ -13181,7 +13288,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_d1b5a7ce0117478d94ca4464484421c079fd0d0c0b018c059ecf3e9e246c5ebf";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerControl_";
     }
@@ -13315,7 +13423,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_ea67b2cd9d57d73971643b2a837d0e9bd91fddde57f8ffeccb9831c718d7b3cd";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerFeedback_";
     }
@@ -14370,7 +14479,8 @@ uint8 FEEDBACK=0
 uint8 ROSRUN=1
 uint8 ROSLAUNCH=2
 uint8 command_type"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_0541587992df46c40b52c7ce240cd7438e61216101696d8cee84e5f093e86699";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerInit_";
     }
@@ -14449,7 +14559,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_2e5ac8bf816f6e1cea92cab1ad162d8d400cf370f529ca0657a041bf88a8825e";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
     }
@@ -15574,7 +15685,8 @@ uint8 FEEDBACK=0
 uint8 ROSRUN=1
 uint8 ROSLAUNCH=2
 uint8 command_type"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_62d6081a94f98b847b00b70733d926b68ebe12d469f04d560ef8e2840ebab760";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerUpdate_";
     }
@@ -15723,7 +15835,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_1f392bc07dc95da78323d3b8ff193e8313016e2207aa1986e64524800c31d609";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::Marker_";
     }
     #[allow(unused)]
@@ -15940,7 +16053,8 @@ uint32 seq
 time stamp
 #Frame this data is associated with
 string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_c6dbae0b6db18aec20d99d5cad9570e867fb7e1f241284dd18650b05acf9da1c";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::MarkerArray_";
     }
     #[allow(non_snake_case)]

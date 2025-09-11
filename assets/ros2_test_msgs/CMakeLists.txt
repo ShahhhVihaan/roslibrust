@@ -13,10 +13,12 @@ set(msg_files
   "msg/BoundedReferenced.msg"
   "msg/BoundedString.msg"
   "msg/Defaults.msg"
+  "msg/Stamped.msg"
+  "msg/Char.msg"
 )
 
 set(srv_files
-  #"srv/MyService.srv"
+  "srv/AddTwoInts.srv"
 )
 
 # Generate the interfaces

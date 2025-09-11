@@ -1,6 +1,6 @@
 //! Module for calculating the ROS2 hash of a message definition via https://github.com/ros-infrastructure/rep/pull/381/files
 
-use log::trace;
+use log::{debug, error, trace};
 use serde::Serialize;
 use serde_json::ser::Formatter;
 use std::{
@@ -8,7 +8,11 @@ use std::{
     io::Write,
 };
 
-use crate::{parse::ParsedMessageFile, ArrayType, MessageFile};
+use crate::{
+    parse::{ParsedMessageFile, ParsedServiceFile},
+    utils::RosVersion,
+    ArrayType, FieldInfo, MessageFile,
+};
 
 /// The following structs define the format of the JSON file used for hashing in ROS2
 /// A quick description of the process to calculate a ROS2 hash:
@@ -65,8 +69,170 @@ pub fn calculate_ros2_hash(
     parsed: &ParsedMessageFile,
     graph: &BTreeMap<String, MessageFile>,
 ) -> Option<String> {
-    let type_description_msg = convert_to_type_description(parsed, graph)?;
+    let type_description_msg = convert_to_type_description(parsed, graph, false)?;
     Some(calculate_hash(&type_description_msg))
+}
+
+pub fn calculate_ros2_srv_hash(
+    parsed: &ParsedServiceFile,
+    graph: &BTreeMap<String, MessageFile>,
+) -> Option<String> {
+    // Lot's of incredibly messy naming here due to mix of ROS1 and ROS2 naming style
+
+    // Literal type that will appear in fields
+    let request_type = parsed.name.clone() + "_Request";
+    let response_type = parsed.name.clone() + "_Response";
+    let event_type = parsed.name.clone() + "_Event";
+
+    // Does not include /srv/, is what will be used to lookup type in graph
+    let request_ros1_name = parsed.get_full_name() + "_Request";
+    let response_ros1_name = parsed.get_full_name() + "_Response";
+    let event_ros1_name = parsed.get_full_name() + "_Event";
+
+    // ROS2 has this magical 3rd type the "Event Type"
+    // Eventually I think we'll need to generate Rust structs for this type as well...
+    // For now just solving this for hashing.
+    let event = ParsedMessageFile {
+        name: event_type.clone(),
+        package: parsed.package.clone(),
+        constants: vec![],
+        version: Some(RosVersion::ROS2),
+        source: "".to_string(),
+        path: parsed.path.clone(),
+        fields: vec![
+            // Every event has an info field with same type
+            FieldInfo {
+                field_name: "info".to_string(),
+                field_type: crate::FieldType {
+                    package_name: Some("service_msgs".to_string()),
+                    source_package: "service_msgs".to_string(),
+                    field_type: "ServiceEventInfo".to_string(),
+                    array_info: ArrayType::NotArray,
+                    string_capacity: None,
+                },
+                default: None,
+            },
+            // Every event has a request field with the request type
+            FieldInfo {
+                field_name: "request".to_string(),
+                field_type: crate::FieldType {
+                    package_name: Some(parsed.package.clone()),
+                    source_package: parsed.package.clone(),
+                    field_type: request_type.clone(),
+                    // This field is a bounded list of 1 to represent Optional in a hacky way
+                    array_info: ArrayType::Bounded(1),
+                    string_capacity: None,
+                },
+                default: None,
+            },
+            // Every event has a response field with the response type
+            FieldInfo {
+                field_name: "response".to_string(),
+                field_type: crate::FieldType {
+                    package_name: Some(parsed.package.clone()),
+                    source_package: parsed.package.clone(),
+                    // This field is a bounded list of 1 to represent Optional in a hacky way
+                    field_type: response_type.clone(),
+                    array_info: ArrayType::Bounded(1),
+                    string_capacity: None,
+                },
+                default: None,
+            },
+        ],
+    };
+
+    let total_message_file = ParsedMessageFile {
+        name: parsed.name.clone(),
+        package: parsed.package.clone(),
+        constants: vec![],
+        version: Some(RosVersion::ROS2),
+        source: "".to_string(),
+        path: parsed.path.clone(),
+        fields: vec![
+            FieldInfo {
+                field_name: "request_message".to_string(),
+                field_type: crate::FieldType {
+                    package_name: Some(parsed.package.clone()),
+                    source_package: parsed.package.clone(),
+                    field_type: request_type.clone(),
+                    array_info: ArrayType::NotArray,
+                    string_capacity: None,
+                },
+                default: None,
+            },
+            FieldInfo {
+                field_name: "response_message".to_string(),
+                field_type: crate::FieldType {
+                    package_name: Some(parsed.package.clone()),
+                    source_package: parsed.package.clone(),
+                    field_type: response_type.clone(),
+                    array_info: ArrayType::NotArray,
+                    string_capacity: None,
+                },
+                default: None,
+            },
+            FieldInfo {
+                field_name: "event_message".to_string(),
+                field_type: crate::FieldType {
+                    package_name: Some(parsed.package.clone()),
+                    source_package: parsed.package.clone(),
+                    field_type: event_type,
+                    array_info: ArrayType::NotArray,
+                    string_capacity: None,
+                },
+                default: None,
+            },
+        ],
+    };
+
+    let mut graph_copy = graph.clone();
+    // Create some "bonus" entries in the message graph for the "virtual" types within the service
+    // Have to modify naming in these slightly (god this is a pile of hacks I'm sorry)
+    let mut request = parsed.request_type.clone();
+    request.name = request_type;
+
+    let mut response = parsed.response_type.clone();
+    response.name = response_type;
+
+
+    graph_copy.insert(
+        event_ros1_name,
+        MessageFile {
+            parsed: event,
+            // Dummy values
+            ros2_hash: None,
+            md5sum: "".to_string(),
+            definition: "".to_string(),
+            is_fixed_encoding_length: true,
+        },
+    );
+    graph_copy.insert(
+        request_ros1_name,
+        MessageFile {
+            parsed: request,
+            // Dummy values
+            ros2_hash: None,
+            md5sum: "".to_string(),
+            definition: "".to_string(),
+            is_fixed_encoding_length: true,
+        },
+    );
+    graph_copy.insert(
+        response_ros1_name,
+        MessageFile {
+            parsed: response,
+            // Dummy values
+            ros2_hash: None,
+            md5sum: "".to_string(),
+            definition: "".to_string(),
+            is_fixed_encoding_length: true,
+        },
+    );
+
+    debug!("Graph prior to hash: {:#?}", graph_copy);
+
+    let total_type_description = convert_to_type_description(&total_message_file, &graph_copy, true)?;
+    Some(calculate_hash(&total_type_description))
 }
 
 /// Calculates the hash from a TypeDescriptionMsg struct
@@ -86,9 +252,11 @@ fn calculate_hash(type_description_msg: &TypeDescriptionMsg) -> String {
 fn convert_to_type_description(
     parsed: &ParsedMessageFile,
     graph: &BTreeMap<String, MessageFile>,
+    // This option is a real hack, but is working around ROS2 vs. ROS1 naming differences
+    service_naming: bool
 ) -> Option<TypeDescriptionMsg> {
     let mut fields = vec![];
-    let mut referenced_type_descriptions = vec![];
+    let mut referenced_type_descriptions = BTreeMap::new();
 
     // ROS2 treats empty message types as having a single uint8 field named "structure_needs_at_least_one_member"
     if parsed.fields.is_empty() {
@@ -107,7 +275,16 @@ fn convert_to_type_description(
         let nested_type_name = if field.field_type.is_primitive() {
             "".to_string()
         } else {
-            field.get_ros2_full_type_name()
+            if service_naming {
+                const SPECIAL_SUFFIX:&[&str] = &["_Request", "_Response", "_Event"];
+                if SPECIAL_SUFFIX.iter().any(|s| field.field_type.field_type.ends_with(s)) {
+                    format!("{}/srv/{}", field.field_type.source_package, field.field_type.field_type)
+                } else {
+                    field.get_ros2_full_type_name()
+                }
+            } else {
+                field.get_ros2_full_type_name()
+            }
         };
 
         // Check if there is a length limit on array contents
@@ -121,8 +298,7 @@ fn convert_to_type_description(
         fields.push(Field {
             name: field.field_name.clone(),
             field_type: FieldType {
-                type_id: get_field_type_id(&field.field_type),
-                // TODO ignoring capacity and string_capacity for now
+                type_id: get_field_type_id(&field.field_type)?,
                 capacity,
                 string_capacity: field.field_type.string_capacity.unwrap_or(0) as u32,
                 nested_type_name,
@@ -132,11 +308,22 @@ fn convert_to_type_description(
         });
 
         if !field.field_type.is_primitive() {
-            let sub_message = graph.get(field.get_full_type_name().as_str())?;
-            let sub_type_description = convert_to_type_description(&sub_message.parsed, graph)?;
-            referenced_type_descriptions.push(sub_type_description.type_description);
+            let sub_message = graph.get(field.get_full_type_name().as_str()).or_else(|| {
+                error!(
+                    "Failed to find definition for nested type: {} while hashing {}",
+                    field.get_full_type_name(),
+                    parsed.get_full_name()
+                );
+                None
+            })?;
+            let sub_type_description = convert_to_type_description(&sub_message.parsed, graph, true)?;
+            for sub_referenced_type in sub_type_description.referenced_type_descriptions {
+                referenced_type_descriptions.insert(sub_referenced_type.type_name.clone(), sub_referenced_type);
+            }
+            referenced_type_descriptions.insert(sub_type_description.type_description.type_name.clone(), sub_type_description.type_description);
         }
     }
+    let referenced_type_descriptions = referenced_type_descriptions.into_iter().map(|(_, v)| v).collect::<Vec<_>>();
 
     Some(TypeDescriptionMsg {
         type_description: TypeDescription {
@@ -351,11 +538,17 @@ lazy_static::lazy_static! {
 }
 
 /// Returns the string matching the format ROS2's python code uses for lookups
-/// 
+///
 /// e.g. "int32[3]" -> "FIELD_TYPE_INT32_ARRAY" and "string<=10" -> "FIELD_TYPE_BOUNDED_STRING"
 fn get_field_type_string(field_type: &crate::FieldType) -> String {
+    // Okay I have no idea why, I have no idea how, but I find when I look at generated .json output it is doing this
+    let temp_field_type = if field_type.field_type == "char" {
+        "uint8"
+    } else {
+        &field_type.field_type
+    };
     const PREFIX: &str = "FIELD_TYPE_";
-    let core_name = match FIELD_VALUE_TYPE_NAMES.get(field_type.field_type.as_str()) {
+    let core_name = match FIELD_VALUE_TYPE_NAMES.get(temp_field_type) {
         Some(name) => name,
         None => "NESTED_TYPE",
     };
@@ -373,14 +566,13 @@ fn get_field_type_string(field_type: &crate::FieldType) -> String {
 }
 
 /// Converts our internal representation of a field type to the numeric ID used in the ROS2 hash format
-// TODO MAJOR: We don't support ROS2 capacity limits yet
-fn get_field_type_id(field_type: &crate::FieldType) -> u8 {
+fn get_field_type_id(field_type: &crate::FieldType) -> Option<u8> {
     let field_type_string = get_field_type_string(field_type);
     match FIELD_TYPE_NAME_TO_ID.get(&field_type_string) {
-        Some(id) => *id,
+        Some(id) => Some(*id),
         None => {
-            // TODO need to not panic and bubble up error here
-            panic!("Failed to find field type ID for {}", field_type_string);
+            error!("Failed to find field type ID for {}", field_type_string);
+            None
         }
     }
 }
@@ -399,7 +591,7 @@ mod tests {
     /// File was generated by running `rosidl generate std_msgs ./String.msg -I .`
     /// Turns out these json files can just be found in the share/ folder of installed ros2 packages!
     /// This test is independent of our message file parsing logic
-    #[test]
+    #[test_log::test]
     fn ros2_hashing_against_message_files() {
         let test_data = [
             (
@@ -433,7 +625,7 @@ mod tests {
     }
 
     /// Double checking our conversion to the ROS2 integer type ids are correct
-    #[test]
+    #[test_log::test]
     fn spot_check_field_type_id() {
         let mut field = crate::FieldType {
             package_name: Some("std_msgs".to_string()),
@@ -442,29 +634,29 @@ mod tests {
             array_info: ArrayType::FixedLength(10),
             string_capacity: None,
         };
-        assert_eq!(super::get_field_type_id(&field), 65);
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 65);
 
         field.array_info = ArrayType::Unbounded;
-        assert_eq!(super::get_field_type_id(&field), 161);
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 161);
 
         field.field_type = "int32".to_string();
         field.array_info = ArrayType::FixedLength(10);
-        assert_eq!(super::get_field_type_id(&field), 54);
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 54);
 
         field.array_info = ArrayType::Unbounded;
-        assert_eq!(super::get_field_type_id(&field), 150);
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 150);
 
         field.array_info = ArrayType::NotArray;
-        assert_eq!(super::get_field_type_id(&field), 6);
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 6);
 
         field.array_info = ArrayType::Bounded(10);
-        assert_eq!(super::get_field_type_id(&field), 102);
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 102);
     }
 
     /// End-To-End test from parse -> hash
     /// Note: this test isn't super needed, and we test this more clearly in roslibrust_test package.
     /// Leaving this here, as it's slightly more specific than the end-to-end test in roslibrust_test
-    #[test]
+    #[test_log::test]
     fn full_hash_tests() {
         // We can at least do basic hashing for a String!
         let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
@@ -486,6 +678,75 @@ mod tests {
         assert_eq!(
             hash,
             "RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18"
+        );
+    }
+
+    #[test_log::test]
+    fn ros2_hashing_against_service_files() {
+        let test_data = [(
+            include_str!("../assets/AddTwoInts.json"),
+            "RIHS01_e118de6bf5eeb66a2491b5bda11202e7b68f198d6f67922cf30364858239c81a",
+        )];
+
+        for (test_file, expected_hash) in test_data {
+            let parsed: super::TypeDescriptionFile = serde_json::from_str(test_file)
+                .expect(format!("Failed to parse test file {test_file}").as_str());
+            let hash = parsed.type_hashes[0].hash_string.clone();
+
+            assert_eq!(hash, expected_hash,);
+
+            let calculated_hash = super::calculate_hash(&parsed.type_description_msg);
+
+            assert_eq!(calculated_hash, expected_hash);
+        }
+    }
+
+    #[test_log::test]
+    fn ros2_srv_hash_tests() {
+        let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        let package = Package {
+            name: "ros2_test_msgs".to_string(),
+            path: root.join("../assets/ros2_test_msgs"),
+            version: Some(RosVersion::ROS2),
+        };
+
+        // Note: to successfully has a ROS2 service we need builtin_interfaces and service_msgs available
+        let (msg, srv, _) = crate::parse_ros_files(vec![
+            (
+                package,
+                root.join("../assets/ros2_test_msgs/srv/AddTwoInts.srv"),
+            ),
+            (
+                Package {
+                    name: "builtin_interfaces".to_string(),
+                    path: root.join("../assets/ros2_required_msgs/rcl_interfaces/builtin_interfaces"),
+                    version: Some(RosVersion::ROS2),
+                },
+                root.join("../assets/ros2_required_msgs/rcl_interfaces/builtin_interfaces/msg/Time.msg"),
+            ),
+            (
+                Package {
+                    name: "service_msgs".to_string(),
+                    path: root.join("../assets/ros2_required_msgs/rcl_interfaces/service_msgs"),
+                    version: Some(RosVersion::ROS2),
+                },
+                root.join("../assets/ros2_required_msgs/rcl_interfaces/service_msgs/msg/ServiceEventInfo.msg"),
+            ),
+        ])
+        .expect("Failed to parse test file");
+
+        let (resolved_msg, resolved_srv) = crate::resolve_dependency_graph(msg, srv).unwrap();
+        let graph = resolved_msg
+            .into_iter()
+            .map(|msg| (msg.parsed.get_full_name(), msg))
+            .collect::<std::collections::BTreeMap<_, _>>();
+
+        let hash = super::calculate_ros2_srv_hash(&resolved_srv[0].parsed, &graph)
+            .expect("Failed to calculate hash");
+
+        assert_eq!(
+            hash,
+            "RIHS01_cbdcb755e63eba37467c9846fe9f0b458c2989832e888dfd39ecbf8991800ef7"
         );
     }
 }

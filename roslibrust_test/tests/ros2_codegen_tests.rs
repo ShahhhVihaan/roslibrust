@@ -88,19 +88,26 @@ fn ros2_hash_checks() {
         "RIHS01_e9965b1be42dce770d8936688f88b2f79cc1a828daa2295f1224186fd3c85b70"
     );
 
+    // Testing a message that references builtin_interfaces/Time and builtin_interfaces/Duration
+    assert_eq!(
+        ros2_test_msgs::Stamped::ROS2_HASH,
+        "RIHS01_d568324df43c14673c2d014c1c568d399b42e793d32050a4f396fd3cbd2f50cc"
+    );
 
+    // Testing a message working with the `char` type
+    assert_eq!(
+        ros2_test_msgs::Char::ROS2_HASH,
+        "RIHS01_7398a047b7ae995eeb12bd58e9884a30f25968d9c19a79b929778bebde4e678a"
+    );
 
-    // TODO not implemented yet
-    // Test a service
-    // assert_eq!(
-    //     std_srvs::SetBool::ROS2_HASH,
-    //     "RIHS01_abe9e4bb6b41b40e6789712c00ec8871923e089af3f667a79992a428cff2da0a"
-    // );
+    assert_eq!(
+        std_srvs::SetBool::ROS2_HASH,
+        "RIHS01_abe9e4bb6b41b40e6789712c00ec8871923e089af3f667a79992a428cff2da0a"
+    );
 
-    // TODO a special case will be required here
     // Test empty service
-    // assert_eq!(
-    //     std_srvs::Empty::ROS2_HASH,
-    //     "RIHS01_5888399dedec5ccc85ea6451949fd2c9f97bfdf963f9a588821639fcd31b5d19"
-    // )
+    assert_eq!(
+        std_srvs::Empty::ROS2_HASH,
+        "RIHS01_5888399dedec5ccc85ea6451949fd2c9f97bfdf963f9a588821639fcd31b5d19"
+    )
 }

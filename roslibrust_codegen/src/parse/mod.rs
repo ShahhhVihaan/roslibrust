@@ -10,10 +10,11 @@ pub use msg::{parse_ros_message_file, ParsedMessageFile};
 mod srv;
 pub use srv::{parse_ros_service_file, ParsedServiceFile};
 
+// Note: time and duration are primitives in ROS1, but not used in ROS2
 // List of types which are "individual data fields" and not containers for other data
-pub const ROS_PRIMITIVE_TYPE_LIST: [&str; 15] = [
+pub const ROS_PRIMITIVE_TYPE_LIST: [&str; 17] = [
     "bool", "int8", "uint8", "byte", "char", "int16", "uint16", "int32", "uint32", "int64",
-    "uint64", "float32", "float64", "string", "wstring",
+    "uint64", "float32", "float64", "string", "wstring", "time", "duration",
 ];
 
 lazy_static::lazy_static! {
@@ -59,8 +60,10 @@ lazy_static::lazy_static! {
 
 pub fn is_intrinsic_type(version: RosVersion, ros_type: &str) -> bool {
     match version {
+        // Treat time and duration as intrinsic in ROS1
         RosVersion::ROS1 => ROS_TYPE_TO_RUST_TYPE_MAP.contains_key(ros_type),
-        RosVersion::ROS2 => ROS_2_TYPE_TO_RUST_TYPE_MAP.contains_key(ros_type),
+        // In ros 2 builtin_interfaces/Time and builtin_interfaces/Duration are not intrinsic
+        RosVersion::ROS2 => ROS_PRIMITIVE_TYPE_LIST.contains(&ros_type),
     }
 }
 
@@ -144,65 +147,61 @@ fn strip_comments(line: &str) -> &str {
 }
 
 //TODO it is a little scary that this function appears infallible?
-fn parse_field_type(type_str: &str, array_info: ArrayType, pkg: &Package) -> FieldType {
+fn parse_field_type(
+    type_str: &str,
+    array_info: ArrayType,
+    pkg: &Package,
+) -> Result<FieldType, Error> {
     let items = type_str.split('/').collect::<Vec<&str>>();
 
     if items.len() == 1 {
         // If there is only one item (no package redirect)
         let pkg_version = pkg.version.unwrap_or(RosVersion::ROS1);
 
-        let (field_type, string_capacity) = parse_bounded_string(items[0]);
+        let (field_type, string_capacity) = parse_bounded_string(items[0])?;
 
-        FieldType {
+        Ok(FieldType {
             package_name: if is_intrinsic_type(pkg_version, &field_type) {
                 // If it is a fundamental type, no package
                 None
             } else {
-                // Otherwise it is referencing another message in the same package
+                // Very special case for "Header"
                 if type_str == "Header" {
                     Some("std_msgs".to_owned())
                 } else {
+                    // Otherwise it is referencing another message in the same package
                     Some(pkg.name.clone())
                 }
             },
             source_package: pkg.name.clone(),
             field_type: field_type,
             array_info,
-            string_capacity
-        }
+            string_capacity,
+        })
     } else {
         // If there is more than one item there is a package redirect
 
-        // Special workaround for builtin_interfaces package
-        if items[0] == "builtin_interfaces" {
-            FieldType {
-                package_name: None,
-                source_package: pkg.name.clone(),
-                field_type: type_str.to_string(),
-                string_capacity: None,
-                array_info,
-            }
-        } else {
-            FieldType {
-                package_name: Some(items[0].to_string()),
-                source_package: pkg.name.clone(),
-                field_type: items[1].to_string(),
-                string_capacity: None,
-                array_info,
-            }
-        }
+        Ok(FieldType {
+            package_name: Some(items[0].to_string()),
+            source_package: pkg.name.clone(),
+            field_type: items[1].to_string(),
+            string_capacity: None,
+            array_info,
+        })
     }
 }
 
 /// Specifically handles bounded string types, e.g. "string<=10"
 /// Returns the field_type and the string_capacity if it is a bounded string
 /// Otherwise returns the original type and None for the capacity
-fn parse_bounded_string(type_str: &str) -> (String, Option<usize>) {
+fn parse_bounded_string(type_str: &str) -> Result<(String, Option<usize>), Error> {
     if type_str.starts_with("string<=") {
-        let capacity = type_str[8..].parse::<usize>().unwrap();
-        ("string".to_string(), Some(capacity))
+        let capacity = type_str[8..].parse::<usize>().map_err(|err| {
+            Error::new(format!("Unable to parse capacity of bounded string: {type_str}: {err}"))
+        })?;
+        Ok(("string".to_string(), Some(capacity)))
     } else {
-        (type_str.to_string(), None)
+        Ok((type_str.to_string(), None))
     }
 }
 
@@ -243,11 +242,11 @@ fn parse_type(type_str: &str, pkg: &Package) -> Result<FieldType, Error> {
                     ArrayType::FixedLength(fixed_size)
                 }
             };
-            Ok(parse_field_type(&type_str[..o], array_info, pkg))
+            parse_field_type(&type_str[..o], array_info, pkg)
         }
         (None, None) => {
             // Not an array parse normally
-            Ok(parse_field_type(type_str, ArrayType::NotArray, pkg))
+            parse_field_type(type_str, ArrayType::NotArray, pkg)
         }
         _ => {
             bail!("Found malformed type: {type_str} in package {pkg:?}. Likely file is invalid.");

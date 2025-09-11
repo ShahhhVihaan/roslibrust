@@ -242,20 +242,25 @@ pub struct ServiceFile {
     pub(crate) request: MessageFile,
     pub(crate) response: MessageFile,
     pub(crate) md5sum: String,
+    pub(crate) ros2_hash: Option<String>,
 }
 
 impl ServiceFile {
+    /// Attempts to convert a [ParsedServiceFile] into a fully resolved [ServiceFile]
+    /// This will only succeed if all dependencies are already resolved in the graph
     fn resolve(parsed: ParsedServiceFile, graph: &BTreeMap<String, MessageFile>) -> Option<Self> {
         if let (Some(request), Some(response)) = (
             MessageFile::resolve(parsed.request_type.clone(), graph),
             MessageFile::resolve(parsed.response_type.clone(), graph),
         ) {
             let md5sum = Self::compute_md5sum(&parsed, graph)?;
+            let ros2_hash = calculate_ros2_srv_hash(&parsed, graph);
             Some(ServiceFile {
                 parsed,
                 request,
                 response,
                 md5sum,
+                ros2_hash,
             })
         } else {
             log::error!("Unable to resolve dependencies in service: {parsed:#?}");
@@ -343,7 +348,9 @@ pub struct FieldType {
     // This is so that when an external package_name is not present
     // we can still construct the full name of the field "package/field_type"
     pub source_package: String,
-    // Explicit text of type without array specifier
+    // Explicit text of type without array specifier, referenced package, or string capacity
+    // e.g. "string", "uint8", "Header", "MyCustomType"
+    // Not: "std_msgs/Header", "uint8[10]", "string<=10"
     pub field_type: String,
     // Indicates if the field is some type of list or "NotArray"
     pub array_info: ArrayType,
@@ -555,12 +562,16 @@ pub fn find_and_parse_ros_messages(
             // See https://stackoverflow.com/questions/59852161/how-to-handle-result-in-flat-map
             match files {
                 Ok(files) => {
-                    debug!("Found {:?} interface files in package: {:?}", files.len(), pkg.name);
+                    debug!(
+                        "Found {:?} interface files in package: {:?}",
+                        files.len(),
+                        pkg.name
+                    );
                     files
-                    .into_iter()
-                    .map(|path| Ok((pkg.clone(), path)))
-                    .collect()
-                },
+                        .into_iter()
+                        .map(|path| Ok((pkg.clone(), path)))
+                        .collect()
+                }
                 Err(e) => vec![Err(e)],
             }
         })
@@ -647,11 +658,7 @@ pub fn resolve_dependency_graph(
     while let Some(MessageMetadata { msg, seen_count }) = unresolved_messages.pop_front() {
         // Check our resolved messages for each of the fields
         let fully_resolved = msg.fields.iter().all(|field| {
-            let is_ros1_primitive =
-                ROS_TYPE_TO_RUST_TYPE_MAP.contains_key(field.field_type.field_type.as_str());
-            let is_ros2_primitive =
-                ROS_2_TYPE_TO_RUST_TYPE_MAP.contains_key(field.field_type.field_type.as_str());
-            let is_primitive = is_ros1_primitive || is_ros2_primitive;
+            let is_primitive = field.field_type.is_primitive();
             if !is_primitive {
                 let is_resolved =
                     resolved_messages.contains_key(field.get_full_type_name().as_str());
@@ -679,9 +686,43 @@ pub fn resolve_dependency_graph(
                 .iter()
                 .map(|item| format!("{}/{}", item.msg.package, item.msg.name))
                 .collect::<Vec<_>>();
-            bail!("Unable to resolve dependencies after reaching search limit.\n\
-                   The following messages have unresolved dependencies: {msg_names:?}\n\
-                   These messages likely depend on packages not found in the provided search paths.");
+
+            // Determine which fields are still unresolved, that don't reference other messages that aren't resolved
+            let mut unresolved_fields = unresolved_messages
+                .iter()
+                .flat_map(|item| {
+                    item.msg
+                        .fields
+                        .iter()
+                        .filter_map(|field| {
+                            if !field.field_type.is_primitive() {
+                                if resolved_messages
+                                    .contains_key(field.get_full_type_name().as_str())
+                                {
+                                    None
+                                } else {
+                                    // Field is unresolved!
+                                    Some(field.get_full_type_name())
+                                }
+                            } else {
+                                None
+                            }
+                        })
+                        .collect::<Vec<_>>()
+                })
+                .collect::<Vec<_>>();
+            unresolved_fields.sort();
+            unresolved_fields.dedup();
+            let unresolved_fields = unresolved_fields
+                .into_iter()
+                .filter(|f| !msg_names.contains(f))
+                .collect::<Vec<_>>();
+
+            bail!(
+                "Unable to resolve ROS message dependencies after reaching search limit.\n\
+                 The following types are still unresolved:\n{unresolved_fields:#?}\n
+                 This is preventing full resolution for the following messages:\n{msg_names:#?}"
+            );
         }
     }
 
@@ -791,7 +832,12 @@ mod test {
             "/../assets/ros2_common_interfaces"
         );
 
-        let (source, paths) = find_and_generate_ros_messages(vec![assets_path.into()]).unwrap();
+        let required_path = concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../assets/ros2_required_msgs/rcl_interfaces/builtin_interfaces"
+        );
+
+        let (source, paths) = find_and_generate_ros_messages(vec![assets_path.into(), required_path.into()]).unwrap();
         // Make sure something actually got generated
         assert!(!source.is_empty());
         // Make sure we have some paths
@@ -819,8 +865,12 @@ mod test {
     #[test_log::test]
     fn generate_ok_on_ros2_test_msgs() {
         let assets_path = concat!(env!("CARGO_MANIFEST_DIR"), "/../assets/ros2_test_msgs");
+        let required_path = concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/../assets/ros2_required_msgs/rcl_interfaces/builtin_interfaces"
+        );
 
-        let (source, paths) = find_and_generate_ros_messages(vec![assets_path.into()]).unwrap();
+        let (source, paths) = find_and_generate_ros_messages(vec![assets_path.into(), required_path.into()]).unwrap();
         assert!(!source.is_empty());
         assert!(!paths.is_empty());
     }

@@ -1,10 +1,12 @@
 #[allow(unused_imports)]
 pub mod actionlib_msgs {
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -22,12 +24,12 @@ pub mod actionlib_msgs {
     )]
     #[serde(crate = "::roslibrust::codegen::serde")]
     pub struct GoalID {
-        pub r#stamp: ::roslibrust::codegen::integral_types::Time,
+        pub r#stamp: builtin_interfaces::Time,
         pub r#id: ::std::string::String,
     }
     impl ::roslibrust::RosMessageType for GoalID {
         const ROS_TYPE_NAME: &'static str = "actionlib_msgs/GoalID";
-        const MD5SUM: &'static str = "29380925936d499346662d2ed1573d06";
+        const MD5SUM: &'static str = "9736c630ae528bce23de03af421dbf7d";
         const DEFINITION: &'static str = r####"# The stamp should store the time at which this goal was requested.
 # It is used by an action server when it tries to preempt all
 # goals that were requested before a certain time
@@ -36,8 +38,22 @@ builtin_interfaces/Time stamp
 # The id provides a way to associate feedback and
 # result message with specific goal requests. The id
 # specified must be unique.
-string id"####;
-        const ROS2_HASH: &'static str = "";
+string id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_140ea4a1bad4781edc32030c7983ab3a62c675f861c61c9b2200ae5e5398be24";
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalID_";
     }
     #[allow(non_snake_case)]
@@ -57,7 +73,7 @@ string id"####;
     }
     impl ::roslibrust::RosMessageType for GoalStatus {
         const ROS_TYPE_NAME: &'static str = "actionlib_msgs/GoalStatus";
-        const MD5SUM: &'static str = "c24a9e244d837a856267339807550287";
+        const MD5SUM: &'static str = "f6807dda6aa81059dd13096c960395d1";
         const DEFINITION: &'static str = r####"GoalID goal_id
 uint8 status
 uint8 PENDING         = 0   # The goal has yet to be processed by the action server.
@@ -91,8 +107,35 @@ builtin_interfaces/Time stamp
 # The id provides a way to associate feedback and
 # result message with specific goal requests. The id
 # specified must be unique.
-string id"####;
-        const ROS2_HASH: &'static str = "";
+string id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_c90c64230954d90ee079cbdd22a14bca3650b3d403f5cc3faf0eee992c6ae9ff";
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalStatus_";
     }
     #[allow(unused)]
@@ -124,7 +167,7 @@ string id"####;
     }
     impl ::roslibrust::RosMessageType for GoalStatusArray {
         const ROS_TYPE_NAME: &'static str = "actionlib_msgs/GoalStatusArray";
-        const MD5SUM: &'static str = "ad4c7a55992b9ff34d89596ca74a28e0";
+        const MD5SUM: &'static str = "9acbf917d56df306cdf7077c20a1e7de";
         const DEFINITION: &'static str = r####"# Stores the statuses for goals that are currently being tracked
 # by an action server
 std_msgs/Header header
@@ -140,6 +183,19 @@ builtin_interfaces/Time stamp
 # result message with specific goal requests. The id
 # specified must be unique.
 string id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: actionlib_msgs/GoalStatus
 GoalID goal_id
@@ -177,6 +233,45 @@ builtin_interfaces/Time stamp
 # specified must be unique.
 string id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -186,18 +281,115 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_f3230208e8daec53eb7b8da6df1c1d1d4eb095f3082be922661c29a1f855a1bc";
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalStatusArray_";
+    }
+}
+#[allow(unused_imports)]
+pub mod builtin_interfaces {
+    use super::actionlib_msgs;
+    use super::diagnostic_msgs;
+    use super::geometry_msgs;
+    use super::nav_msgs;
+    use super::ros2_test_msgs;
+    use super::sensor_msgs;
+    use super::service_msgs;
+    use super::shape_msgs;
+    use super::std_msgs;
+    use super::std_srvs;
+    use super::stereo_msgs;
+    use super::trajectory_msgs;
+    use super::visualization_msgs;
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct Duration {
+        pub r#sec: i32,
+        pub r#nanosec: u32,
+    }
+    impl ::roslibrust::RosMessageType for Duration {
+        const ROS_TYPE_NAME: &'static str = "builtin_interfaces/Duration";
+        const MD5SUM: &'static str = "8255142433c342f21ece78aae48f7907";
+        const DEFINITION: &'static str = r####"# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_e8d009f659816f758b75334ee1a9ca5b5c0b859843261f14c7f937349599d93b";
+        const ROS2_TYPE_NAME: &'static str = "builtin_interfaces::msg::dds_::Duration_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct Time {
+        pub r#sec: i32,
+        pub r#nanosec: u32,
+    }
+    impl ::roslibrust::RosMessageType for Time {
+        const ROS_TYPE_NAME: &'static str = "builtin_interfaces/Time";
+        const MD5SUM: &'static str = "8255142433c342f21ece78aae48f7907";
+        const DEFINITION: &'static str = r####"# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_b106235e25a4c5ed35098aa0a61a3ee9c9b18d197f398b0e4206cea9acf9c197";
+        const ROS2_TYPE_NAME: &'static str = "builtin_interfaces::msg::dds_::Time_";
     }
 }
 #[allow(unused_imports)]
 pub mod diagnostic_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -220,10 +412,23 @@ pub mod diagnostic_msgs {
     }
     impl ::roslibrust::RosMessageType for DiagnosticArray {
         const ROS_TYPE_NAME: &'static str = "diagnostic_msgs/DiagnosticArray";
-        const MD5SUM: &'static str = "7f04f8332be7e46b680724aa4e9a9d71";
+        const MD5SUM: &'static str = "a56c9b8d61df740404e365b0e1155dfe";
         const DEFINITION: &'static str = r####"# This message is used to send diagnostic information about the state of the robot.
 std_msgs/Header header # for timestamp
 DiagnosticStatus[] status # an array of components being reported on
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: diagnostic_msgs/DiagnosticStatus
 # This message holds the status of an individual component of the robot.
@@ -266,8 +471,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_f9eef075d53ad59209151268b37ab3191f7a854417107bb76ff9d56c4bfee92c";
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
     }
     #[allow(non_snake_case)]
@@ -421,6 +640,8 @@ string message"####;
     impl ::roslibrust::RosServiceType for AddDiagnostics {
         const ROS_SERVICE_NAME: &'static str = "diagnostic_msgs/AddDiagnostics";
         const MD5SUM: &'static str = "e6ac9bbde83d0d3186523c3687aecaee";
+        const ROS2_HASH: &'static str =
+            "RIHS01_7e30a2ca2a51d348df09300ec808c21341b5c1c010546fefbf400e17c399e12e";
         type Request = AddDiagnosticsRequest;
         type Response = AddDiagnosticsResponse;
     }
@@ -497,7 +718,7 @@ string key
 # A value to track over time.
 string value"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_f93e8cba5e3ff89c8e5b2d2f4a741522c7931b718394463e06a26ebeec45afa9";
+            "RIHS01_4b6dd70ee9f20cebad759331530fd0de79bcf3dc8b6372783ef935366bc4ce46";
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::SelfTestResponse_";
     }
     #[allow(dead_code)]
@@ -505,6 +726,8 @@ string value"####;
     impl ::roslibrust::RosServiceType for SelfTest {
         const ROS_SERVICE_NAME: &'static str = "diagnostic_msgs/SelfTest";
         const MD5SUM: &'static str = "ac21b1bab7ab17546986536c22eb34e9";
+        const ROS2_HASH: &'static str =
+            "RIHS01_0e0fc2754cadcf8dd57459806c78a7c3b31ddc65b011a630fd8ce3bcddc00583";
         type Request = SelfTestRequest;
         type Response = SelfTestResponse;
     }
@@ -512,10 +735,12 @@ string value"####;
 #[allow(unused_imports)]
 pub mod geometry_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -554,7 +779,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_5d5531b2f85bd265ffc2544c6ec4296b211b0461a53e96a63ba9d818daad3e6c";
+            "RIHS01_871bdd2147ce80af103fc5a5686e21396cbe2329eb19f4a12f2829c718d88792";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Accel_";
     }
     #[allow(non_snake_case)]
@@ -573,10 +798,23 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for AccelStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/AccelStamped";
-        const MD5SUM: &'static str = "19a31cf6d39a90e769a5539f9a293621";
+        const MD5SUM: &'static str = "714bbd985d9cfc562b1eb5aaa96c7be0";
         const DEFINITION: &'static str = r####"# An accel with reference coordinate frame and timestamp
 std_msgs/Header header
 Accel accel
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Accel
 # This expresses acceleration in free space broken into its linear and angular parts.
@@ -614,8 +852,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_5237582c5e6c1ee25d3cbcb8662d33bb7c91a1013823a03b9c8dd81879728c63";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelStamped_";
     }
     #[allow(non_snake_case)]
@@ -674,7 +926,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_36b4232b887ece168a41f145f8e9fc50a82ce0bddd8a932da65d294992cfb887";
+            "RIHS01_31f6b7ff967f900b97c2be0a5fd6e46c7c9d83850ddbd453a2a7d36f3dc26d52";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -693,10 +945,23 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for AccelWithCovarianceStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/AccelWithCovarianceStamped";
-        const MD5SUM: &'static str = "36b6f1177d3c3f476d4c306279c6f18a";
+        const MD5SUM: &'static str = "85dc4e3c87dd8539dc32ab10fd048673";
         const DEFINITION: &'static str = r####"# This represents an estimated accel with reference coordinate frame and timestamp.
 std_msgs/Header header
 AccelWithCovariance accel
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Accel
 # This expresses acceleration in free space broken into its linear and angular parts.
@@ -772,8 +1037,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_8ec9b671a5ae201197de28b7b4919d9804aa38d06ba1242bd66cf9db3e5d6d04";
         const ROS2_TYPE_NAME: &'static str =
             "geometry_msgs::msg::dds_::AccelWithCovarianceStamped_";
     }
@@ -847,11 +1126,24 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for InertiaStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/InertiaStamped";
-        const MD5SUM: &'static str = "d4fb75ac056292d6c4bbec5e51d25080";
+        const MD5SUM: &'static str = "e5be6ffabc1d75f61d3105f562e8bc87";
         const DEFINITION: &'static str = r####"# An Inertia with a time stamp and reference frame.
 
 std_msgs/Header header
 Inertia inertia
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Inertia
 # Mass [kg]
@@ -902,8 +1194,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_1199f048e0cfc911645d9e80cd3609569e6dab908ffe672ca7ba6fe4df74437b";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::InertiaStamped_";
     }
     #[allow(non_snake_case)]
@@ -981,11 +1287,24 @@ float32 z"####;
     }
     impl ::roslibrust::RosMessageType for PointStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/PointStamped";
-        const MD5SUM: &'static str = "938cb86faf4572821e49e2490701e6df";
+        const MD5SUM: &'static str = "3dc055656bed5c4bb0657a41c8d46c59";
         const DEFINITION: &'static str = r####"# This represents a Point with reference coordinate frame and timestamp
 
 std_msgs/Header header
 Point point
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -1002,8 +1321,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_b47658988729e887e73a79c89a1e87ca4105a439b8edf4bb23efd054f742f212";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PointStamped_";
     }
     #[allow(non_snake_case)]
@@ -1058,11 +1391,24 @@ float32 z"####;
     }
     impl ::roslibrust::RosMessageType for PolygonStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/PolygonStamped";
-        const MD5SUM: &'static str = "56a3a2a80165092f696df3db62e18fbf";
+        const MD5SUM: &'static str = "66ae3598ba9dd610ba674198e61d8fa7";
         const DEFINITION: &'static str = r####"# This represents a Polygon with reference coordinate frame and timestamp
 
 std_msgs/Header header
 Polygon polygon
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point32
 # This contains the position of a point in free space(with 32 bits of precision).
@@ -1104,8 +1450,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_fdd7979c5a9985d0d066799b89fb6212c3937c0543598c971cbc4b598d4afb67";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PolygonStamped_";
     }
     #[allow(non_snake_case)]
@@ -1195,12 +1555,25 @@ float64 theta"####;
     }
     impl ::roslibrust::RosMessageType for PoseArray {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/PoseArray";
-        const MD5SUM: &'static str = "ea7300c78ec47498d5f226be74a155e8";
+        const MD5SUM: &'static str = "8f0f2bef738a5217c5210a25031dc811";
         const DEFINITION: &'static str = r####"# An array of poses with a header for global reference.
 
 std_msgs/Header header
 
 Pose[] poses
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -1245,8 +1618,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_61e920f7cfb3bf14315ac85c9e8b6245e6b2f18b6e232fbc9bd3c56b9018a2ab";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseArray_";
     }
     #[allow(non_snake_case)]
@@ -1265,11 +1652,24 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for PoseStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/PoseStamped";
-        const MD5SUM: &'static str = "c088ec4a70a5930b0ca46520d5745e2d";
+        const MD5SUM: &'static str = "5a783a9c53de9dbde905b1a8e1d332a6";
         const DEFINITION: &'static str = r####"# A Pose with reference coordinate frame and timestamp
 
 std_msgs/Header header
 Pose pose
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -1314,8 +1714,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_c50658d722cd5c13e479a35d26b33832f70b8f52b7c2f4a63eb56f47075f9e3a";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseStamped_";
     }
     #[allow(non_snake_case)]
@@ -1381,7 +1795,7 @@ float64 y 0
 float64 z 0
 float64 w 1"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_a5b9ebd54259173148fad1902dab439231bc7a5a891e233f5978995f641b8a82";
+            "RIHS01_e96cb9417c4c507a036c01124975c0d64aa221611c2517dc9587694bc77023f9";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -1400,11 +1814,24 @@ float64 w 1"####;
     }
     impl ::roslibrust::RosMessageType for PoseWithCovarianceStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/PoseWithCovarianceStamped";
-        const MD5SUM: &'static str = "2178452bf195c1abe1e99b07b4e6c8f0";
+        const MD5SUM: &'static str = "c693703aeb65d31536e9f01ea76841e4";
         const DEFINITION: &'static str = r####"# This expresses an estimated pose with a reference coordinate frame and timestamp
 
 std_msgs/Header header
 PoseWithCovariance pose
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -1494,8 +1921,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_c172f40177c7e1dd219e3dbdd396d2111eb946c60b371ebcd8bb518d032d97bb";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovarianceStamped_";
     }
     #[allow(non_snake_case)]
@@ -1547,11 +1988,24 @@ float64 w 1"####;
     }
     impl ::roslibrust::RosMessageType for QuaternionStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/QuaternionStamped";
-        const MD5SUM: &'static str = "8f93ed7c8430d06bd82fefcc6f7a349e";
+        const MD5SUM: &'static str = "6e3f7a64b8b509235ca9dc617a34bf93";
         const DEFINITION: &'static str = r####"# This represents an orientation with reference coordinate frame and timestamp.
 
 std_msgs/Header header
 Quaternion quaternion
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -1570,8 +2024,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_ab2f1cb9a57a2ac18a47dc85892a6930d531f4a357215db3194b542a9685c074";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::QuaternionStamped_";
     }
     #[allow(non_snake_case)]
@@ -1615,7 +2083,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_32d5f0a946a3d26163e30087687c20be75b97a2ab45cac4c78dea88c5d900e6e";
+            "RIHS01_81d2a48f88ed6b57952b1ad274b4a5792b031cd3522c70b7dba16dc8336a1cf0";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Transform_";
     }
     #[allow(non_snake_case)]
@@ -1635,7 +2103,7 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for TransformStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/TransformStamped";
-        const MD5SUM: &'static str = "09bf247c06cf7c69e8c55300b05a7a04";
+        const MD5SUM: &'static str = "c555e99d9d1f7097738c8861133b3563";
         const DEFINITION: &'static str = r####"# This expresses a transform from coordinate frame header.frame_id
 # to the coordinate frame child_frame_id at the time of header.stamp
 #
@@ -1655,6 +2123,19 @@ string child_frame_id
 
 # Translation and rotation in 3-dimensions of child_frame_id from header.frame_id.
 Transform transform
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -1709,8 +2190,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_1b1006367127624e74e9cf7b5802791dfda5463468b1e4999587f07b3b829b22";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TransformStamped_";
     }
     #[allow(non_snake_case)]
@@ -1746,7 +2241,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_afb9ceb2e120aa53eeeaa7be1dc6eed25659342663e3525a4bfb52af8622e89e";
+            "RIHS01_8b1d45e7caed3dd71c758122b309466126acb246bb4b6e2dba177c47c3bc79c7";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Twist_";
     }
     #[allow(non_snake_case)]
@@ -1765,11 +2260,24 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for TwistStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/TwistStamped";
-        const MD5SUM: &'static str = "09f84400c1ca2e7e26a9da1232813bd0";
+        const MD5SUM: &'static str = "7c6000d4f3aafa80eaf2471ce8172e85";
         const DEFINITION: &'static str = r####"# A twist with reference coordinate frame and timestamp
 
 std_msgs/Header header
 Twist twist
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Twist
 # This expresses velocity in free space broken into its linear and angular parts.
@@ -1808,8 +2316,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_70c32521fd3a07ba59e29a973d32b6ce3066010503493af386b1921fddace11c";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistStamped_";
     }
     #[allow(non_snake_case)]
@@ -1869,7 +2391,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_a1c3071e8cbee84cc771334e43033ca734f4b170bd3e54044c27cc63eedc4e93";
+            "RIHS01_016c33d6451b6e72fc956706a238b6f1d7c90ccdd28af8cd8f2e63a8f5dd931d";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -1888,11 +2410,24 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for TwistWithCovarianceStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/TwistWithCovarianceStamped";
-        const MD5SUM: &'static str = "7019807c85ce8602fb83180366470670";
+        const MD5SUM: &'static str = "38d53b26c78ee3db59b20ff3e8127275";
         const DEFINITION: &'static str = r####"# This represents an estimated twist with reference coordinate frame and timestamp.
 
 std_msgs/Header header
 TwistWithCovariance twist
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Twist
 # This expresses velocity in free space broken into its linear and angular parts.
@@ -1970,8 +2505,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_77282a4974f927c6f80cfae42a03e34a298ecbf30f3d215ff6b238a579626e84";
         const ROS2_TYPE_NAME: &'static str =
             "geometry_msgs::msg::dds_::TwistWithCovarianceStamped_";
     }
@@ -2022,7 +2571,7 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for Vector3Stamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/Vector3Stamped";
-        const MD5SUM: &'static str = "5cd361f2989a2e76d5aaf432c3bf0fb9";
+        const MD5SUM: &'static str = "13595660ee13403f23a0a2a0da07aa81";
         const DEFINITION: &'static str = r####"# This represents a Vector3 with reference coordinate frame and timestamp
 
 # Note that this follows vector semantics with it always anchored at the origin,
@@ -2030,6 +2579,19 @@ float64 z"####;
 
 std_msgs/Header header
 Vector3 vector
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Vector3
 # This represents a vector in free space.
@@ -2051,8 +2613,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_cf2233aa5f67030867861f2b1a85128a245cf8658f44f543cd423397e2089ec5";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Vector3Stamped_";
     }
     #[allow(non_snake_case)]
@@ -2088,7 +2664,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_46833c8782c52281e9c709c46432d2707f55216e830fc70802d7b8bb378897f5";
+            "RIHS01_9c42d1ac0b2af3c24b07ea51a23a7a5ba412a8f91233b25137aa2bc775a61d2d";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Wrench_";
     }
     #[allow(non_snake_case)]
@@ -2107,11 +2683,24 @@ float64 z"####;
     }
     impl ::roslibrust::RosMessageType for WrenchStamped {
         const ROS_TYPE_NAME: &'static str = "geometry_msgs/WrenchStamped";
-        const MD5SUM: &'static str = "5bc71556ab354cd6274d262a7de094a5";
+        const MD5SUM: &'static str = "c7f9621a9f5013d52e82cd3c5d14f0fa";
         const DEFINITION: &'static str = r####"# A wrench with reference coordinate frame and timestamp
 
 std_msgs/Header header
 Wrench wrench
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Vector3
 # This represents a vector in free space.
@@ -2150,18 +2739,34 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_6b50a23d6db3461fada8db83dc90537bd16023d84715932b8cf9d9c0ee89c609";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::WrenchStamped_";
     }
 }
 #[allow(unused_imports)]
 pub mod nav_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -2186,7 +2791,7 @@ pub mod nav_msgs {
     }
     impl ::roslibrust::RosMessageType for GridCells {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/GridCells";
-        const MD5SUM: &'static str = "bb9f07bfd2183241b5719f45a81f8cc5";
+        const MD5SUM: &'static str = "7843d58b18b7ea989085689e202af1ea";
         const DEFINITION: &'static str = r####"# An array of cells in a 2D grid
 
 std_msgs/Header header
@@ -2199,6 +2804,19 @@ float32 cell_height
 
 # Each cell is represented by the Point at the center of the cell
 geometry_msgs/Point[] cells
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2215,8 +2833,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_dd8344267541403184a459d1d352958a7960f2237e7bcf7a4e002fdaa2e56a5c";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GridCells_";
     }
     #[allow(non_snake_case)]
@@ -2230,7 +2862,7 @@ string frame_id"####;
     )]
     #[serde(crate = "::roslibrust::codegen::serde")]
     pub struct MapMetaData {
-        pub r#map_load_time: ::roslibrust::codegen::integral_types::Time,
+        pub r#map_load_time: builtin_interfaces::Time,
         pub r#resolution: f32,
         pub r#width: u32,
         pub r#height: u32,
@@ -2238,7 +2870,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for MapMetaData {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/MapMetaData";
-        const MD5SUM: &'static str = "d10232bae3de4ae536d98f679fce2cf2";
+        const MD5SUM: &'static str = "f79bb70ae15b6d55a5b3e44724cab637";
         const DEFINITION: &'static str = r####"# This hold basic information about the characteristics of the OccupancyGrid
 
 # The time at which the map was loaded
@@ -2256,6 +2888,19 @@ uint32 height
 # The origin of the map [m, m, rad].  This is the real-world pose of the
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2290,7 +2935,8 @@ float64 x 0
 float64 y 0
 float64 z 0
 float64 w 1"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_33bae7673d6fc408b3643d9cbc68d2e68601842f3b6274d019e45d9179e5d709";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::MapMetaData_";
     }
     #[allow(non_snake_case)]
@@ -2310,7 +2956,7 @@ float64 w 1"####;
     }
     impl ::roslibrust::RosMessageType for OccupancyGrid {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/OccupancyGrid";
-        const MD5SUM: &'static str = "2b0657f1993991bf3953916eb5ff5203";
+        const MD5SUM: &'static str = "0ba2e2886c6391b606d4d0c367f70533";
         const DEFINITION: &'static str = r####"# This represents a 2-D grid map
 std_msgs/Header header
 
@@ -2324,6 +2970,19 @@ MapMetaData info
 # 0 represents unoccupied, 1 represents definitely occupied, and
 # -1 represents unknown. 
 int8[] data
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2378,6 +3037,19 @@ uint32 height
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -2421,8 +3093,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_ca57f9c5b80919e8960590a46f598a8a338f5be446e584ea372e43a5be15c097";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::OccupancyGrid_";
     }
     #[allow(non_snake_case)]
@@ -2443,7 +3129,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Odometry {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/Odometry";
-        const MD5SUM: &'static str = "81a0900daae2c6c0acc71c9f8df88947";
+        const MD5SUM: &'static str = "7d13133659beedef5fbafd61a6288fbe";
         const DEFINITION: &'static str = r####"# This represents an estimate of a position and velocity in free space.
 # The pose in this message should be specified in the coordinate frame given by header.frame_id
 # The twist in this message should be specified in the coordinate frame given by the child_frame_id
@@ -2459,6 +3145,19 @@ geometry_msgs/PoseWithCovariance pose
 
 # Estimated linear and angular velocity relative to child_frame_id.
 geometry_msgs/TwistWithCovariance twist
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2615,8 +3314,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_19d1859f8d1f17feaf4aef6b4bd2b2d4f1bdd78046cc634989e77d79e95a0126";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::Odometry_";
     }
     #[allow(non_snake_case)]
@@ -2635,7 +3348,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Path {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/Path";
-        const MD5SUM: &'static str = "9f78b006a4c2cc2a146c12ed59d1bb7f";
+        const MD5SUM: &'static str = "8ca90f27f5084414e7f87268323b896e";
         const DEFINITION: &'static str = r####"# An array of poses that represents a Path for a robot to follow.
 
 # Indicates the frame_id of the path.
@@ -2643,6 +3356,19 @@ std_msgs/Header header
 
 # Array of poses to follow.
 geometry_msgs/PoseStamped[] poses
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2675,6 +3401,19 @@ MSG: geometry_msgs/PoseStamped
 
 std_msgs/Header header
 Pose pose
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2721,6 +3460,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
 
@@ -2738,8 +3490,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_c1762b0a9054afbacfacc5ae09001d65b91179426b27bc47475c6fb9414616ed";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::Path_";
     }
     #[allow(non_snake_case)]
@@ -2776,9 +3542,22 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for GetMapResponse {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/GetMapResponse";
-        const MD5SUM: &'static str = "d6e8b0301af2dfe2244959ba20a4080a";
+        const MD5SUM: &'static str = "7bff8b2620dbaeb0925e81085fcfa292";
         const DEFINITION: &'static str = r####"# The current map hosted by this map service.
 OccupancyGrid map
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2832,6 +3611,19 @@ uint32 height
 # The origin of the map [m, m, rad].  This is the real-world pose of the
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -2882,6 +3674,19 @@ MapMetaData info
 # -1 represents unknown. 
 int8[] data
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -2935,6 +3740,19 @@ uint32 height
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -2980,6 +3798,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -2989,15 +3820,31 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_bed7294163f2252682ab7c29c3c7f4bd2cfcb4117df4cb723127ec57a57ed3fc";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapResponse_";
     }
     #[allow(dead_code)]
     pub struct GetMap {}
     impl ::roslibrust::RosServiceType for GetMap {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/GetMap";
-        const MD5SUM: &'static str = "d6e8b0301af2dfe2244959ba20a4080a";
+        const MD5SUM: &'static str = "7bff8b2620dbaeb0925e81085fcfa292";
+        const ROS2_HASH: &'static str =
+            "RIHS01_4076df2e1e7d6ecfdb0c2aad913b27c4c6b781decd9abfca209cef4fc6c3eb98";
         type Request = GetMapRequest;
         type Response = GetMapResponse;
     }
@@ -3018,7 +3865,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for GetPlanRequest {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/GetPlanRequest";
-        const MD5SUM: &'static str = "e4855e4d3c7377c76ec90e403202286a";
+        const MD5SUM: &'static str = "644acb28fec068b394946382ed4f83cd";
         const DEFINITION: &'static str = r####"# Get a plan from the current position to the goal Pose
 
 # The start pose for the plan
@@ -3030,6 +3877,19 @@ geometry_msgs/PoseStamped goal
 # If the goal is obstructed, how many meters the planner can
 # relax the constraint in x and y before failing.
 float32 tolerance
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3062,6 +3922,19 @@ MSG: geometry_msgs/PoseStamped
 
 std_msgs/Header header
 Pose pose
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3108,6 +3981,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
 
@@ -3125,8 +4011,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_4b249dff13411495d79dae870b3e64044c5042ac0dee7e81c9140bb1ec2e1c12";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetPlanRequest_";
     }
     #[allow(non_snake_case)]
@@ -3144,9 +4044,22 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for GetPlanResponse {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/GetPlanResponse";
-        const MD5SUM: &'static str = "37c13f9b42d0ee04e1dae0d4f7d14878";
+        const MD5SUM: &'static str = "70fd00e01a6f927e3b650a2f434c1c82";
         const DEFINITION: &'static str = r####"# Array of poses from start to goal if one was successfully found.
 Path plan
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3179,6 +4092,19 @@ MSG: geometry_msgs/PoseStamped
 
 std_msgs/Header header
 Pose pose
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3224,6 +4150,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -3242,6 +4181,19 @@ std_msgs/Header header
 # Array of poses to follow.
 geometry_msgs/PoseStamped[] poses
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -3274,6 +4226,19 @@ MSG: geometry_msgs/PoseStamped
 std_msgs/Header header
 Pose pose
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -3319,6 +4284,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
 
@@ -3338,6 +4316,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -3347,15 +4338,31 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_9036499df997b3f89e7a04aa82361706d6da16ea2d19331031d2c29e9715b98a";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetPlanResponse_";
     }
     #[allow(dead_code)]
     pub struct GetPlan {}
     impl ::roslibrust::RosServiceType for GetPlan {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/GetPlan";
-        const MD5SUM: &'static str = "135edd06523950427d2cf5e0bb9780a2";
+        const MD5SUM: &'static str = "a08000c8d6c102a04c555fedbdfbde12";
+        const ROS2_HASH: &'static str =
+            "RIHS01_46c4aa537ac3a44b6bc945bcab91345e52038f6d46b29ea5e2128a654780bbb3";
         type Request = GetPlanRequest;
         type Response = GetPlanResponse;
     }
@@ -3399,7 +4406,7 @@ string map_url"####;
     }
     impl ::roslibrust::RosMessageType for LoadMapResponse {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/LoadMapResponse";
-        const MD5SUM: &'static str = "cdb849e3dfaed8b5fe66776d7a64b83e";
+        const MD5SUM: &'static str = "6717cafc2c34d2168070ef42cff41356";
         const DEFINITION: &'static str = r####"# Result code defintions
 uint8 RESULT_SUCCESS=0
 uint8 RESULT_MAP_DOES_NOT_EXIST=1
@@ -3410,6 +4417,19 @@ uint8 RESULT_UNDEFINED_FAILURE=255
 # Returned map is only valid if result equals RESULT_SUCCESS
 nav_msgs/OccupancyGrid map
 uint8 result
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3463,6 +4483,19 @@ uint32 height
 # The origin of the map [m, m, rad].  This is the real-world pose of the
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3513,6 +4546,19 @@ MapMetaData info
 # -1 represents unknown. 
 int8[] data
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -3566,6 +4612,19 @@ uint32 height
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -3611,6 +4670,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -3620,8 +4692,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_096396da54fc8fff3644871f1e3aa2745e3813920c07ab7996827b3ea2ca2973";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::LoadMapResponse_";
     }
     #[allow(unused)]
@@ -3636,7 +4722,9 @@ string frame_id"####;
     pub struct LoadMap {}
     impl ::roslibrust::RosServiceType for LoadMap {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/LoadMap";
-        const MD5SUM: &'static str = "96c8a15e8fe5c33ee245f610f020d6ba";
+        const MD5SUM: &'static str = "7631a819bf39865de4324e3d28f5e85f";
+        const ROS2_HASH: &'static str =
+            "RIHS01_518d7942a9256db451575a0129a9a9e79abbe37497af5d5f1b9e9eff591e8fa4";
         type Request = LoadMapRequest;
         type Response = LoadMapResponse;
     }
@@ -3656,7 +4744,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for SetMapRequest {
         const ROS_TYPE_NAME: &'static str = "nav_msgs/SetMapRequest";
-        const MD5SUM: &'static str = "98782a373ad73e1165352caf85923850";
+        const MD5SUM: &'static str = "1e9a3a1c4507e1dc505cae231b9f6914";
         const DEFINITION: &'static str = r####"# Set a new map together with an initial pose
 
 # Requested 2D map to be set.
@@ -3664,6 +4752,19 @@ nav_msgs/OccupancyGrid map
 
 # Estimated initial pose when setting new map.
 geometry_msgs/PoseWithCovarianceStamped initial_pose
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3742,6 +4843,19 @@ MSG: geometry_msgs/PoseWithCovarianceStamped
 std_msgs/Header header
 PoseWithCovariance pose
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -3832,6 +4946,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
 
@@ -3858,6 +4985,19 @@ uint32 height
 # The origin of the map [m, m, rad].  This is the real-world pose of the
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -3908,6 +5048,19 @@ MapMetaData info
 # -1 represents unknown. 
 int8[] data
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -3961,6 +5114,19 @@ uint32 height
 # bottom left corner of cell (0,0) in the map.
 geometry_msgs/Pose origin
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -4006,6 +5172,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4015,8 +5194,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_a5eaaccd9a1b157e5476babb142abe9f40e142f1715c5eb1dff29629aac45e06";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::SetMapRequest_";
     }
     #[allow(non_snake_case)]
@@ -4045,7 +5238,9 @@ bool success"####;
     pub struct SetMap {}
     impl ::roslibrust::RosServiceType for SetMap {
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/SetMap";
-        const MD5SUM: &'static str = "6c3f8182fbcb3d4ee7aef02d1dcd1e16";
+        const MD5SUM: &'static str = "2ce17df740c0777cc84f0a6673c7ef43";
+        const ROS2_HASH: &'static str =
+            "RIHS01_8bf9ca9f44abb76d157711065ac6d92cd9e501fa82c6ce4fb40be418248e63f5";
         type Request = SetMapRequest;
         type Response = SetMapResponse;
     }
@@ -4053,10 +5248,12 @@ bool success"####;
 #[allow(unused_imports)]
 pub mod ros2_test_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -4148,6 +5345,32 @@ string<=5[<=3] data_matrix"####;
         PartialEq,
     )]
     #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct Char {
+        pub r#data: u8,
+        pub r#data_array: ::std::vec::Vec<u8>,
+        pub r#data_bounded_array: ::std::vec::Vec<u8>,
+    }
+    impl ::roslibrust::RosMessageType for Char {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/Char";
+        const MD5SUM: &'static str = "85fb532b3badec4e87b20705068b150b";
+        const DEFINITION: &'static str = r####"# Char is a slightly weird type
+char data
+char[] data_array
+char[<=11] data_bounded_array"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_7398a047b7ae995eeb12bd58e9884a30f25968d9c19a79b929778bebde4e678a";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Char_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
     pub struct Defaults {
         #[default(42u8)]
         pub r#x: u8,
@@ -4185,14 +5408,121 @@ string[] s_vec ["hello", "world"]
             "RIHS01_41d8ddbb55bd9085237dbd52e29c2962c5da9dd47d907aca7ca498ecc893916e";
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Defaults_";
     }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct Stamped {
+        pub r#stamp: builtin_interfaces::Time,
+        pub r#duration: builtin_interfaces::Duration,
+    }
+    impl ::roslibrust::RosMessageType for Stamped {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/Stamped";
+        const MD5SUM: &'static str = "26348416fe55846a953971fc1981822c";
+        const DEFINITION: &'static str = r####"# Demo message to show time and duration work in ROS2 format
+builtin_interfaces/Time stamp
+builtin_interfaces/Duration duration
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_d568324df43c14673c2d014c1c568d399b42e793d32050a4f396fd3cbd2f50cc";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Stamped_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct AddTwoIntsRequest {
+        pub r#a: i64,
+        pub r#b: i64,
+    }
+    impl ::roslibrust::RosMessageType for AddTwoIntsRequest {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/AddTwoIntsRequest";
+        const MD5SUM: &'static str = "36d09b846be0b371c5f190354dd3153e";
+        const DEFINITION: &'static str = r####"int64 a
+int64 b"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_2ae9759e740cc2c8dfbcb5a3501338bf5ee5892271baf6f273d302ef3b8523fd";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::AddTwoIntsRequest_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct AddTwoIntsResponse {
+        pub r#sum: i64,
+    }
+    impl ::roslibrust::RosMessageType for AddTwoIntsResponse {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/AddTwoIntsResponse";
+        const MD5SUM: &'static str = "b88405221c77b1878a3cbbfff53428d7";
+        const DEFINITION: &'static str = r####"int64 sum"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_f92e50f6d0e6c1a545a17516c5c64217dad070b5c24fcaa7a2734454396a4511";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::AddTwoIntsResponse_";
+    }
+    #[allow(dead_code)]
+    pub struct AddTwoInts {}
+    impl ::roslibrust::RosServiceType for AddTwoInts {
+        const ROS_SERVICE_NAME: &'static str = "ros2_test_msgs/AddTwoInts";
+        const MD5SUM: &'static str = "6a2e34150c00229791cc89ff309fff21";
+        const ROS2_HASH: &'static str =
+            "RIHS01_cbdcb755e63eba37467c9846fe9f0b458c2989832e888dfd39ecbf8991800ef7";
+        type Request = AddTwoIntsRequest;
+        type Response = AddTwoIntsResponse;
+    }
 }
 #[allow(unused_imports)]
 pub mod sensor_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -4229,7 +5559,7 @@ pub mod sensor_msgs {
     }
     impl ::roslibrust::RosMessageType for BatteryState {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/BatteryState";
-        const MD5SUM: &'static str = "0e25cedcd370a46961764fe3a9d2ddcb";
+        const MD5SUM: &'static str = "a854891af0c45fe90fe3d9efa22e6a97";
         const DEFINITION: &'static str = r####"# Constants are chosen to match the enums in the linux kernel
 # defined in include/linux/power_supply.h as of version 3.7
 # The one difference is for style reasons the constants are
@@ -4282,6 +5612,19 @@ float32[] cell_temperature # An array of individual cell temperatures for each c
 string location          # The location into which the battery is inserted. (slot number or plug)
 string serial_number     # The best approximation of the battery serial number
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4291,8 +5634,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_7cc214781662b3b714d370fdff98c896531b43bf0d5ef191c5e8cddbd860e066";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::BatteryState_";
     }
     #[allow(unused)]
@@ -4344,7 +5701,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for CameraInfo {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/CameraInfo";
-        const MD5SUM: &'static str = "47b55ddbbf2ec398f94cddf328bbc2ac";
+        const MD5SUM: &'static str = "dd7e7628562b54bd9369a62e00c4149f";
         const DEFINITION: &'static str = r####"# This message defines meta information for a camera. It should be in a
 # camera namespace on topic "camera_info" and accompanied by up to five
 # image topics named:
@@ -4477,6 +5834,19 @@ uint32 binning_y
 #  full resolution (roi.width = width, roi.height = height).
 RegionOfInterest roi
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: sensor_msgs/RegionOfInterest
 # This message is used to specify a region of interest within an image.
 #
@@ -4507,8 +5877,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_6a12df916afeb6b58e0cb17fe7db4f7e48732ece3fe8e8d9c8583e75bab31e92";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::CameraInfo_";
     }
     #[allow(non_snake_case)]
@@ -4574,7 +5958,7 @@ float32[] values"####;
     }
     impl ::roslibrust::RosMessageType for CompressedImage {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/CompressedImage";
-        const MD5SUM: &'static str = "1df88053b24348f5f499666c7cb1d980";
+        const MD5SUM: &'static str = "94e6ae367279367010dcb2fcd9af9493";
         const DEFINITION: &'static str = r####"# This message contains a compressed image.
 
 std_msgs/Header header # Header timestamp should be acquisition time of image
@@ -4590,6 +5974,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4599,8 +5996,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_15640771531571185e2efc8a100baf923961a4d15d5569652e6cb6691e8e371a";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::CompressedImage_";
     }
     #[allow(non_snake_case)]
@@ -4620,7 +6031,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for FluidPressure {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/FluidPressure";
-        const MD5SUM: &'static str = "4967e6ff4dcf72e6b8fca0600661e0b6";
+        const MD5SUM: &'static str = "d316d4254128d0a3efa4f26fcb38930b";
         const DEFINITION: &'static str = r####"# Single pressure reading.  This message is appropriate for measuring the
 # pressure inside of a fluid (air, water, etc).  This also includes
 # atmospheric or barometric pressure.
@@ -4634,6 +6045,19 @@ float64 fluid_pressure       # Absolute pressure reading in Pascals.
 
 float64 variance             # 0 is interpreted as variance unknown
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4643,8 +6067,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_805b735ee78219303f8c11018df28bf165d36756620b6e8d4767cd3b7064eede";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::FluidPressure_";
     }
     #[allow(non_snake_case)]
@@ -4664,7 +6102,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Illuminance {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/Illuminance";
-        const MD5SUM: &'static str = "94ccac1a1be684df74466dfc561512aa";
+        const MD5SUM: &'static str = "f0d4563fb8b7a9466214d99a65f1c203";
         const DEFINITION: &'static str = r####"# Single photometric illuminance measurement.  Light should be assumed to be
 # measured along the sensor's x-axis (the area of detection is the y-z plane).
 # The illuminance should have a 0 or positive value and be received with
@@ -4686,6 +6124,19 @@ float64 illuminance          # Measurement of the Photometric Illuminance in Lux
 
 float64 variance             # 0 is interpreted as variance unknown
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4695,8 +6146,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_5922e1f3e928c827c70728c7535fa00dce77c9a2eb2ae5cef268fe825b34c2c3";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Illuminance_";
     }
     #[allow(non_snake_case)]
@@ -4721,7 +6186,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Image {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/Image";
-        const MD5SUM: &'static str = "9c8b3d25a28b72f070da359dbecf985b";
+        const MD5SUM: &'static str = "cb4b625a4511c7f037ca38aa59e33caf";
         const DEFINITION: &'static str = r####"# This message contains an uncompressed image
 # (0, 0) is at top-left corner of image
 
@@ -4749,6 +6214,19 @@ uint8 is_bigendian    # is this data bigendian?
 uint32 step           # Full row length in bytes
 uint8[] data          # actual matrix data, size is (step * rows)
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4758,8 +6236,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_d31d41a9a4c4bc8eae9be757b0beed306564f7526c88ea6a4588fb9582527d47";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Image_";
     }
     #[allow(non_snake_case)]
@@ -4783,7 +6275,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Imu {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/Imu";
-        const MD5SUM: &'static str = "058a92f712764b4ade1563e82041c569";
+        const MD5SUM: &'static str = "71ec98acab7649fe7360000f098e51b6";
         const DEFINITION: &'static str = r####"# This is a message to hold data from an IMU (Inertial Measurement Unit)
 #
 # Accelerations should be in m/s^2 (not in g's), and rotational velocity should be in rad/sec
@@ -4808,6 +6300,19 @@ float64[9] angular_velocity_covariance # Row major about x, y, z axes
 
 geometry_msgs/Vector3 linear_acceleration
 float64[9] linear_acceleration_covariance # Row major x, y z
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -4837,8 +6342,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_043b6e116bb8ca0c9a194200032f9061cfcc21688a2a64bd588a9ea205a2c59d";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Imu_";
     }
     #[allow(non_snake_case)]
@@ -4860,7 +6379,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for JointState {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/JointState";
-        const MD5SUM: &'static str = "3f61f1439a9898cdd864497d378ce55c";
+        const MD5SUM: &'static str = "76025ed4a519922c1078eb82b0e275b3";
         const DEFINITION: &'static str = r####"# This is a message that holds data to describe the state of a set of torque controlled joints.
 #
 # The state of each joint (revolute or prismatic) is defined by:
@@ -4887,6 +6406,19 @@ float64[] position
 float64[] velocity
 float64[] effort
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4896,8 +6428,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_0b64df1321152ddab574ffe2e42a1de15197113556b360832a0d4a8ce677ff12";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::JointState_";
     }
     #[allow(non_snake_case)]
@@ -4917,7 +6463,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Joy {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/Joy";
-        const MD5SUM: &'static str = "967f985c9ca9013a4669430613e3e016";
+        const MD5SUM: &'static str = "973063a40a015b6b2919c1f23327b592";
         const DEFINITION: &'static str = r####"# Reports the state of a joystick's axes and buttons.
 
 # The timestamp is the time at which data is received from the joystick.
@@ -4929,6 +6475,19 @@ float32[] axes
 # The buttons measurements from a joystick.
 int32[] buttons
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -4938,8 +6497,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_df283d51dc79d62c492914bb4c32a7b9cc4ae71334026bde1289f7adef6fb609";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Joy_";
     }
     #[allow(non_snake_case)]
@@ -5071,7 +6644,7 @@ float32[] echoes  # Multiple values of ranges or intensities.
     }
     impl ::roslibrust::RosMessageType for LaserScan {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/LaserScan";
-        const MD5SUM: &'static str = "f86984b4383bf67523c75820e114e988";
+        const MD5SUM: &'static str = "74d1ff8cca260280d68caf223b174a40";
         const DEFINITION: &'static str = r####"# Single scan from a planar laser range-finder
 #
 # If you have another ranging device with different behavior (e.g. a sonar
@@ -5103,6 +6676,19 @@ float32[] intensities        # intensity data [device-specific units].  If your
                              # device does not provide intensities, please leave
                              # the array empty.
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -5112,8 +6698,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_01ce444ee60f0df5fe280ce8a9298b039554adfa24f2633ebd17fb5fc71a6473";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::LaserScan_";
     }
     #[allow(non_snake_case)]
@@ -5133,7 +6733,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for MagneticField {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/MagneticField";
-        const MD5SUM: &'static str = "c8761d20eb9dc59addd882f1d4de2266";
+        const MD5SUM: &'static str = "bdf89cd6ae874ad3919288d2d047a53e";
         const DEFINITION: &'static str = r####"# Measurement of the Magnetic Field vector at a specific location.
 #
 # If the covariance of the measurement is known, it should be filled in.
@@ -5156,6 +6756,19 @@ geometry_msgs/Vector3 magnetic_field # x, y, and z components of the
 float64[9] magnetic_field_covariance       # Row major about x, y, z axes
                                            # 0 is interpreted as variance unknown
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Vector3
 # This represents a vector in free space.
 
@@ -5176,8 +6789,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_ae6fbf822183e4dbd25741135b33c01e4a2088258f5b0a5517c45e51968fd3be";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MagneticField_";
     }
     #[allow(non_snake_case)]
@@ -5199,7 +6826,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for MultiDOFJointState {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/MultiDOFJointState";
-        const MD5SUM: &'static str = "9eb02d78422731545fd7e9b60069f261";
+        const MD5SUM: &'static str = "1a14cbd02028378130c7a94f7b7160d9";
         const DEFINITION: &'static str = r####"# Representation of state for joints with multiple degrees of freedom,
 # following the structure of JointState which can only represent a single degree of freedom.
 #
@@ -5226,6 +6853,19 @@ string[] joint_names
 geometry_msgs/Transform[] transforms
 geometry_msgs/Twist[] twist
 geometry_msgs/Wrench[] wrench
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -5314,8 +6954,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_acc4c1f6a484e4a5ae0767b2c2c8cde94705a6c02edc3f64630d7909b831b4aa";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MultiDOFJointState_";
     }
     #[allow(non_snake_case)]
@@ -5342,7 +6996,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for MultiEchoLaserScan {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/MultiEchoLaserScan";
-        const MD5SUM: &'static str = "fda674281c16cdee9a79d075ab27d12f";
+        const MD5SUM: &'static str = "f65e1d7e3f351478cec13af3b50f5cfe";
         const DEFINITION: &'static str = r####"# Single scan from a multi-echo planar laser range-finder
 #
 # If you have another ranging device with different behavior (e.g. a sonar
@@ -5376,6 +7030,19 @@ LaserEcho[] intensities      # intensity data [device-specific units].  If your
                              # device does not provide intensities, please leave
                              # the array empty.
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: sensor_msgs/LaserEcho
 # This message is a submessage of MultiEchoLaserScan and is not intended
 # to be used separately.
@@ -5392,8 +7059,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_b8a2ecfd8a0e53d13c48b1154ce7ad4288d7a71f5d714a6c49474adb105fa55e";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MultiEchoLaserScan_";
     }
     #[allow(non_snake_case)]
@@ -5417,7 +7098,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for NavSatFix {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/NavSatFix";
-        const MD5SUM: &'static str = "faa1756146a6a934d7e4ef0e3855c531";
+        const MD5SUM: &'static str = "67a809d0baed1f0d41ca4f460a28e15b";
         const DEFINITION: &'static str = r####"# Navigation Satellite fix for any Global Navigation Satellite System
 #
 # Specified using the WGS 84 reference ellipsoid
@@ -5464,6 +7145,19 @@ uint8 COVARIANCE_TYPE_KNOWN = 3
 
 uint8 position_covariance_type
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: sensor_msgs/NavSatStatus
 # Navigation Satellite fix status for any Global Navigation Satellite System.
 #
@@ -5497,8 +7191,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_e09679a6560f2f552e73d75a19bca8018e873ff4d804747da576aa4d32ec131f";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::NavSatFix_";
     }
     #[allow(unused)]
@@ -5579,7 +7287,7 @@ uint16 service"####;
     }
     impl ::roslibrust::RosMessageType for PointCloud {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/PointCloud";
-        const MD5SUM: &'static str = "95c9c548e015c235b38b961c79973db7";
+        const MD5SUM: &'static str = "24daa8f40e42d4456d006be6be52b658";
         const DEFINITION: &'static str = r####"## THIS MESSAGE IS DEPRECATED AS OF FOXY
 ## Please use sensor_msgs/PointCloud2
 
@@ -5597,6 +7305,19 @@ geometry_msgs/Point32[] points
 # and the data in each channel should correspond 1:1 with each point.
 # Channel names in common practice are listed in ChannelFloat32.msg.
 ChannelFloat32[] channels
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point32
 # This contains the position of a point in free space(with 32 bits of precision).
@@ -5646,8 +7367,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_c9126fe1b35aeb8e9baf5786a8a03d9f6de00bf47a78ddf410bcfb6c04ea18c5";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::PointCloud_";
     }
     #[allow(non_snake_case)]
@@ -5674,7 +7409,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for PointCloud2 {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/PointCloud2";
-        const MD5SUM: &'static str = "c61ffb665fe19735825e4dd31b53913d";
+        const MD5SUM: &'static str = "9fd59d84b32e656d55663e44b07621cb";
         const DEFINITION: &'static str = r####"# This message holds a collection of N-dimensional points, which may
 # contain additional information such as normals, intensity, etc. The
 # point data is stored as a binary blob, its layout described by the
@@ -5701,6 +7436,19 @@ uint32  row_step     # Length of a row in bytes
 uint8[] data         # Actual point data, size is (row_step*height)
 
 bool is_dense        # True if there are no invalid points
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: sensor_msgs/PointField
 # This message holds the description of one point entry in the
@@ -5729,8 +7477,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_b2966df4602d36ba8d940c9d16ba8da42f76817b3c9a6be106daf5d308ab5767";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::PointCloud2_";
     }
     #[allow(non_snake_case)]
@@ -5803,7 +7565,7 @@ uint32 count     # How many elements in the field"####;
     }
     impl ::roslibrust::RosMessageType for Range {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/Range";
-        const MD5SUM: &'static str = "1ec40687acdf15b9559a6ff690722eae";
+        const MD5SUM: &'static str = "e1977ba4a46a6d66d32a4bb49e63a3cf";
         const DEFINITION: &'static str = r####"# Single range reading from an active ranger that emits energy and reports
 # one range reading that is valid along an arc at the distance measured.
 # This message is  not appropriate for laser scanners. See the LaserScan
@@ -5844,6 +7606,19 @@ float32 range           # range data [m]
                         # +Inf represents no detection within the fixed distance.
                         # (Object out of range)
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -5853,8 +7628,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_d3b16b8cb012e83e256b12d4bd2c22fd5bb92bddb3c2aeda9ff6ff7a8db3dc73";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Range_";
     }
     #[allow(unused)]
@@ -5922,7 +7711,7 @@ bool do_rectify"####;
     }
     impl ::roslibrust::RosMessageType for RelativeHumidity {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/RelativeHumidity";
-        const MD5SUM: &'static str = "71cfefa31dcc94f47083b1e89e6fa5c9";
+        const MD5SUM: &'static str = "86bd4f852f7b1629a975f5c9748adcae";
         const DEFINITION: &'static str = r####"# Single reading from a relative humidity sensor.
 # Defines the ratio of partial pressure of water vapor to the saturated vapor
 # pressure at a temperature.
@@ -5937,6 +7726,19 @@ float64 relative_humidity    # Expression of the relative humidity
 
 float64 variance             # 0 is interpreted as variance unknown
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -5946,8 +7748,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_92c0ff3b6ab6f72e01eeec4961a8a6c5a3f511cedfa80ccd4d0d2a81cad1757e";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::RelativeHumidity_";
     }
     #[allow(non_snake_case)]
@@ -5967,7 +7783,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for Temperature {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/Temperature";
-        const MD5SUM: &'static str = "c6df0674fcfebff84a15927a80ebb14b";
+        const MD5SUM: &'static str = "763585dd205ef2f7971cb27bf4063544";
         const DEFINITION: &'static str = r####"# Single temperature reading.
 
 std_msgs/Header header # timestamp is the time the temperature was measured
@@ -5976,6 +7792,19 @@ std_msgs/Header header # timestamp is the time the temperature was measured
 float64 temperature          # Measurement of the Temperature in Degrees Celsius.
 
 float64 variance             # 0 is interpreted as variance unknown.
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -5986,8 +7815,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_0f9991e1da585f0cdcf5f443ec6f3a11b5fa9fd2839e3759e3531219597c943d";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Temperature_";
     }
     #[allow(non_snake_case)]
@@ -6002,12 +7845,12 @@ string frame_id"####;
     #[serde(crate = "::roslibrust::codegen::serde")]
     pub struct TimeReference {
         pub r#header: std_msgs::Header,
-        pub r#time_ref: ::roslibrust::codegen::integral_types::Time,
+        pub r#time_ref: builtin_interfaces::Time,
         pub r#source: ::std::string::String,
     }
     impl ::roslibrust::RosMessageType for TimeReference {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/TimeReference";
-        const MD5SUM: &'static str = "7cb7ae5aa838323e9028637e304e0ad7";
+        const MD5SUM: &'static str = "5d254fd46ee1270d203ae56389c33ddc";
         const DEFINITION: &'static str = r####"# Measurement from an external time source not actively synchronized with the system clock.
 
 std_msgs/Header header      # stamp is system time for which measurement was valid
@@ -6015,6 +7858,19 @@ std_msgs/Header header      # stamp is system time for which measurement was val
 
 builtin_interfaces/Time time_ref  # corresponding time from this external source
 string source                     # (optional) name of time source
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -6025,8 +7881,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_dd66e84cf40bbb5d5a40472e6ecf2675a031334d4c426abdb2ad41801a8efc99";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::TimeReference_";
     }
     #[allow(non_snake_case)]
@@ -6044,7 +7914,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for SetCameraInfoRequest {
         const ROS_TYPE_NAME: &'static str = "sensor_msgs/SetCameraInfoRequest";
-        const MD5SUM: &'static str = "251c96e357751cc7c699c496178141d5";
+        const MD5SUM: &'static str = "b68b6bcb6b1cb79875182f7b4170d888";
         const DEFINITION: &'static str = r####"# This service requests that a camera stores the given CameraInfo as that
 # camera's calibration information.
 #
@@ -6054,6 +7924,19 @@ string frame_id"####;
 # the region that the camera is currently capturing.
 
 sensor_msgs/CameraInfo camera_info # The camera_info to store
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: sensor_msgs/CameraInfo
 # This message defines meta information for a camera. It should be in a
@@ -6188,6 +8071,19 @@ uint32 binning_y
 #  full resolution (roi.width = width, roi.height = height).
 RegionOfInterest roi
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: sensor_msgs/RegionOfInterest
 # This message is used to specify a region of interest within an image.
 #
@@ -6220,6 +8116,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: sensor_msgs/RegionOfInterest
 # This message is used to specify a region of interest within an image.
 #
@@ -6250,8 +8159,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_9e83010d3e28af756fa4eff458813618203c5dbee700048f62391595e3629ece";
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::SetCameraInfoRequest_";
     }
     #[allow(non_snake_case)]
@@ -6281,19 +8204,103 @@ string status_message                    # Used to give details about success"##
     pub struct SetCameraInfo {}
     impl ::roslibrust::RosServiceType for SetCameraInfo {
         const ROS_SERVICE_NAME: &'static str = "sensor_msgs/SetCameraInfo";
-        const MD5SUM: &'static str = "c191a50a3d5730b8679f4b95b3948b15";
+        const MD5SUM: &'static str = "09f27e7f0ee56f224480abfd6cd869c0";
+        const ROS2_HASH: &'static str =
+            "RIHS01_d2c0a7a260eac25aba3bb642429f6f500112d82a0b1281296519ee56e373d798";
         type Request = SetCameraInfoRequest;
         type Response = SetCameraInfoResponse;
     }
 }
 #[allow(unused_imports)]
-pub mod shape_msgs {
+pub mod service_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::shape_msgs;
+    use super::std_msgs;
+    use super::std_srvs;
+    use super::stereo_msgs;
+    use super::trajectory_msgs;
+    use super::visualization_msgs;
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct ServiceEventInfo {
+        pub r#event_type: u8,
+        pub r#stamp: builtin_interfaces::Time,
+        pub r#client_gid: [u8; 16],
+        pub r#sequence_number: i64,
+    }
+    impl ::roslibrust::RosMessageType for ServiceEventInfo {
+        const ROS_TYPE_NAME: &'static str = "service_msgs/ServiceEventInfo";
+        const MD5SUM: &'static str = "42561fc0d0d3665a03d59fbb1296daf9";
+        const DEFINITION: &'static str = r####"uint8 REQUEST_SENT = 0
+uint8 REQUEST_RECEIVED = 1
+uint8 RESPONSE_SENT = 2
+uint8 RESPONSE_RECEIVED = 3
+
+# The type of event this message represents
+uint8 event_type
+
+# Timestamp for when the event occurred (sent or received time)
+builtin_interfaces/Time stamp
+
+# Unique identifier for the client that sent the service request
+# Note, this is only unique for the current session.
+# The size here has to match the size of rmw_dds_common/msg/Gid,
+# but unfortunately we cannot use that message directly due to a
+# circular dependency.
+char[16] client_gid
+
+# Sequence number for the request
+# Combined with the client ID, this creates a unique ID for the service transaction
+int64 sequence_number
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_41bcbbe07a75c9b52bc96bfd5c24d7f0fc0a08c0cb7921b3373c5732345a6f45";
+        const ROS2_TYPE_NAME: &'static str = "service_msgs::msg::dds_::ServiceEventInfo_";
+    }
+    #[allow(unused)]
+    impl ServiceEventInfo {
+        pub const r#REQUEST_SENT: u8 = 0u8;
+        pub const r#REQUEST_RECEIVED: u8 = 1u8;
+        pub const r#RESPONSE_SENT: u8 = 2u8;
+        pub const r#RESPONSE_RECEIVED: u8 = 3u8;
+    }
+}
+#[allow(unused_imports)]
+pub mod shape_msgs {
+    use super::actionlib_msgs;
+    use super::builtin_interfaces;
+    use super::diagnostic_msgs;
+    use super::geometry_msgs;
+    use super::nav_msgs;
+    use super::ros2_test_msgs;
+    use super::sensor_msgs;
+    use super::service_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
@@ -6335,7 +8342,7 @@ MSG: shape_msgs/MeshTriangle
 
 uint32[3] vertex_indices"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_cd509dcdf75695db6863a4e037001339f249664d93c8735cc0f32164d052f86a";
+            "RIHS01_6b3bd337f740eb857b9c8774d59a1063dca75c8971b6fffaeeac13d8b1843de8";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::Mesh_";
     }
     #[allow(non_snake_case)]
@@ -6488,7 +8495,7 @@ float32 x
 float32 y
 float32 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_4d2ef48ac491c31cf2c34cc3e27ebccc0a454cdf0dc8dad586d314fbd690864d";
+            "RIHS01_7cadd8342094f9c226e675738bb65f0491057f15ba3a5044b4b7c7df45837bfa";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::SolidPrimitive_";
     }
     #[allow(unused)]
@@ -6512,11 +8519,13 @@ float32 z"####;
 #[allow(unused_imports)]
 pub mod std_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
@@ -6655,7 +8664,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_0c8a7ec4c534c1406da390fa9d6e9169ef9e9290f07d0b1928dcad21806cda51";
+            "RIHS01_692eff26dd8ca7623e4e90a082f7d83f1cf5deb0b7ba748a2d4d5fbca791db7d";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::ByteMultiArray_";
     }
     #[allow(non_snake_case)]
@@ -6681,7 +8690,7 @@ uint32 stride  # stride of given dimension"####;
 
 char data"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8914cecc0520f475fc3f8767a9f9e529341a75440e1b184a7e152195b2ffce5f";
+            "RIHS01_3ad2d04dd29ba19d04b16659afa3ccaedd691914b02a64e82e252f2fa6a586a9";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Char_";
     }
     #[allow(non_snake_case)]
@@ -6837,7 +8846,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_ce656046831c23d8de16fff51c0ecc2635906109342c0b524f3afb8cee5f9d3a";
+            "RIHS01_01f652bc19258c4403888aecaa04c25a0986a7ce6f11c914ea1bf12368895084";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float32MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -6947,7 +8956,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_9cdba3870b9b7017dd8272c63398813363c155916923087acb1085f2cd602177";
+            "RIHS01_2a32c6f35b23cfac3e36ffce09d3fa54992f73a4fc3520b68b7f9cd7968116dd";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float64MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -6961,12 +8970,12 @@ uint32 stride  # stride of given dimension"####;
     )]
     #[serde(crate = "::roslibrust::codegen::serde")]
     pub struct Header {
-        pub r#stamp: ::roslibrust::codegen::integral_types::Time,
+        pub r#stamp: builtin_interfaces::Time,
         pub r#frame_id: ::std::string::String,
     }
     impl ::roslibrust::RosMessageType for Header {
         const ROS_TYPE_NAME: &'static str = "std_msgs/Header";
-        const MD5SUM: &'static str = "5ed6b5dd1ef879ffb9c2ac51bab61a63";
+        const MD5SUM: &'static str = "3cca5e8ccb31a32fff4058beb6f250e3";
         const DEFINITION: &'static str = r####"# Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
 # in a particular coordinate frame.
@@ -6975,8 +8984,22 @@ uint32 stride  # stride of given dimension"####;
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_f49fb3ae2cf070f793645ff749683ac6b06203e41c891e17701b1cb597ce6a01";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Header_";
     }
     #[allow(non_snake_case)]
@@ -7086,7 +9109,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_329ddb5685667f77d9e13ac69fe67316023bf7c4dc9c6416fbe8d3719da3b5fe";
+            "RIHS01_b58810e8e5b90fb19a5062469eb8409f5ab11a446d60de7157a1457e52a076ce";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int16MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7196,7 +9219,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_d34a39bc8b7b235486310e6773915666c97e060111c29d0bd533f07c2df341b8";
+            "RIHS01_84a7346323525d1b4dfca899df3820f245e54009dac5a6b69217d14fdefd1701";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int32MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7306,7 +9329,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8c02da3af017a8e5e6fc1d91264c866bb88e9b3dc425aa813a4354e4b050b1d1";
+            "RIHS01_e60f9fe34d697f0939ad49d33158693c1277fbac0e2f04b7c2995dc21c89b422";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int64MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7416,7 +9439,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_e0b074065396ebb48ced7ea58243410ad03f5447f426356c2005bb27b752d550";
+            "RIHS01_f21998d4b492abd63330765d75d5831238d400740386f651f13a872a4d2188db";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int8MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7644,7 +9667,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8189f5805dd2160b533914f9e0027d8c29dae7adc5de67a234d13de13dd07ce2";
+            "RIHS01_94fe73428ec63baecc774f8fb82406123e9291cf728f1b7c91caf5335129492b";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt16MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7754,7 +9777,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_57d8b0b3e75a497f1aaaf644480b0861bbfdbc60c5456cc67d5cb065806d2e5f";
+            "RIHS01_6c2577c7ad3cbdcc2164a41c12f1d5ad314ea320f3fb1ee47e78019fe16bb5b0";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt32MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7864,7 +9887,7 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_416aaa31129a049f998dfcd3af75e532275918849ad7220594a12a0027cae503";
+            "RIHS01_fc1c685c2f76bdc6983da025cb25d2db5fb5157b059e300f6d957d86f981b366";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt64MultiArray_";
     }
     #[allow(non_snake_case)]
@@ -7975,18 +9998,20 @@ string label   # label of given dimension
 uint32 size    # size of given dimension (in type units)
 uint32 stride  # stride of given dimension"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_82493c3f1a153e10db88a3ca89410d3c78d2371685dfd5029b7e9a982db812da";
+            "RIHS01_5687e861b8d307a5e48b7515467ae7a5fc2daf805bd0ce6d8e9e604bade9f385";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt8MultiArray_";
     }
 }
 #[allow(unused_imports)]
 pub mod std_srvs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::stereo_msgs;
@@ -8035,6 +10060,8 @@ pub mod std_srvs {
     impl ::roslibrust::RosServiceType for Empty {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/Empty";
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
+        const ROS2_HASH: &'static str =
+            "RIHS01_5888399dedec5ccc85ea6451949fd2c9f97bfdf963f9a588821639fcd31b5d19";
         type Request = EmptyRequest;
         type Response = EmptyResponse;
     }
@@ -8088,6 +10115,8 @@ string message # informational, e.g. for error messages"####;
     impl ::roslibrust::RosServiceType for SetBool {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/SetBool";
         const MD5SUM: &'static str = "09fb03525b03e7ea1fd3992bafd87e16";
+        const ROS2_HASH: &'static str =
+            "RIHS01_b61791ada7f5cf53416e87409438a1724c2cec152b8817e7b95b8f881c8cfa89";
         type Request = SetBoolRequest;
         type Response = SetBoolResponse;
     }
@@ -8138,6 +10167,8 @@ string message # informational, e.g. for error messages"####;
     impl ::roslibrust::RosServiceType for Trigger {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/Trigger";
         const MD5SUM: &'static str = "937c9679a518e3a18d831e57125ea522";
+        const ROS2_HASH: &'static str =
+            "RIHS01_0e065473b6263ee43ab19dd82cf4b554216952f430dd7f51859f3a57556959ec";
         type Request = TriggerRequest;
         type Response = TriggerResponse;
     }
@@ -8145,11 +10176,13 @@ string message # informational, e.g. for error messages"####;
 #[allow(unused_imports)]
 pub mod stereo_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -8177,7 +10210,7 @@ pub mod stereo_msgs {
     }
     impl ::roslibrust::RosMessageType for DisparityImage {
         const ROS_TYPE_NAME: &'static str = "stereo_msgs/DisparityImage";
-        const MD5SUM: &'static str = "cb0de8feef04280238c7b77d74b2beca";
+        const MD5SUM: &'static str = "34550463dd15bbbb0391c0200611ad7d";
         const DEFINITION: &'static str = r####"# Separate header for compatibility with current TimeSynchronizer.
 # Likely to be removed in a later release, use image.header instead.
 std_msgs/Header header
@@ -8208,6 +10241,19 @@ float32 max_disparity
 # resolution is delta_Z = (Z^2/fT)*delta_d.
 float32 delta_d
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: sensor_msgs/Image
 # This message contains an uncompressed image
 # (0, 0) is at top-left corner of image
@@ -8236,6 +10282,19 @@ uint8 is_bigendian    # is this data bigendian?
 uint32 step           # Full row length in bytes
 uint8[] data          # actual matrix data, size is (step * rows)
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -8246,6 +10305,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: sensor_msgs/RegionOfInterest
 # This message is used to specify a region of interest within an image.
@@ -8277,19 +10349,35 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_bb15f89f405d5ce9ab17f0933e1cc3d9dbb8e9a81b7f2368ddd8259e0791d5fb";
         const ROS2_TYPE_NAME: &'static str = "stereo_msgs::msg::dds_::DisparityImage_";
     }
 }
 #[allow(unused_imports)]
 pub mod trajectory_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -8312,7 +10400,7 @@ pub mod trajectory_msgs {
     }
     impl ::roslibrust::RosMessageType for JointTrajectory {
         const ROS_TYPE_NAME: &'static str = "trajectory_msgs/JointTrajectory";
-        const MD5SUM: &'static str = "d63e3b4556d9dbd9f48b5ab4a03f1fee";
+        const MD5SUM: &'static str = "c3e4956a725855360bb50519b5226821";
         const DEFINITION: &'static str = r####"# The header is used to specify the coordinate frame and the reference time for
 # the trajectory durations
 std_msgs/Header header
@@ -8325,6 +10413,33 @@ string[] joint_names
 # accelerations and/or efforts of the joints at each time point.
 JointTrajectoryPoint[] points
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -8335,6 +10450,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: trajectory_msgs/JointTrajectoryPoint
 # Each trajectory point specifies either positions[, velocities[, accelerations]]
@@ -8362,8 +10490,23 @@ float64[] accelerations
 float64[] effort
 
 # Desired time from the trajectory start to arrive at this trajectory point.
-builtin_interfaces/Duration time_from_start"####;
-        const ROS2_HASH: &'static str = "";
+builtin_interfaces/Duration time_from_start
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_39f658a87f7a67ce3654ff7b2266656e68735f6c972d1014374b60a4a263b452";
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::JointTrajectory_";
     }
     #[allow(non_snake_case)]
@@ -8381,11 +10524,11 @@ builtin_interfaces/Duration time_from_start"####;
         pub r#velocities: ::std::vec::Vec<f64>,
         pub r#accelerations: ::std::vec::Vec<f64>,
         pub r#effort: ::std::vec::Vec<f64>,
-        pub r#time_from_start: ::roslibrust::codegen::integral_types::Duration,
+        pub r#time_from_start: builtin_interfaces::Duration,
     }
     impl ::roslibrust::RosMessageType for JointTrajectoryPoint {
         const ROS_TYPE_NAME: &'static str = "trajectory_msgs/JointTrajectoryPoint";
-        const MD5SUM: &'static str = "2c812f86aa886c93954e333721749ac5";
+        const MD5SUM: &'static str = "ed0b8591d35f39b08abca91b0130e2e4";
         const DEFINITION: &'static str = r####"# Each trajectory point specifies either positions[, velocities[, accelerations]]
 # or positions[, effort] for the trajectory to be executed.
 # All specified values are in the same order as the joint names in JointTrajectory.msg.
@@ -8411,8 +10554,23 @@ float64[] accelerations
 float64[] effort
 
 # Desired time from the trajectory start to arrive at this trajectory point.
-builtin_interfaces/Duration time_from_start"####;
-        const ROS2_HASH: &'static str = "";
+builtin_interfaces/Duration time_from_start
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_2a9948fcf94d917471b9f7560cac95e675541faec65e18cd7e55b5536c069c49";
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::JointTrajectoryPoint_";
     }
     #[allow(non_snake_case)]
@@ -8432,7 +10590,7 @@ builtin_interfaces/Duration time_from_start"####;
     }
     impl ::roslibrust::RosMessageType for MultiDOFJointTrajectory {
         const ROS_TYPE_NAME: &'static str = "trajectory_msgs/MultiDOFJointTrajectory";
-        const MD5SUM: &'static str = "d00d14d97bd70c5eb648278240cfb066";
+        const MD5SUM: &'static str = "8683899094e1d16af9df4c8f8ce7a2c9";
         const DEFINITION: &'static str = r####"# The header is used to specify the coordinate frame and the reference time for the trajectory durations
 std_msgs/Header header
 
@@ -8443,6 +10601,33 @@ std_msgs/Header header
 
 string[] joint_names
 MultiDOFJointTrajectoryPoint[] points
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -8516,6 +10701,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: trajectory_msgs/MultiDOFJointTrajectoryPoint
 # Each multi-dof joint can specify a transform (up to 6 DOF).
 geometry_msgs/Transform[] transforms
@@ -8528,6 +10726,20 @@ geometry_msgs/Twist[] accelerations
 
 # Desired time from the trajectory start to arrive at this trajectory point.
 builtin_interfaces/Duration time_from_start
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -8589,7 +10801,8 @@ MSG: geometry_msgs/Vector3
 float64 x
 float64 y
 float64 z"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_af7dc3250116ae0ec86418d6def2f693a128aff48ea625881ff2c6418717043a";
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectory_";
     }
     #[allow(non_snake_case)]
@@ -8606,11 +10819,11 @@ float64 z"####;
         pub r#transforms: ::std::vec::Vec<geometry_msgs::Transform>,
         pub r#velocities: ::std::vec::Vec<geometry_msgs::Twist>,
         pub r#accelerations: ::std::vec::Vec<geometry_msgs::Twist>,
-        pub r#time_from_start: ::roslibrust::codegen::integral_types::Duration,
+        pub r#time_from_start: builtin_interfaces::Duration,
     }
     impl ::roslibrust::RosMessageType for MultiDOFJointTrajectoryPoint {
         const ROS_TYPE_NAME: &'static str = "trajectory_msgs/MultiDOFJointTrajectoryPoint";
-        const MD5SUM: &'static str = "6731945e53cbc0fbc6e93c28f7416a71";
+        const MD5SUM: &'static str = "b420cff1db93574a740e7e2ceb169c84";
         const DEFINITION: &'static str = r####"# Each multi-dof joint can specify a transform (up to 6 DOF).
 geometry_msgs/Transform[] transforms
 
@@ -8622,6 +10835,20 @@ geometry_msgs/Twist[] accelerations
 
 # Desired time from the trajectory start to arrive at this trajectory point.
 builtin_interfaces/Duration time_from_start
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Quaternion
 # This represents an orientation in free space in quaternion form.
@@ -8683,7 +10910,8 @@ MSG: geometry_msgs/Vector3
 float64 x
 float64 y
 float64 z"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_afcd0a68467dcbfe89b73cec758af579aac0dfafb1745f08150ebbb24858f551";
         const ROS2_TYPE_NAME: &'static str =
             "trajectory_msgs::msg::dds_::MultiDOFJointTrajectoryPoint_";
     }
@@ -8691,11 +10919,13 @@ float64 z"####;
 #[allow(unused_imports)]
 pub mod visualization_msgs {
     use super::actionlib_msgs;
+    use super::builtin_interfaces;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
     use super::ros2_test_msgs;
     use super::sensor_msgs;
+    use super::service_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
@@ -8722,13 +10952,13 @@ pub mod visualization_msgs {
         pub r#outline_color: std_msgs::ColorRGBA,
         pub r#filled: u8,
         pub r#fill_color: std_msgs::ColorRGBA,
-        pub r#lifetime: ::roslibrust::codegen::integral_types::Duration,
+        pub r#lifetime: builtin_interfaces::Duration,
         pub r#points: ::std::vec::Vec<geometry_msgs::Point>,
         pub r#outline_colors: ::std::vec::Vec<std_msgs::ColorRGBA>,
     }
     impl ::roslibrust::RosMessageType for ImageMarker {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/ImageMarker";
-        const MD5SUM: &'static str = "829dd5d9ba39b8c3844252ebd8b47b96";
+        const MD5SUM: &'static str = "e521402e7d84055a370dd7eea688def8";
         const DEFINITION: &'static str = r####"int32 CIRCLE=0
 int32 LINE_STRIP=1
 int32 LINE_LIST=2
@@ -8766,6 +10996,33 @@ geometry_msgs/Point[] points
 # The color for each line, point, etc. in the points field.
 std_msgs/ColorRGBA[] outline_colors
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -8787,8 +11044,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_ca9dca93b42212d7f9fa1a71b0a2169f1f4141f7ca3b19162b92fcb9e81ae3fb";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::ImageMarker_";
     }
     #[allow(unused)]
@@ -8822,7 +11093,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for InteractiveMarker {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/InteractiveMarker";
-        const MD5SUM: &'static str = "d71737fa44c5bdefd6bdb4fa9b2b86e5";
+        const MD5SUM: &'static str = "8c084b95d02f38cac26368fe4ad91dad";
         const DEFINITION: &'static str = r####"# Time/frame info.
 # If header.time is set to 0, the marker will be retransformed into
 # its frame on each timestep. You will receive the pose feedback
@@ -8849,6 +11120,33 @@ MenuEntry[] menu_entries
 
 # List of controls displayed for this marker.
 InteractiveMarkerControl[] controls
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -8911,6 +11209,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -8921,6 +11232,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -8938,6 +11262,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarkerControl
 # Represents a control that is to be displayed together with an interactive marker
@@ -9018,6 +11355,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -9079,6 +11443,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -9089,6 +11466,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -9106,6 +11496,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -9189,6 +11592,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -9250,6 +11680,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -9260,6 +11703,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -9277,6 +11733,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -9392,6 +11861,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -9453,6 +11949,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -9463,6 +11972,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -9480,6 +12002,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -9568,7 +12103,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_0498a581813e332a709b5d29e1aaeb51900e9d6c653ec2193f67b28bdbd990cf";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::InteractiveMarker_";
     }
     #[allow(non_snake_case)]
@@ -9593,7 +12129,7 @@ float32 v"####;
     }
     impl ::roslibrust::RosMessageType for InteractiveMarkerControl {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/InteractiveMarkerControl";
-        const MD5SUM: &'static str = "7b945e790a2d68f430a6eb79f33bf8df";
+        const MD5SUM: &'static str = "22d6471be9b304bf94ff7e0b8a173aec";
         const DEFINITION: &'static str = r####"# Represents a control that is to be displayed together with an interactive marker
 
 # Identifying string for this control.
@@ -9672,6 +12208,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -9733,6 +12296,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -9743,6 +12319,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -9760,6 +12349,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -9843,6 +12445,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -9904,6 +12533,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -9914,6 +12556,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -9931,6 +12586,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -9963,7 +12631,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_ea3c223bb953f4c5549cca3696266e7bae0e51c2259bd6c0cb1a7d916d670283";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerControl_";
     }
@@ -10006,7 +12675,7 @@ float32 v"####;
     }
     impl ::roslibrust::RosMessageType for InteractiveMarkerFeedback {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/InteractiveMarkerFeedback";
-        const MD5SUM: &'static str = "880e5141421ed8d30906fad686bc17bd";
+        const MD5SUM: &'static str = "db5dbc58cd804aa8ba18abc7fc554cd2";
         const DEFINITION: &'static str = r####"# Time/frame info.
 std_msgs/Header header
 
@@ -10050,6 +12719,19 @@ uint32 menu_entry_id
 geometry_msgs/Point mouse_point
 bool mouse_point_valid
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -10093,8 +12775,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_9532c8d9ec7d87b1be86d611966222a767ebfb4a1fdcccfd685bb41623330976";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerFeedback_";
     }
@@ -10124,7 +12820,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for InteractiveMarkerInit {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/InteractiveMarkerInit";
-        const MD5SUM: &'static str = "5d275694a5cb7ea4627f917a9eb1b4cd";
+        const MD5SUM: &'static str = "c96647886404b1a9e49d10038aec586d";
         const DEFINITION: &'static str = r####"# Identifying string. Must be unique in the topic namespace
 # that this server works on.
 string server_id
@@ -10139,6 +12835,33 @@ uint64 seq_num
 
 # All markers.
 InteractiveMarker[] markers
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -10201,6 +12924,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -10211,6 +12947,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -10228,6 +12977,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarker
 # Time/frame info.
@@ -10257,6 +13019,33 @@ MenuEntry[] menu_entries
 # List of controls displayed for this marker.
 InteractiveMarkerControl[] controls
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -10318,6 +13107,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -10328,6 +13130,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -10345,6 +13160,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarkerControl
 # Represents a control that is to be displayed together with an interactive marker
@@ -10425,6 +13253,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -10486,6 +13341,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -10496,6 +13364,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -10513,6 +13394,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -10596,6 +13490,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -10657,6 +13578,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -10667,6 +13601,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -10684,6 +13631,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -10799,6 +13759,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -10860,6 +13847,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -10870,6 +13870,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -10887,6 +13900,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -11055,6 +14081,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -11116,6 +14169,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -11126,6 +14192,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -11143,6 +14222,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -11226,6 +14318,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -11287,6 +14406,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -11297,6 +14429,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -11314,6 +14459,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -11429,6 +14587,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -11490,6 +14675,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -11500,6 +14698,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -11517,6 +14728,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -11605,7 +14829,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_830676b10dec4084f734bfd879c218287cc9f2362645a2571b08181aac7de100";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerInit_";
     }
@@ -11626,7 +14851,7 @@ float32 v"####;
     }
     impl ::roslibrust::RosMessageType for InteractiveMarkerPose {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/InteractiveMarkerPose";
-        const MD5SUM: &'static str = "b88540594a0f8e3fe46c720be41faa03";
+        const MD5SUM: &'static str = "6b733efaf67a5df110b196fd403982e8";
         const DEFINITION: &'static str = r####"# Time/frame info.
 std_msgs/Header header
 
@@ -11636,6 +14861,19 @@ geometry_msgs/Pose pose
 # Identifying string. Must be globally unique in
 # the topic that this message is sent through.
 string name
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -11680,8 +14918,22 @@ MSG: std_msgs/Header
 builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
-string frame_id"####;
-        const ROS2_HASH: &'static str = "";
+string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_29e842f3eac4c5bb8f0468bb9f3249c592ac5e34b2e1c8b1603d2ffa74890d2d";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
     }
@@ -11705,7 +14957,7 @@ string frame_id"####;
     }
     impl ::roslibrust::RosMessageType for InteractiveMarkerUpdate {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/InteractiveMarkerUpdate";
-        const MD5SUM: &'static str = "8f52c675c849441ae87da82eaa4d6eb5";
+        const MD5SUM: &'static str = "afc698521287ea99dbcb170c75561770";
         const DEFINITION: &'static str = r####"# Identifying string. Must be unique in the topic namespace
 # that this server works on.
 string server_id
@@ -11738,6 +14990,33 @@ InteractiveMarkerPose[] poses
 # Names of markers to be erased
 string[] erases
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -11799,6 +15078,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -11809,6 +15101,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -11826,6 +15131,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarker
 # Time/frame info.
@@ -11855,6 +15173,33 @@ MenuEntry[] menu_entries
 # List of controls displayed for this marker.
 InteractiveMarkerControl[] controls
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -11916,6 +15261,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -11926,6 +15284,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -11943,6 +15314,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarkerControl
 # Represents a control that is to be displayed together with an interactive marker
@@ -12023,6 +15407,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -12084,6 +15495,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -12094,6 +15518,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -12111,6 +15548,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -12194,6 +15644,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -12255,6 +15732,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -12265,6 +15755,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -12282,6 +15785,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -12397,6 +15913,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -12458,6 +16001,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -12468,6 +16024,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -12485,6 +16054,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -12653,6 +16235,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -12714,6 +16323,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -12724,6 +16346,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -12741,6 +16376,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -12824,6 +16472,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -12885,6 +16560,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -12895,6 +16583,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -12912,6 +16613,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -12956,6 +16670,19 @@ geometry_msgs/Pose pose
 # the topic that this message is sent through.
 string name
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -13000,6 +16727,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -13083,6 +16823,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -13144,6 +16911,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -13154,6 +16934,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -13171,6 +16964,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -13259,7 +17065,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_3305417f31d620aa1b4ab22cb71084547a231a381e6b42d3160f88d1e37fc2b5";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::InteractiveMarkerUpdate_";
     }
@@ -13287,7 +17094,7 @@ float32 v"####;
         pub r#pose: geometry_msgs::Pose,
         pub r#scale: geometry_msgs::Vector3,
         pub r#color: std_msgs::ColorRGBA,
-        pub r#lifetime: ::roslibrust::codegen::integral_types::Duration,
+        pub r#lifetime: builtin_interfaces::Duration,
         pub r#frame_locked: bool,
         pub r#points: ::std::vec::Vec<geometry_msgs::Point>,
         pub r#colors: ::std::vec::Vec<std_msgs::ColorRGBA>,
@@ -13301,7 +17108,7 @@ float32 v"####;
     }
     impl ::roslibrust::RosMessageType for Marker {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/Marker";
-        const MD5SUM: &'static str = "56c6324983a404ead7a426609371feed";
+        const MD5SUM: &'static str = "de7e324ce859da7e8e3049312d09493d";
         const DEFINITION: &'static str = r####"# See:
 #  - http://www.ros.org/wiki/rviz/DisplayTypes/Marker
 #  - http://www.ros.org/wiki/rviz/Tutorials/Markers%3A%20Basic%20Shapes
@@ -13383,6 +17190,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -13444,6 +17278,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -13454,6 +17301,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -13472,6 +17332,19 @@ builtin_interfaces/Time stamp
 # Transform frame with which this data is associated.
 string frame_id
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
 
@@ -13487,7 +17360,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_38529a5d8875b63a1b1ad5f87d47de2a9d276ec7f31d663a72f574a46038bf17";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::Marker_";
     }
     #[allow(unused)]
@@ -13524,8 +17398,35 @@ float32 v"####;
     }
     impl ::roslibrust::RosMessageType for MarkerArray {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/MarkerArray";
-        const MD5SUM: &'static str = "11e38f15427197858cf46456867167bd";
+        const MD5SUM: &'static str = "a5f21be3bc47b9dc10a485a0f8f72200";
         const DEFINITION: &'static str = r####"Marker[] markers
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -13588,6 +17489,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -13598,6 +17512,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -13615,6 +17542,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -13698,6 +17638,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -13759,6 +17726,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -13769,6 +17749,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -13786,6 +17779,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -13818,7 +17824,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_669eb46df28165496c14d64306c51a553872ed97fc651988e9b6bfdaacc09fdc";
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::MarkerArray_";
     }
     #[allow(non_snake_case)]
@@ -13996,7 +18003,7 @@ float32 v"####;
     }
     impl ::roslibrust::RosMessageType for GetInteractiveMarkersResponse {
         const ROS_TYPE_NAME: &'static str = "visualization_msgs/GetInteractiveMarkersResponse";
-        const MD5SUM: &'static str = "923b76ef2c497d4ff5f83a061d424d3b";
+        const MD5SUM: &'static str = "3498b331821fc65db485e759de4734e7";
         const DEFINITION: &'static str = r####"# Sequence number.
 # Set to the sequence number of the latest update message
 # at the time the server received the request.
@@ -14005,6 +18012,33 @@ uint64 sequence_number
 
 # All interactive markers provided by the server.
 InteractiveMarker[] markers
+================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
@@ -14067,6 +18101,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -14077,6 +18124,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -14094,6 +18154,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarker
 # Time/frame info.
@@ -14123,6 +18196,33 @@ MenuEntry[] menu_entries
 # List of controls displayed for this marker.
 InteractiveMarkerControl[] controls
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -14184,6 +18284,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -14194,6 +18307,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -14211,6 +18337,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/InteractiveMarkerControl
 # Represents a control that is to be displayed together with an interactive marker
@@ -14291,6 +18430,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -14352,6 +18518,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -14362,6 +18541,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -14379,6 +18571,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -14462,6 +18667,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -14523,6 +18755,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -14533,6 +18778,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -14550,6 +18808,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -14665,6 +18936,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -14726,6 +19024,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -14736,6 +19047,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -14753,6 +19077,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -14921,6 +19258,33 @@ bool independent_marker_orientation
 # Default: A generic description based on the interaction mode
 string description
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -14982,6 +19346,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -14992,6 +19369,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -15009,6 +19399,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/Marker
 # See:
@@ -15092,6 +19495,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -15153,6 +19583,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -15163,6 +19606,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -15180,6 +19636,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -15295,6 +19764,33 @@ string mesh_resource
 MeshFile mesh_file
 bool mesh_use_embedded_materials
 ================================================================================
+MSG: builtin_interfaces/Duration
+# Duration defines a period between two time points.
+# Messages of this datatype are of ROS Time following this design:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: geometry_msgs/Point
 # This contains the position of a point in free space
 float64 x
@@ -15356,6 +19852,19 @@ string format                # Specifies the format of the data
 
 uint8[] data                 # Compressed image buffer
 ================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
+================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
 # This is generally used to communicate timestamped data
@@ -15366,6 +19875,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: std_msgs/ColorRGBA
 float32 r
@@ -15383,6 +19905,19 @@ builtin_interfaces/Time stamp
 
 # Transform frame with which this data is associated.
 string frame_id
+================================================================================
+MSG: builtin_interfaces/Time
+# This message communicates ROS Time defined here:
+# https://design.ros2.org/articles/clock_and_time.html
+
+# The seconds component, valid over all int32 values.
+int32 sec
+
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The time -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The time 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
+uint32 nanosec
 ================================================================================
 MSG: visualization_msgs/MeshFile
 # Used to send raw mesh files.
@@ -15471,7 +20006,8 @@ MSG: visualization_msgs/UVCoordinate
 # Values should be in range: [0.0-1.0].
 float32 u
 float32 v"####;
-        const ROS2_HASH: &'static str = "";
+        const ROS2_HASH: &'static str =
+            "RIHS01_082b3f7f84531adc7aecd51742496596fa0031f27b2502926145350f65f04f57";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::GetInteractiveMarkersResponse_";
     }
@@ -15479,7 +20015,9 @@ float32 v"####;
     pub struct GetInteractiveMarkers {}
     impl ::roslibrust::RosServiceType for GetInteractiveMarkers {
         const ROS_SERVICE_NAME: &'static str = "visualization_msgs/GetInteractiveMarkers";
-        const MD5SUM: &'static str = "923b76ef2c497d4ff5f83a061d424d3b";
+        const MD5SUM: &'static str = "3498b331821fc65db485e759de4734e7";
+        const ROS2_HASH: &'static str =
+            "RIHS01_2574597499cefd03ff654e649aa5f1d858eaa20d7f33ac76b1d202b802ddb352";
         type Request = GetInteractiveMarkersRequest;
         type Response = GetInteractiveMarkersResponse;
     }
