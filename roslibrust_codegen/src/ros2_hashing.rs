@@ -229,8 +229,6 @@ pub fn calculate_ros2_srv_hash(
         },
     );
 
-    debug!("Graph prior to hash: {:#?}", graph_copy);
-
     let total_type_description = convert_to_type_description(&total_message_file, &graph_copy, true)?;
     Some(calculate_hash(&total_type_description))
 }
@@ -309,8 +307,8 @@ fn convert_to_type_description(
 
         if !field.field_type.is_primitive() {
             let sub_message = graph.get(field.get_full_type_name().as_str()).or_else(|| {
-                error!(
-                    "Failed to find definition for nested type: {} while hashing {}",
+                debug!(
+                    "Failed to find definition for nested type: {} while hashing {} for ROS2",
                     field.get_full_type_name(),
                     parsed.get_full_name()
                 );
@@ -521,12 +519,14 @@ lazy_static::lazy_static! {
         map.insert("uint32", "UINT32");
         map.insert("int64", "INT64");
         map.insert("uint64", "UINT64");
-        map.insert("float", "FLOAT");
-        map.insert("double", "DOUBLE");
+        map.insert("float32", "FLOAT");
+        map.insert("float64", "DOUBLE");
         map.insert("long", "LONG_DOUBLE");
         map.insert("char", "CHAR");
         map.insert("wchar", "WCHAR");
-        map.insert("boolean", "BOOLEAN");
+        // WHY THE FUCK WAS THIS BOOLEAN IN ROS CODE?
+        // map.insert("boolean", "BOOLEAN");
+        map.insert("bool", "BOOLEAN");
         map.insert("octet", "BYTE");
         map.insert("string", "STRING");
         // TODO following likely don't work yet
@@ -651,6 +651,10 @@ mod tests {
 
         field.array_info = ArrayType::Bounded(10);
         assert_eq!(super::get_field_type_id(&field).unwrap(), 102);
+
+        field.field_type = "bool".to_string();
+        field.array_info = ArrayType::NotArray;
+        assert_eq!(super::get_field_type_id(&field).unwrap(), 15);
     }
 
     /// End-To-End test from parse -> hash

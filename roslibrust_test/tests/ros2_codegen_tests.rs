@@ -100,6 +100,19 @@ fn ros2_hash_checks() {
         "RIHS01_7398a047b7ae995eeb12bd58e9884a30f25968d9c19a79b929778bebde4e678a"
     );
 
+    // Test a message with a bool
+    assert_eq!(
+        ros2_test_msgs::Bool::ROS2_HASH,
+        "RIHS01_14ae37d5c5f596ff013e8658e1af0c02f9dcad8f0d75e3d6243809c90264acd7"
+    );
+
+    // A message that previously failed on us
+    assert_eq!(
+      sensor_msgs::CameraInfo::ROS2_HASH,
+      "RIHS01_b3dfd68ff46c9d56c80fd3bd4ed22c7a4ddce8c8348f2f59c299e73118e7e275"
+    );
+
+    // Very basic service
     assert_eq!(
         std_srvs::SetBool::ROS2_HASH,
         "RIHS01_abe9e4bb6b41b40e6789712c00ec8871923e089af3f667a79992a428cff2da0a"
@@ -109,5 +122,11 @@ fn ros2_hash_checks() {
     assert_eq!(
         std_srvs::Empty::ROS2_HASH,
         "RIHS01_5888399dedec5ccc85ea6451949fd2c9f97bfdf963f9a588821639fcd31b5d19"
-    )
+    );
+
+    // More complicated service
+    assert_eq!(
+        sensor_msgs::SetCameraInfo::ROS2_HASH,
+        "RIHS01_a10cca5d33dc637c8d49db50ab288701a3592bb9cd854f2f16a0659613b68984"
+    );
 }

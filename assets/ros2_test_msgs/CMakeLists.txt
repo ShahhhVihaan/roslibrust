@@ -9,6 +9,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 # Declare the message and service files
 set(msg_files
+  "msg/Bool.msg"
   "msg/BoundedInt.msg"
   "msg/BoundedReferenced.msg"
   "msg/BoundedString.msg"
