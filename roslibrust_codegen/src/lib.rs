@@ -54,21 +54,31 @@ pub struct MessageFile {
     // See how https://wiki.ros.org/ROS/TCPROS references gendeps --cat
     // See https://wiki.ros.org/roslib/gentools for an example of the output
     pub(crate) definition: String,
-    pub(crate) is_fixed_length: bool,
+    // If true this message has no dynamic sized members and fits in a fixed size in memory
+    pub(crate) is_fixed_encoding_length: bool,
 }
 
 impl MessageFile {
     fn resolve(parsed: ParsedMessageFile, graph: &BTreeMap<String, MessageFile>) -> Option<Self> {
-        let md5sum = Self::compute_md5sum(&parsed, graph)?;
+        let md5sum = Self::compute_md5sum(&parsed, graph).or_else(|| {
+            log::error!("Failed to calculate md5sum for message: {parsed:#?}");
+            None
+        })?;
         let ros2_hash = calculate_ros2_hash(&parsed, graph);
-        let definition = Self::compute_full_definition(&parsed, graph)?;
-        let is_fixed_length = Self::determine_if_fixed_length(&parsed, graph)?;
+        let definition = Self::compute_full_definition(&parsed, graph).or_else(|| {
+            log::error!("Failed to calculate full definition for message: {parsed:#?}");
+            None
+        })?;
+        let is_fixed_length = Self::determine_if_fixed_length(&parsed, graph).or_else(|| {
+            log::error!("Failed to determine if message is fixed length: {parsed:#?}");
+            None
+        })?;
         Some(MessageFile {
             parsed,
             md5sum,
             ros2_hash,
             definition,
-            is_fixed_length,
+            is_fixed_encoding_length: is_fixed_length,
         })
     }
 
@@ -97,7 +107,7 @@ impl MessageFile {
     }
 
     pub fn is_fixed_length(&self) -> bool {
-        self.is_fixed_length
+        self.is_fixed_encoding_length
     }
 
     pub fn get_definition(&self) -> &str {
@@ -197,17 +207,19 @@ impl MessageFile {
         Some(definition_content)
     }
 
+    /// Reports if any field (recursively) referenced by the message contains a dynamic sized type
     fn determine_if_fixed_length(
         parsed: &ParsedMessageFile,
         graph: &BTreeMap<String, MessageFile>,
     ) -> Option<bool> {
         for field in &parsed.fields {
-            if matches!(field.field_type.array_info, Some(Some(_))) {
-                return Some(true);
-            } else if matches!(field.field_type.array_info, Some(None)) {
-                return Some(false);
+            // If the field has a bounded or unbounded vector type, the message is not fixed length
+            match field.field_type.array_info {
+                ArrayType::Unbounded | ArrayType::Bounded(_) => return Some(false),
+                _ => {}
             }
             if field.field_type.package_name.is_none() {
+                // If any field is a string, the message is not fixed length
                 if field.field_type.field_type == "string" {
                     return Some(false);
                 }
@@ -312,6 +324,16 @@ impl From<String> for RosLiteral {
     }
 }
 
+/// Represents the different options for a field being an array
+#[derive(PartialEq, Eq, Hash, Debug, Clone)]
+pub enum ArrayType {
+    NotArray,
+    FixedLength(usize),
+    // Bounded is ROS2 only
+    Bounded(usize),
+    Unbounded,
+}
+
 /// Describes the type for an individual field in a message
 #[derive(PartialEq, Eq, Hash, Debug, Clone)]
 pub struct FieldType {
@@ -323,18 +345,22 @@ pub struct FieldType {
     pub source_package: String,
     // Explicit text of type without array specifier
     pub field_type: String,
-    // Metadata indicating whether the field is a collection.
-    // Is Some(None) if it's an array type of variable size or Some(Some(N))
-    // if it's an array type of fixed size.
-    pub array_info: Option<Option<usize>>,
+    // Indicates if the field is some type of list or "NotArray"
+    pub array_info: ArrayType,
+
+    // ROS2 specific feature, you can write "string<=10" to indicate a string with a maximum length
+    // When this happen we'll parse the capacity here, and convert the field_type to "string"
+    pub string_capacity: Option<usize>,
 }
 
+/// Serializes the field type exactly how it would be written in a .msg file
 impl std::fmt::Display for FieldType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self.array_info {
-            Some(Some(n)) => f.write_fmt(format_args!("{}[{}]", self.field_type, n)),
-            Some(None) => f.write_fmt(format_args!("{}[]", self.field_type)),
-            None => f.write_fmt(format_args!("{}", self.field_type)),
+            ArrayType::FixedLength(n) => f.write_fmt(format_args!("{}[{}]", self.field_type, n)),
+            ArrayType::Unbounded => f.write_fmt(format_args!("{}[]", self.field_type)),
+            ArrayType::NotArray => f.write_fmt(format_args!("{}", self.field_type)),
+            ArrayType::Bounded(n) => f.write_fmt(format_args!("{}[<={}]", self.field_type, n)),
         }
     }
 }
@@ -515,6 +541,7 @@ pub fn find_and_parse_ros_messages(
             std::env::current_dir().unwrap()
         );
     }
+    debug!("After deduplication {:?} packages remain.", packages.len());
 
     let message_files = packages
         .iter()
@@ -527,10 +554,13 @@ pub fn find_and_parse_ros_messages(
             });
             // See https://stackoverflow.com/questions/59852161/how-to-handle-result-in-flat-map
             match files {
-                Ok(files) => files
+                Ok(files) => {
+                    debug!("Found {:?} interface files in package: {:?}", files.len(), pkg.name);
+                    files
                     .into_iter()
                     .map(|path| Ok((pkg.clone(), path)))
-                    .collect(),
+                    .collect()
+                },
                 Err(e) => vec![Err(e)],
             }
         })

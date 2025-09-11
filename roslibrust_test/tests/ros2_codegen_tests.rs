@@ -2,7 +2,7 @@ use roslibrust_test::ros2::*;
 
 #[test]
 fn test_defaults() {
-    let x: test_msgs::Defaults = Default::default();
+    let x: ros2_test_msgs::Defaults = Default::default();
     assert_eq!(x.x, 42);
     assert_eq!(x.y, -2000);
     assert_eq!(x.full_name, "John Doe");
@@ -45,7 +45,6 @@ fn ros2_hash_checks() {
 
     // Empty is an edge case so worth checking
     // Note: this is a weird one... JSON:
-    // Need to implement a case to match this:
     /*
     "type_description_msg": {
       "type_description": {
@@ -66,10 +65,30 @@ fn ros2_hash_checks() {
       "referenced_type_descriptions": []
     }
     */
-    // assert_eq!(
-    //     std_msgs::Empty::ROS2_HASH,
-    //     "RIHS01_20b625256f32d5dbc0d04fee44f43c41e51c70d3502f84b4a08e7a9c26a96312"
-    // );
+    assert_eq!(
+        std_msgs::Empty::ROS2_HASH,
+        "RIHS01_20b625256f32d5dbc0d04fee44f43c41e51c70d3502f84b4a08e7a9c26a96312"
+    );
+
+    // Testing a message with a capacity limit on a primitive
+    assert_eq!(
+        ros2_test_msgs::BoundedInt::ROS2_HASH,
+        "RIHS01_82105d57673153229ad6f8aa943ead090bc9756da35c9b73cf919a64bf902d6c"
+    );
+
+    // Testing a message with a capacity limit on a nested type
+    assert_eq!(
+        ros2_test_msgs::BoundedReferenced::ROS2_HASH,
+        "RIHS01_f6a7e6732d79d9bfff7abc475f2dda336233f75d3b1984537d2acb07054c3975"
+    );
+
+    // Testing a message with a capacity limit on a string
+    assert_eq!(
+        ros2_test_msgs::BoundedString::ROS2_HASH,
+        "RIHS01_e9965b1be42dce770d8936688f88b2f79cc1a828daa2295f1224186fd3c85b70"
+    );
+
+
 
     // TODO not implemented yet
     // Test a service

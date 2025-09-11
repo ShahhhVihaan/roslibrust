@@ -3,12 +3,12 @@ pub mod actionlib_msgs {
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -196,12 +196,12 @@ pub mod diagnostic_msgs {
     use super::actionlib_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -440,7 +440,7 @@ string message"####;
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####""####;
         const ROS2_HASH: &'static str =
-            "RIHS01_fbe677a65b6bb163ab20c6f6ceed7cee302b4d7e8c9a888116cf56e64fd42be8";
+            "RIHS01_f3da6cba8155ce26bb81b029b63bb311073c6cb4183848a37cc16efe3d77b229";
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::SelfTestRequest_";
     }
     #[allow(non_snake_case)]
@@ -514,12 +514,12 @@ pub mod geometry_msgs {
     use super::actionlib_msgs;
     use super::diagnostic_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -674,7 +674,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_28bce7f2675a1995888dbf8eb7c68520d474f16ebe0e79f9ca6e249fec799e05";
+            "RIHS01_36b4232b887ece168a41f145f8e9fc50a82ce0bddd8a932da65d294992cfb887";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -1381,7 +1381,7 @@ float64 y 0
 float64 z 0
 float64 w 1"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_1466147de97d4bcee6a6bb6ee9bf8042a9882a7bf2d8e6b6bd4d6245fe1ac0e1";
+            "RIHS01_a5b9ebd54259173148fad1902dab439231bc7a5a891e233f5978995f641b8a82";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -1869,7 +1869,7 @@ float64 x
 float64 y
 float64 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_771fb224d5e2ed54e2fb51b0e2a773f756c1f4928f56db0f0b47385e06da74e6";
+            "RIHS01_a1c3071e8cbee84cc771334e43033ca734f4b170bd3e54044c27cc63eedc4e93";
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistWithCovariance_";
     }
     #[allow(non_snake_case)]
@@ -2160,12 +2160,12 @@ pub mod nav_msgs {
     use super::actionlib_msgs;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -2758,7 +2758,7 @@ string frame_id"####;
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####"# Get the map as a nav_msgs/OccupancyGrid"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_18accc249c4227f6a16519c9900e8dee9606d78c925ed2ea37968fb381b847da";
+            "RIHS01_f1fcfb164bf2ca24fbc4fb5108adff607f4012b929a1b1f0e3cc77ecdf8e02de";
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapRequest_";
     }
     #[allow(non_snake_case)]
@@ -4051,16 +4051,152 @@ bool success"####;
     }
 }
 #[allow(unused_imports)]
+pub mod ros2_test_msgs {
+    use super::actionlib_msgs;
+    use super::diagnostic_msgs;
+    use super::geometry_msgs;
+    use super::nav_msgs;
+    use super::sensor_msgs;
+    use super::shape_msgs;
+    use super::std_msgs;
+    use super::std_srvs;
+    use super::stereo_msgs;
+    use super::trajectory_msgs;
+    use super::visualization_msgs;
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct BoundedInt {
+        #[serde(with = "::roslibrust::codegen::serde_bytes")]
+        pub r#data: ::std::vec::Vec<u8>,
+    }
+    impl ::roslibrust::RosMessageType for BoundedInt {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/BoundedInt";
+        const MD5SUM: &'static str = "0a00aaf35761a81662e7431cb0092a31";
+        const DEFINITION: &'static str = r####"# As far as I can tell from documentation "<=" is the only valid syntax and "<" is not valid
+uint8[<=5] data"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_82105d57673153229ad6f8aa943ead090bc9756da35c9b73cf919a64bf902d6c";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::BoundedInt_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct BoundedReferenced {
+        pub r#data: ::std::vec::Vec<self::BoundedInt>,
+    }
+    impl ::roslibrust::RosMessageType for BoundedReferenced {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/BoundedReferenced";
+        const MD5SUM: &'static str = "64234c2669823716869cb915600b8262";
+        const DEFINITION: &'static str = r####"# Proving bounding works on nested types
+BoundedInt[<=3] data
+================================================================================
+MSG: ros2_test_msgs/BoundedInt
+# As far as I can tell from documentation "<=" is the only valid syntax and "<" is not valid
+uint8[<=5] data"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_f6a7e6732d79d9bfff7abc475f2dda336233f75d3b1984537d2acb07054c3975";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::BoundedReferenced_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct BoundedString {
+        pub r#data: ::std::string::String,
+        pub r#data_list: ::std::vec::Vec<::std::string::String>,
+        pub r#data_matrix: ::std::vec::Vec<::std::string::String>,
+    }
+    impl ::roslibrust::RosMessageType for BoundedString {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/BoundedString";
+        const MD5SUM: &'static str = "b6c302077b544e8370b6a457e36b583b";
+        const DEFINITION: &'static str = r####"# Proving bounding works on strings
+string<=5 data
+string<=5[] data_list
+string<=5[<=3] data_matrix"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_e9965b1be42dce770d8936688f88b2f79cc1a828daa2295f1224186fd3c85b70";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::BoundedString_";
+    }
+    #[allow(non_snake_case)]
+    #[derive(
+        :: roslibrust :: codegen :: Deserialize,
+        :: roslibrust :: codegen :: Serialize,
+        :: roslibrust :: codegen :: SmartDefault,
+        Debug,
+        Clone,
+        PartialEq,
+    )]
+    #[serde(crate = "::roslibrust::codegen::serde")]
+    pub struct Defaults {
+        #[default(42u8)]
+        pub r#x: u8,
+        # [default (- 2000i16)]
+        pub r#y: i16,
+        #[default("John Doe")]
+        pub r#full_name: ::std::string::String,
+        #[default(_code = "vec![-200, -100, 0, 100, 200]")]
+        pub r#samples: ::std::vec::Vec<i32>,
+        #[default(_code = "vec![-200.0, -1.0, 0.0]")]
+        pub r#f_samples: ::std::vec::Vec<f32>,
+        #[default(_code = "[\"hello\", \"world\"].iter().map(|x| x.to_string()).collect()")]
+        pub r#s_vec: ::std::vec::Vec<::std::string::String>,
+    }
+    impl ::roslibrust::RosMessageType for Defaults {
+        const ROS_TYPE_NAME: &'static str = "ros2_test_msgs/Defaults";
+        const MD5SUM: &'static str = "43c441dc2b521c313f54affd982b5314";
+        const DEFINITION: &'static str = r####"# This message is specifically for testing generating of default values
+# Examples based on https://docs.ros.org/en/rolling/Concepts/About-ROS-Interfaces.html
+uint8 x 42
+int16 y -2000
+string full_name "John Doe"
+int32[] samples [-200, -100, 0, 100, 200]
+
+# More complicated examples to stress the system, floats with mixed precision
+float32[] f_samples [-200, -1.0, 0]
+string[] s_vec ["hello", "world"]
+# This may or may not be valid ROS, it probably is, but we don't handle yet
+# TODO handle this somehow
+# string[] s_vec_2 ['hello', 'world']
+
+# TODO ROS says this is valid, but we currently don't handle
+#string single_quote 'Jane Doe'"####;
+        const ROS2_HASH: &'static str =
+            "RIHS01_41d8ddbb55bd9085237dbd52e29c2962c5da9dd47d907aca7ca498ecc893916e";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Defaults_";
+    }
+}
+#[allow(unused_imports)]
 pub mod sensor_msgs {
     use super::actionlib_msgs;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -6156,11 +6292,11 @@ pub mod shape_msgs {
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -6199,7 +6335,7 @@ MSG: shape_msgs/MeshTriangle
 
 uint32[3] vertex_indices"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_0e2d0620c8ce2a685983434fe6ac711d99f8a0090cb99d77eed757e3d404a898";
+            "RIHS01_cd509dcdf75695db6863a4e037001339f249664d93c8735cc0f32164d052f86a";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::Mesh_";
     }
     #[allow(non_snake_case)]
@@ -6222,7 +6358,7 @@ uint32[3] vertex_indices"####;
 
 uint32[3] vertex_indices"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_c471c5f3a7f71f3c93131a76a432798bbb359031e9eeb7cb2da23fc0b334e076";
+            "RIHS01_618e5c073eeb729e433ef6226e72c01d995c459fb7d76348c9700409a5020bd0";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::MeshTriangle_";
     }
     #[allow(non_snake_case)]
@@ -6249,7 +6385,7 @@ uint32[3] vertex_indices"####;
 # d := coef[3]
 float64[4] coef"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_e44a7e7f00c2d77a490b495bcb9e896c4009d8a349018ee65dc54384961879e5";
+            "RIHS01_ae24f615cbf31567aaee436100e2a3aac91406371416fc381477472eb2e1bff8";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::Plane_";
     }
     #[allow(non_snake_case)]
@@ -6264,12 +6400,12 @@ float64[4] coef"####;
     #[serde(crate = "::roslibrust::codegen::serde")]
     pub struct SolidPrimitive {
         pub r#type: u8,
-        pub r#dimensions: [f64; 0],
+        pub r#dimensions: ::std::vec::Vec<f64>,
         pub r#polygon: geometry_msgs::Polygon,
     }
     impl ::roslibrust::RosMessageType for SolidPrimitive {
         const ROS_TYPE_NAME: &'static str = "shape_msgs/SolidPrimitive";
-        const MD5SUM: &'static str = "0cdf91a0a45ccd7bc1e0deb784cb2958";
+        const MD5SUM: &'static str = "8c7314fcbb621a6a7a6af3200d726861";
         const DEFINITION: &'static str = r####"# Defines box, sphere, cylinder, cone and prism.
 # All shapes are defined to have their bounding boxes centered around 0,0,0.
 
@@ -6352,7 +6488,7 @@ float32 x
 float32 y
 float32 z"####;
         const ROS2_HASH: &'static str =
-            "RIHS01_cafbde748a482ca4da73ec12e3158960650c723232ad5fadb5fa9842cab69994";
+            "RIHS01_4d2ef48ac491c31cf2c34cc3e27ebccc0a454cdf0dc8dad586d314fbd690864d";
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::SolidPrimitive_";
     }
     #[allow(unused)]
@@ -6379,11 +6515,11 @@ pub mod std_msgs {
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -6591,7 +6727,7 @@ float32 a"####;
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####""####;
         const ROS2_HASH: &'static str =
-            "RIHS01_af191b259a9f5d32af085f8bc5b730e66d31196fa3297ff03bc458c3705ecf5e";
+            "RIHS01_20b625256f32d5dbc0d04fee44f43c41e51c70d3502f84b4a08e7a9c26a96312";
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Empty_";
     }
     #[allow(non_snake_case)]
@@ -7849,11 +7985,11 @@ pub mod std_srvs {
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -7872,7 +8008,7 @@ pub mod std_srvs {
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####""####;
         const ROS2_HASH: &'static str =
-            "RIHS01_8d8194cf5e44bbf46cbc1ac312ce2315bb7fb7ffeb7fe0cb87be8b590f8be212";
+            "RIHS01_f6eb4f4a22d9555ac7d9ae4c283cf4a0887159c4bba75e95ecafe6234d301532";
         const ROS2_TYPE_NAME: &'static str = "std_srvs::msg::dds_::EmptyRequest_";
     }
     #[allow(non_snake_case)]
@@ -7891,7 +8027,7 @@ pub mod std_srvs {
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####""####;
         const ROS2_HASH: &'static str =
-            "RIHS01_764a4762086e56128149151a4994c1cef0ac1d7f119ffde9a361139f4d49af9f";
+            "RIHS01_813f728ba19e0894d3fd51c30f1927ae1fe9fecae57767080acff35f7cbcc5f8";
         const ROS2_TYPE_NAME: &'static str = "std_srvs::msg::dds_::EmptyResponse_";
     }
     #[allow(dead_code)]
@@ -7971,7 +8107,7 @@ string message # informational, e.g. for error messages"####;
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####""####;
         const ROS2_HASH: &'static str =
-            "RIHS01_b3c22b227de34d49ca256f339dc552d81c73437c27f315d3fa72f3b2a593ae2a";
+            "RIHS01_3ca06c57645a3431192de5b56909bd2045df4d537006cb039624bbdf8f51f0af";
         const ROS2_TYPE_NAME: &'static str = "std_srvs::msg::dds_::TriggerRequest_";
     }
     #[allow(non_snake_case)]
@@ -8012,11 +8148,11 @@ pub mod stereo_msgs {
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
@@ -8147,78 +8283,17 @@ string frame_id"####;
     }
 }
 #[allow(unused_imports)]
-pub mod test_msgs {
-    use super::actionlib_msgs;
-    use super::diagnostic_msgs;
-    use super::geometry_msgs;
-    use super::nav_msgs;
-    use super::sensor_msgs;
-    use super::shape_msgs;
-    use super::std_msgs;
-    use super::std_srvs;
-    use super::stereo_msgs;
-    use super::trajectory_msgs;
-    use super::visualization_msgs;
-    #[allow(non_snake_case)]
-    #[derive(
-        :: roslibrust :: codegen :: Deserialize,
-        :: roslibrust :: codegen :: Serialize,
-        :: roslibrust :: codegen :: SmartDefault,
-        Debug,
-        Clone,
-        PartialEq,
-    )]
-    #[serde(crate = "::roslibrust::codegen::serde")]
-    pub struct Defaults {
-        #[default(42u8)]
-        pub r#x: u8,
-        # [default (- 2000i16)]
-        pub r#y: i16,
-        #[default("John Doe")]
-        pub r#full_name: ::std::string::String,
-        #[default(_code = "vec![-200, -100, 0, 100, 200]")]
-        pub r#samples: ::std::vec::Vec<i32>,
-        #[default(_code = "vec![-200.0, -1.0, 0.0]")]
-        pub r#f_samples: ::std::vec::Vec<f32>,
-        #[default(_code = "[\"hello\", \"world\"].iter().map(|x| x.to_string()).collect()")]
-        pub r#s_vec: ::std::vec::Vec<::std::string::String>,
-    }
-    impl ::roslibrust::RosMessageType for Defaults {
-        const ROS_TYPE_NAME: &'static str = "test_msgs/Defaults";
-        const MD5SUM: &'static str = "43c441dc2b521c313f54affd982b5314";
-        const DEFINITION: &'static str = r####"# This message is specifically for testing generating of default values
-# Examples based on https://docs.ros.org/en/rolling/Concepts/About-ROS-Interfaces.html
-uint8 x 42
-int16 y -2000
-string full_name "John Doe"
-int32[] samples [-200, -100, 0, 100, 200]
-
-# More complicated examples to stress the system, floats with mixed precision
-float32[] f_samples [-200, -1.0, 0]
-string[] s_vec ["hello", "world"]
-# This may or may not be valid ROS, it probably is, but we don't handle yet
-# TODO handle this somehow
-# string[] s_vec_2 ['hello', 'world']
-
-# TODO ROS says this is valid, but we currently don't handle
-#string single_quote 'Jane Doe'"####;
-        const ROS2_HASH: &'static str =
-            "RIHS01_22da4402e0403b4d0f0bc00833f7dfa88182e3761e2b8d2ad88d00e6d6c0ea60";
-        const ROS2_TYPE_NAME: &'static str = "test_msgs::msg::dds_::Defaults_";
-    }
-}
-#[allow(unused_imports)]
 pub mod trajectory_msgs {
     use super::actionlib_msgs;
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
     #[derive(
@@ -8619,12 +8694,12 @@ pub mod visualization_msgs {
     use super::diagnostic_msgs;
     use super::geometry_msgs;
     use super::nav_msgs;
+    use super::ros2_test_msgs;
     use super::sensor_msgs;
     use super::shape_msgs;
     use super::std_msgs;
     use super::std_srvs;
     use super::stereo_msgs;
-    use super::test_msgs;
     use super::trajectory_msgs;
     #[allow(non_snake_case)]
     #[derive(
@@ -13901,7 +13976,7 @@ float32 v"####;
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const DEFINITION: &'static str = r####""####;
         const ROS2_HASH: &'static str =
-            "RIHS01_71456cd641bbfe907b464753b7d2621b3ee20193535cf9cd355edbc78665435c";
+            "RIHS01_9e90c011a0f639ae1f5123d49b7af15592f7c97d0ad0ef151a33193946004b00";
         const ROS2_TYPE_NAME: &'static str =
             "visualization_msgs::msg::dds_::GetInteractiveMarkersRequest_";
     }

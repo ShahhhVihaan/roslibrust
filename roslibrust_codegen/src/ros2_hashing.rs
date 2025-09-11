@@ -1,5 +1,15 @@
 //! Module for calculating the ROS2 hash of a message definition via https://github.com/ros-infrastructure/rep/pull/381/files
 
+use log::trace;
+use serde::Serialize;
+use serde_json::ser::Formatter;
+use std::{
+    collections::{BTreeMap, HashMap},
+    io::Write,
+};
+
+use crate::{parse::ParsedMessageFile, ArrayType, MessageFile};
+
 /// The following structs define the format of the JSON file used for hashing in ROS2
 /// A quick description of the process to calculate a ROS2 hash:
 ///  - ROS2 parses the .msg / .srv files
@@ -62,11 +72,14 @@ pub fn calculate_ros2_hash(
 /// Calculates the hash from a TypeDescriptionMsg struct
 fn calculate_hash(type_description_msg: &TypeDescriptionMsg) -> String {
     let type_description_string = to_ros2_json(type_description_msg);
+    trace!("Generate type description string: {type_description_string}");
     use sha2::Digest;
     let mut hasher = sha2::Sha256::new();
     hasher.update(type_description_string);
     let result = hasher.finalize();
-    format!("RIHS01_{result:x}")
+    let hash = format!("RIHS01_{result:x}");
+    trace!("Calculated hash: {hash}");
+    hash
 }
 
 /// Taking in a parsed representation of a message convert it to the ROS2 specific type representation
@@ -77,6 +90,19 @@ fn convert_to_type_description(
     let mut fields = vec![];
     let mut referenced_type_descriptions = vec![];
 
+    // ROS2 treats empty message types as having a single uint8 field named "structure_needs_at_least_one_member"
+    if parsed.fields.is_empty() {
+        fields.push(Field {
+            name: "structure_needs_at_least_one_member".to_string(),
+            field_type: FieldType {
+                type_id: 3,
+                capacity: 0,
+                string_capacity: 0,
+                nested_type_name: "".to_string(),
+            },
+            _default_value: "".to_string(),
+        });
+    }
     for field in &parsed.fields {
         let nested_type_name = if field.field_type.is_primitive() {
             "".to_string()
@@ -84,13 +110,21 @@ fn convert_to_type_description(
             field.get_ros2_full_type_name()
         };
 
+        // Check if there is a length limit on array contents
+        let capacity = match field.field_type.array_info {
+            ArrayType::Bounded(size) => size as u32,
+            ArrayType::FixedLength(size) => size as u32,
+            ArrayType::Unbounded => 0,
+            ArrayType::NotArray => 0,
+        };
+
         fields.push(Field {
             name: field.field_name.clone(),
             field_type: FieldType {
                 type_id: get_field_type_id(&field.field_type),
                 // TODO ignoring capacity and string_capacity for now
-                capacity: 0,
-                string_capacity: 0,
+                capacity,
+                string_capacity: field.field_type.string_capacity.unwrap_or(0) as u32,
                 nested_type_name,
             },
             // Default value is not used in hashing, but included for completeness
@@ -112,15 +146,6 @@ fn convert_to_type_description(
         referenced_type_descriptions,
     })
 }
-
-use serde::Serialize;
-use serde_json::{ser::Formatter, Value};
-use std::{
-    collections::{BTreeMap, HashMap},
-    io::Write,
-};
-
-use crate::{parse::ParsedMessageFile, FieldInfo, MessageFile};
 
 /// ROS2 requires a very specific JSON format for hashing:
 /// - Single line
@@ -207,6 +232,7 @@ lazy_static::lazy_static! {
         map.insert("FIELD_TYPE_WSTRING".to_string(), 18);
 
         // Fixed String Types
+        // NOTE: - Carter AFAIK ros2 doesn't support fixed length strings, so these types are probably unused
         map.insert("FIELD_TYPE_FIXED_STRING".to_string(), 19);
         map.insert("FIELD_TYPE_FIXED_WSTRING".to_string(), 20);
 
@@ -231,10 +257,13 @@ lazy_static::lazy_static! {
         map.insert("FIELD_TYPE_WCHAR_ARRAY".to_string(), 62);
         map.insert("FIELD_TYPE_BOOLEAN_ARRAY".to_string(), 63);
         map.insert("FIELD_TYPE_BYTE_ARRAY".to_string(), 64);
+
         map.insert("FIELD_TYPE_STRING_ARRAY".to_string(), 65);
         map.insert("FIELD_TYPE_WSTRING_ARRAY".to_string(), 66);
+        // NOTE: - Carter AFAIK ros2 doesn't support fixed length strings, so these types are probably unused
         map.insert("FIELD_TYPE_FIXED_STRING_ARRAY".to_string(), 67);
         map.insert("FIELD_TYPE_FIXED_WSTRING_ARRAY".to_string(), 68);
+
         map.insert("FIELD_TYPE_BOUNDED_STRING_ARRAY".to_string(), 69);
         map.insert("FIELD_TYPE_BOUNDED_WSTRING_ARRAY".to_string(), 70);
 
@@ -255,10 +284,13 @@ lazy_static::lazy_static! {
         map.insert("FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE".to_string(), 110);
         map.insert("FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE".to_string(), 111);
         map.insert("FIELD_TYPE_BYTE_BOUNDED_SEQUENCE".to_string(), 112);
+
         map.insert("FIELD_TYPE_STRING_BOUNDED_SEQUENCE".to_string(), 113);
         map.insert("FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE".to_string(), 114);
+        // NOTE: - Carter AFAIK ros2 doesn't support fixed length strings, so these types are probably unused
         map.insert("FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE".to_string(), 115);
         map.insert("FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE".to_string(), 116);
+
         map.insert("FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE".to_string(), 117);
         map.insert("FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE".to_string(), 118);
 
@@ -281,6 +313,8 @@ lazy_static::lazy_static! {
         map.insert("FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE".to_string(), 160);
         map.insert("FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE".to_string(), 161);
         map.insert("FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE".to_string(), 162);
+
+        // NOTE: - Carter AFAIK ros2 doesn't support fixed length strings, so these types are probably unused
         map.insert("FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE".to_string(), 163);
         map.insert("FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE".to_string(), 164);
         map.insert("FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE".to_string(), 165);
@@ -291,68 +325,62 @@ lazy_static::lazy_static! {
 
         static ref FIELD_VALUE_TYPE_NAMES: HashMap<&'static str, &'static str> = {
         let mut map = HashMap::new();
-        map.insert("nested_type", "FIELD_TYPE_NESTED_TYPE");
-        map.insert("int8", "FIELD_TYPE_INT8");
-        map.insert("uint8", "FIELD_TYPE_UINT8");
-        map.insert("int16", "FIELD_TYPE_INT16");
-        map.insert("uint16", "FIELD_TYPE_UINT16");
-        map.insert("int32", "FIELD_TYPE_INT32");
-        map.insert("uint32", "FIELD_TYPE_UINT32");
-        map.insert("int64", "FIELD_TYPE_INT64");
-        map.insert("uint64", "FIELD_TYPE_UINT64");
-        map.insert("float", "FIELD_TYPE_FLOAT");
-        map.insert("double", "FIELD_TYPE_DOUBLE");
-        map.insert("long", "FIELD_TYPE_LONG_DOUBLE");
-        map.insert("char", "FIELD_TYPE_CHAR");
-        map.insert("wchar", "FIELD_TYPE_WCHAR");
-        map.insert("boolean", "FIELD_TYPE_BOOLEAN");
-        map.insert("octet", "FIELD_TYPE_BYTE");
-        map.insert("string", "FIELD_TYPE_STRING");
+        map.insert("nested_type", "NESTED_TYPE");
+        map.insert("int8", "INT8");
+        map.insert("uint8", "UINT8");
+        map.insert("int16", "INT16");
+        map.insert("uint16", "UINT16");
+        map.insert("int32", "INT32");
+        map.insert("uint32", "UINT32");
+        map.insert("int64", "INT64");
+        map.insert("uint64", "UINT64");
+        map.insert("float", "FLOAT");
+        map.insert("double", "DOUBLE");
+        map.insert("long", "LONG_DOUBLE");
+        map.insert("char", "CHAR");
+        map.insert("wchar", "WCHAR");
+        map.insert("boolean", "BOOLEAN");
+        map.insert("octet", "BYTE");
+        map.insert("string", "STRING");
         // TODO following likely don't work yet
-        map.insert("wstring", "FIELD_TYPE_WSTRING");
-        map.insert("bounded_string", "FIELD_TYPE_BOUNDED_STRING");
-        map.insert("bounded_wstring", "FIELD_TYPE_BOUNDED_WSTRING");
+        map.insert("wstring", "WSTRING");
+        map.insert("bounded_string", "BOUNDED_STRING");
+        map.insert("bounded_wstring", "BOUNDED_WSTRING");
         map
     };
+}
+
+/// Returns the string matching the format ROS2's python code uses for lookups
+/// 
+/// e.g. "int32[3]" -> "FIELD_TYPE_INT32_ARRAY" and "string<=10" -> "FIELD_TYPE_BOUNDED_STRING"
+fn get_field_type_string(field_type: &crate::FieldType) -> String {
+    const PREFIX: &str = "FIELD_TYPE_";
+    let core_name = match FIELD_VALUE_TYPE_NAMES.get(field_type.field_type.as_str()) {
+        Some(name) => name,
+        None => "NESTED_TYPE",
+    };
+    let string_prefix = match field_type.string_capacity {
+        Some(_) => "BOUNDED_",
+        None => "",
+    };
+    let array_suffix = match field_type.array_info {
+        ArrayType::FixedLength(_) => "_ARRAY",
+        ArrayType::Unbounded => "_UNBOUNDED_SEQUENCE",
+        ArrayType::Bounded(_) => "_BOUNDED_SEQUENCE",
+        ArrayType::NotArray => "",
+    };
+    format!("{PREFIX}{string_prefix}{core_name}{array_suffix}")
 }
 
 /// Converts our internal representation of a field type to the numeric ID used in the ROS2 hash format
 // TODO MAJOR: We don't support ROS2 capacity limits yet
 fn get_field_type_id(field_type: &crate::FieldType) -> u8 {
-    let core_name = match FIELD_VALUE_TYPE_NAMES.get(field_type.field_type.as_str()) {
-        Some(name) => name,
-        None => "FIELD_TYPE_NESTED_TYPE",
-    };
-
-    match field_type.array_info {
-        Some(Some(_)) => {
-            // Fixed length array
-            let combined_name = core_name.to_string() + "_ARRAY";
-            match FIELD_TYPE_NAME_TO_ID.get(&combined_name) {
-                Some(id) => *id,
-                None => {
-                    panic!("Failed to find field type ID for {}", combined_name);
-                }
-            }
-        }
-        Some(None) => {
-            // Unbounded array
-            let combined_name = core_name.to_string() + "_UNBOUNDED_SEQUENCE";
-            match FIELD_TYPE_NAME_TO_ID.get(&combined_name) {
-                Some(id) => *id,
-                None => {
-                    panic!("Failed to find field type ID for {}", combined_name);
-                }
-            }
-        }
+    let field_type_string = get_field_type_string(field_type);
+    match FIELD_TYPE_NAME_TO_ID.get(&field_type_string) {
+        Some(id) => *id,
         None => {
-            // Not an array
-            match FIELD_TYPE_NAME_TO_ID.get(core_name) {
-                Some(id) => *id,
-                None => {
-                    panic!("Failed to find field type ID for {}", core_name);
-                }
-            }
+            // TODO need to not panic and bubble up error here
+            panic!("Failed to find field type ID for {}", field_type_string);
         }
     }
 }
@@ -361,7 +389,10 @@ fn get_field_type_id(field_type: &crate::FieldType) -> u8 {
 mod tests {
     use std::path::PathBuf;
 
-    use crate::utils::{Package, RosVersion};
+    use crate::{
+        utils::{Package, RosVersion},
+        ArrayType,
+    };
 
     /// Basic demonstration of the hashing process, and that our struct formatting matches ros2
     /// Reads in a pre-generated JSON file for std_msgs/String and confirms the hash matches
@@ -408,22 +439,26 @@ mod tests {
             package_name: Some("std_msgs".to_string()),
             source_package: "std_msgs".to_string(),
             field_type: "string".to_string(),
-            array_info: Some(Some(10)),
+            array_info: ArrayType::FixedLength(10),
+            string_capacity: None,
         };
         assert_eq!(super::get_field_type_id(&field), 65);
 
-        field.array_info = Some(None);
+        field.array_info = ArrayType::Unbounded;
         assert_eq!(super::get_field_type_id(&field), 161);
 
         field.field_type = "int32".to_string();
-        field.array_info = Some(Some(10));
+        field.array_info = ArrayType::FixedLength(10);
         assert_eq!(super::get_field_type_id(&field), 54);
 
-        field.array_info = Some(None);
+        field.array_info = ArrayType::Unbounded;
         assert_eq!(super::get_field_type_id(&field), 150);
 
-        field.array_info = None;
+        field.array_info = ArrayType::NotArray;
         assert_eq!(super::get_field_type_id(&field), 6);
+
+        field.array_info = ArrayType::Bounded(10);
+        assert_eq!(super::get_field_type_id(&field), 102);
     }
 
     /// End-To-End test from parse -> hash
