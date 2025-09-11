@@ -12,7 +12,7 @@ env:
   RUST_LOG: debug
 
 jobs:
-  humble:
+  iron:
     runs-on: ubuntu-latest
     defaults:
       run:

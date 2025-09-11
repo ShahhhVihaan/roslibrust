@@ -12,12 +12,12 @@ env:
   RUST_LOG: debug
 
 jobs:
-  humble:
+  kilted:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    container: carter12s/roslibrust-ci-iron:latest
+    container: carter12s/roslibrust-ci-kilted:latest
     timeout-minutes: 20
     steps:
       - name: Checkout repo
