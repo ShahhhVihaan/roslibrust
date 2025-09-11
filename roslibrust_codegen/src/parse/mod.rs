@@ -197,7 +197,9 @@ fn parse_field_type(
 fn parse_bounded_string(type_str: &str) -> Result<(String, Option<usize>), Error> {
     if type_str.starts_with("string<=") {
         let capacity = type_str[8..].parse::<usize>().map_err(|err| {
-            Error::new(format!("Unable to parse capacity of bounded string: {type_str}: {err}"))
+            Error::new(format!(
+                "Unable to parse capacity of bounded string: {type_str}: {err}"
+            ))
         })?;
         Ok(("string".to_string(), Some(capacity)))
     } else {

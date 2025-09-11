@@ -61,7 +61,10 @@ pub fn crawl<P: AsRef<Path>>(search_paths: &[P]) -> Vec<Package> {
             packages = [packages, found_packages].concat();
         }
     }
-    debug!("Found {:?} packages while crawling search paths.", packages.len());
+    debug!(
+        "Found {:?} packages while crawling search paths.",
+        packages.len()
+    );
     packages
 }
 

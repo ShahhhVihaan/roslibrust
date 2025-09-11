@@ -108,8 +108,8 @@ fn ros2_hash_checks() {
 
     // A message that previously failed on us
     assert_eq!(
-      sensor_msgs::CameraInfo::ROS2_HASH,
-      "RIHS01_b3dfd68ff46c9d56c80fd3bd4ed22c7a4ddce8c8348f2f59c299e73118e7e275"
+        sensor_msgs::CameraInfo::ROS2_HASH,
+        "RIHS01_b3dfd68ff46c9d56c80fd3bd4ed22c7a4ddce8c8348f2f59c299e73118e7e275"
     );
 
     // Very basic service

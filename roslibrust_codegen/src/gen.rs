@@ -167,7 +167,10 @@ fn generate_field_definition(
             &field.field_type.array_info,
             version,
         )?;
-        if matches!(field.field_type.array_info, ArrayType::Unbounded | ArrayType::Bounded(_) | ArrayType::FixedLength(_)) {
+        if matches!(
+            field.field_type.array_info,
+            ArrayType::Unbounded | ArrayType::Bounded(_) | ArrayType::FixedLength(_)
+        ) {
             // For vectors use smart_defaults "dynamic" style
             quote! {
                 #[default(_code = #default_val)]
@@ -323,7 +326,10 @@ fn parse_ros_value(
     array_info: &ArrayType,
     version: RosVersion,
 ) -> Result<TokenStream, Error> {
-    let is_list = matches!(array_info, ArrayType::Unbounded | ArrayType::FixedLength(_) | ArrayType::Bounded(_));
+    let is_list = matches!(
+        array_info,
+        ArrayType::Unbounded | ArrayType::FixedLength(_) | ArrayType::Bounded(_)
+    );
     match ros_type {
         "bool" => generic_parse_value::<bool>(value, is_list),
         "float64" => generic_parse_value::<f64>(value, is_list),

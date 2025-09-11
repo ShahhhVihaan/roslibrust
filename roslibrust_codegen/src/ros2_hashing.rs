@@ -194,7 +194,6 @@ pub fn calculate_ros2_srv_hash(
     let mut response = parsed.response_type.clone();
     response.name = response_type;
 
-
     graph_copy.insert(
         event_ros1_name,
         MessageFile {
@@ -229,7 +228,8 @@ pub fn calculate_ros2_srv_hash(
         },
     );
 
-    let total_type_description = convert_to_type_description(&total_message_file, &graph_copy, true)?;
+    let total_type_description =
+        convert_to_type_description(&total_message_file, &graph_copy, true)?;
     Some(calculate_hash(&total_type_description))
 }
 
@@ -251,7 +251,7 @@ fn convert_to_type_description(
     parsed: &ParsedMessageFile,
     graph: &BTreeMap<String, MessageFile>,
     // This option is a real hack, but is working around ROS2 vs. ROS1 naming differences
-    service_naming: bool
+    service_naming: bool,
 ) -> Option<TypeDescriptionMsg> {
     let mut fields = vec![];
     let mut referenced_type_descriptions = BTreeMap::new();
@@ -274,9 +274,15 @@ fn convert_to_type_description(
             "".to_string()
         } else {
             if service_naming {
-                const SPECIAL_SUFFIX:&[&str] = &["_Request", "_Response", "_Event"];
-                if SPECIAL_SUFFIX.iter().any(|s| field.field_type.field_type.ends_with(s)) {
-                    format!("{}/srv/{}", field.field_type.source_package, field.field_type.field_type)
+                const SPECIAL_SUFFIX: &[&str] = &["_Request", "_Response", "_Event"];
+                if SPECIAL_SUFFIX
+                    .iter()
+                    .any(|s| field.field_type.field_type.ends_with(s))
+                {
+                    format!(
+                        "{}/srv/{}",
+                        field.field_type.source_package, field.field_type.field_type
+                    )
                 } else {
                     field.get_ros2_full_type_name()
                 }
@@ -314,14 +320,22 @@ fn convert_to_type_description(
                 );
                 None
             })?;
-            let sub_type_description = convert_to_type_description(&sub_message.parsed, graph, true)?;
+            let sub_type_description =
+                convert_to_type_description(&sub_message.parsed, graph, true)?;
             for sub_referenced_type in sub_type_description.referenced_type_descriptions {
-                referenced_type_descriptions.insert(sub_referenced_type.type_name.clone(), sub_referenced_type);
+                referenced_type_descriptions
+                    .insert(sub_referenced_type.type_name.clone(), sub_referenced_type);
             }
-            referenced_type_descriptions.insert(sub_type_description.type_description.type_name.clone(), sub_type_description.type_description);
+            referenced_type_descriptions.insert(
+                sub_type_description.type_description.type_name.clone(),
+                sub_type_description.type_description,
+            );
         }
     }
-    let referenced_type_descriptions = referenced_type_descriptions.into_iter().map(|(_, v)| v).collect::<Vec<_>>();
+    let referenced_type_descriptions = referenced_type_descriptions
+        .into_iter()
+        .map(|(_, v)| v)
+        .collect::<Vec<_>>();
 
     Some(TypeDescriptionMsg {
         type_description: TypeDescription {

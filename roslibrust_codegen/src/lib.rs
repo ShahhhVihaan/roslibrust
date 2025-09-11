@@ -837,7 +837,8 @@ mod test {
             "/../assets/ros2_required_msgs/rcl_interfaces/builtin_interfaces"
         );
 
-        let (source, paths) = find_and_generate_ros_messages(vec![assets_path.into(), required_path.into()]).unwrap();
+        let (source, paths) =
+            find_and_generate_ros_messages(vec![assets_path.into(), required_path.into()]).unwrap();
         // Make sure something actually got generated
         assert!(!source.is_empty());
         // Make sure we have some paths
@@ -870,7 +871,8 @@ mod test {
             "/../assets/ros2_required_msgs/rcl_interfaces/builtin_interfaces"
         );
 
-        let (source, paths) = find_and_generate_ros_messages(vec![assets_path.into(), required_path.into()]).unwrap();
+        let (source, paths) =
+            find_and_generate_ros_messages(vec![assets_path.into(), required_path.into()]).unwrap();
         assert!(!source.is_empty());
         assert!(!paths.is_empty());
     }
