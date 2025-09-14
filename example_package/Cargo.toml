@@ -7,13 +7,13 @@ edition = "2021"
 # Example uses rosbridge backend, but any could be substituted in
 # We do need the codegen feature as the types that are generated in build.rs require types from codegen
 roslibrust = { path = "../roslibrust", features = ["rosbridge", "codegen"] }
-tokio = { version = "1.42", features = ["sync", "macros"] }
+tokio = { version = "1", features = ["sync", "macros"] }
 
 [dev-dependencies]
 # Tests use the mock backend from roslibrust
 roslibrust = { path = "../roslibrust", features = ["mock"] }
 # Tests also use test-util to pause time
-tokio = { version = "1.42", features = ["test-util"] }
+tokio = { version = "1", features = ["test-util"] }
 
 [build-dependencies]
 # We depend on codegen as a build dependency as we invoke it in build.rs

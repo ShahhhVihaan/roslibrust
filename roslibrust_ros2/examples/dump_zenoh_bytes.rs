@@ -1,19 +1,5 @@
 // Just a test bed file to start playing with ROS2 Zenoh interaction
 
-/// rmw_zenoh stores all ros metadata under a @ros2_lv liveness tokens
-/// This is a quick way to dump all of it to see what's available
-/// Eventually this would feed a lot of APIs around discovery
-async fn dump_all_liveness() {
-    let session = make_ros_zenoh().await;
-
-    // Example we get back: @ros2_lv/0/d081ae67eea2473e1bb3d035a1481754/0/10/MP/%/%/rosbridge_websocket/%client_count/std_msgs::msg::dds_::Int32_/RIHS01_b6578ded3c58c626cfe8d1a6fb6e04f706f97e9f03d2727c9ff4e74b1cef0deb/:1:,1:,:,:,,
-    let replies = session.liveliness().get("@ros2_lv/**").await.unwrap();
-
-    while let Ok(reply) = replies.recv_async().await {
-        println!("Got reply: {:?}", reply);
-    }
-}
-
 /// Make a connection to the zenoh network running rmw_zenohd
 /// Note: rmw_zenohd must be running for this to work
 /// Note: rmw_zenohd does not support multicast scouting by default, and must be explicitly configured to connect to it!
