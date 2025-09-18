@@ -334,8 +334,6 @@ mod tests {
                 .await
                 .unwrap();
 
-            tokio::time::sleep(tokio::time::Duration::from_secs(100000)).await;
-
             let mut srv_call_cmd = std::process::Command::new("ros2")
                 .arg("service")
                 .arg("call")
