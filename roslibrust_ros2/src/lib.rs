@@ -1,3 +1,4 @@
+use log::error;
 use roslibrust_common::*;
 use std::{any::Any, result::Result as StdResult};
 
@@ -116,67 +117,125 @@ impl roslibrust_common::TopicProvider for ZenohClient {
 
 // TODO MAJOR: problem here ZService trait can't be implemented for our example messages due to orphan rule...
 // Have to do some gross work around to get roslibrust::RosServiceType and ros_z::ZService to play nicely together
-// struct ZenohServiceServer {}
+pub struct ZenohServiceServer {
+    // Used to shutdown server task when dropped
+    cancellation_token: tokio_util::sync::CancellationToken,
+}
 
-// impl roslibrust_common::ServiceProvider for ZenohClient {
-//     type ServiceClient<T: RosServiceType> = ();
-//     type ServiceServer = ZenohServiceServer;
+impl Drop for ZenohServiceServer {
+    fn drop(&mut self) {
+        self.cancellation_token.cancel();
+    }
+}
 
-//     async fn call_service<T: RosServiceType>(
-//         &self,
-//         topic: &str,
-//         request: T::Request,
-//     ) -> Result<T::Response> {
-//         todo!()
-//     }
+pub struct ZenohServiceClient<T: RosServiceType> {
+    _marker: std::marker::PhantomData<T>,
+}
 
-//     async fn service_client<T: RosServiceType + 'static>(
-//         &self,
-//         topic: &str,
-//     ) -> Result<Self::ServiceClient<T>> {
-//         todo!()
-//     }
+impl<T: RosServiceType> roslibrust_common::Service<T> for ZenohServiceClient<T> {
+    async fn call(&self, request: &T::Request) -> Result<T::Response> {
+        todo!()
+    }
+}
 
-//     async fn advertise_service<T: RosServiceType + 'static, F>(
-//         &self,
-//         topic: &str,
-//         server: F,
-//     ) -> Result<Self::ServiceServer>
-//     where
-//         F: ServiceFn<T>,
-//     {
-//         // TODO MAJOR: doing some really dome stuff here... to work around orphan rule and RosServiceType != ZService
-//         struct Fake<T>(T);
-//         impl<T: RosServiceType> ZService for Fake<T> {
-//             type Request = T::Request;
-//             type Response = T::Response;
-//         }
+impl roslibrust_common::ServiceProvider for ZenohClient {
+    type ServiceClient<T: RosServiceType> = ZenohServiceClient<T>;
+    type ServiceServer = ZenohServiceServer;
 
-//         let service = self
-//             .node
-//             .create_service::<Fake<T>>(topic)
-//             .build()
-//             .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;
+    async fn call_service<T: RosServiceType>(
+        &self,
+        topic: &str,
+        request: T::Request,
+    ) -> Result<T::Response> {
+        todo!()
+    }
 
-//         let rx = service.rx;
+    async fn service_client<T: RosServiceType + 'static>(
+        &self,
+        topic: &str,
+    ) -> Result<Self::ServiceClient<T>> {
+        todo!()
+    }
 
-//         // This gets really gross need to open some issues on ros-z
-//         // there is no "take_request_async()" we can call so to async rx we'd have to deserialize ourselves
-//         tokio::spawn(async move {
-//             loop {
-//                 let req = rx.recv_async().await;
-//                 if let Err(_) = req {
-//                     // TODO error handling here...
-//                     continue;
-//                 }
-//                 let req = req.unwrap();
+    async fn advertise_service<T: RosServiceType + 'static, F>(
+        &self,
+        topic: &str,
+        server: F,
+    ) -> Result<Self::ServiceServer>
+    where
+        F: ServiceFn<T>,
+    {
+        // TODO: doing some really dome stuff here... to work around orphan rule and RosServiceType != ZService
+        struct Fake<T>(T);
+        impl<T: RosServiceType> ZService for Fake<T> {
+            type Request = T::Request;
+            type Response = T::Response;
+        }
 
-//             }
-//         });
+        let mut service = self
+            .node
+            .create_service::<Fake<T>>(topic)
+            .build()
+            .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;
 
-//         Ok(ZenohServiceServer {})
-//     }
-// }
+        let cancellation_token = tokio_util::sync::CancellationToken::new();
+
+        // Build a clone wrapper for the users's function
+        let server = std::sync::Arc::new(server);
+        let topic = topic.to_string();
+        let ct_copy = cancellation_token.clone();
+        tokio::spawn(async move {
+            let body_future = async {
+                loop {
+                    let req = service.take_request_async().await;
+                    let (query, req) = match req {
+                        Ok(req) => req,
+                        Err(e) => {
+                            error!("Failed to take request in service {topic}: {e:?}");
+                            continue;
+                        }
+                    };
+
+                    // Evaluate the server function inside a spawn_blocking to uphold trait expectations from roslibrust_common
+                    let server_copy = server.clone();
+                    let response = tokio::task::spawn_blocking(move || server_copy(req)).await;
+
+                    let valid_response = match response {
+                        Ok(Ok(response)) => response,
+                        Ok(Err(e)) => {
+                            error!("Failed to handle request in service {topic}: {e:?}");
+                            continue;
+                        }
+                        Err(e) => {
+                            error!("Failed to join task in service {topic}: {e:?}");
+                            continue;
+                        }
+                    };
+                    // TODO Need to swap send_response with send_response_async when fix for that merges
+                    // https://github.com/ZettaScaleLabs/ros-z/pull/5
+                    let send_result = service.send_response(&valid_response, &query);
+                    match send_result {
+                        Ok(()) => {}
+                        Err(e) => {
+                            error!("Failed to send response to service {topic}: {e:?}");
+                        }
+                    };
+                }
+            };
+
+            tokio::select! {
+                _ = ct_copy.cancelled() => {
+                    // Shutdown
+                }
+                _ = body_future => {
+                    error!("Service task for {topic} exited unexpectedly");
+                }
+            }
+        });
+
+        Ok(ZenohServiceServer { cancellation_token })
+    }
+}
 
 #[cfg(test)]
 mod tests {
@@ -222,7 +281,6 @@ mod tests {
 
         #[tokio::test(flavor = "multi_thread")]
         async fn test_pubsub_basic() {
-            use roslibrust_common::traits::*;
             let client = ZenohClient::new("test_publish_basic_node").await.unwrap();
 
             let publisher = client
@@ -242,9 +300,63 @@ mod tests {
             };
 
             publisher.publish(&msg).await.unwrap();
-            let received_msg = subscriber.next().await.unwrap();
 
-            assert_eq!(msg, received_msg);
+            tokio::time::timeout(tokio::time::Duration::from_secs(2), async {
+                let msg = subscriber.next().await.unwrap();
+                assert_eq!(msg.data, "Hello World");
+            })
+            .await
+            .expect("Failed to receive message within 2 seconds");
+        }
+
+        #[tokio::test(flavor = "multi_thread")]
+        async fn test_service_server_callable() {
+            let client = ZenohClient::new("test_service_server_callable_node")
+                .await
+                .unwrap();
+
+            let state = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false));
+
+            let state_copy = state.clone();
+            let server_fn = move |request: roslibrust_test::ros2::std_srvs::SetBoolRequest| {
+                state_copy.store(request.data, std::sync::atomic::Ordering::SeqCst);
+                Ok(roslibrust_test::ros2::std_srvs::SetBoolResponse {
+                    message: "You set my bool!".to_string(),
+                    success: request.data,
+                })
+            };
+
+            client
+                .advertise_service::<roslibrust_test::ros2::std_srvs::SetBool, _>(
+                    "/test_service_server_callable_node/set_bool",
+                    server_fn,
+                )
+                .await
+                .unwrap();
+
+            tokio::time::sleep(tokio::time::Duration::from_secs(100000)).await;
+
+            let mut srv_call_cmd = std::process::Command::new("ros2")
+                .arg("service")
+                .arg("call")
+                .arg("/test_service_server_callable_node/set_bool")
+                .arg("std_srvs/srv/SetBool")
+                .arg("data: true")
+                .spawn()
+                .unwrap();
+
+            tokio::time::timeout(tokio::time::Duration::from_secs(2), async {
+                while !state.load(std::sync::atomic::Ordering::SeqCst) {
+                    tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
+                }
+            })
+            .await
+            .expect("Bool should be set true within 2 seconds");
+
+            // If we reach here, state was changed to true by the service call!
+
+            // Protection to make sure we don't leave a ros2 service call running
+            srv_call_cmd.kill().unwrap()
         }
     }
 }
