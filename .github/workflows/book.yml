@@ -39,8 +39,7 @@ jobs:
       # If we're on master deploy
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        # TODO enable this once we're done testing
-        # if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book/book
