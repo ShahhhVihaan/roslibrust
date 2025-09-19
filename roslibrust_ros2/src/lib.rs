@@ -1,6 +1,6 @@
 use log::*;
 use roslibrust_common::*;
-use std::{any::Any, result::Result as StdResult};
+use std::{result::Result as StdResult};
 
 use ros_z::{
     msg::ZService,

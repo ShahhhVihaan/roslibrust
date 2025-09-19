@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - roslibrust_codegen now support time conversions from chrono::DateTime and chrono::Duration to roslibrust's internal types.
+- Subscribers now have a `.to_stream()` method that converts them to a [futures_core::Stream] for easy integration with async Rust. See [examples/tokio_stream_operations.rs](https://github.com/RosLibRust/roslibrust/blob/master/roslibrust/examples/tokio_stream_operations.rs) for usage.
 
 ### Fixed
 
