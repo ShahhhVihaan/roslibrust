@@ -1,4 +1,4 @@
-use log::error;
+use log::*;
 use roslibrust_common::*;
 use std::{any::Any, result::Result as StdResult};
 
@@ -175,6 +175,11 @@ impl roslibrust_common::ServiceProvider for ZenohClient {
         let mut service = self
             .node
             .create_service::<Fake<T>>(topic)
+            .with_type_info(ros_z::entity::TypeInfo::new(
+                T::ROS2_TYPE_NAME,
+                ros_z::entity::TypeHash::from_rihs_string(T::ROS2_HASH)
+                    .expect("Invalid hash in generated ROS2 hash"),
+            ))
             .build()
             .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;
 
@@ -195,6 +200,7 @@ impl roslibrust_common::ServiceProvider for ZenohClient {
                             continue;
                         }
                     };
+                    debug!("Got request for service {topic} with key {:?}", query);
 
                     // Evaluate the server function inside a spawn_blocking to uphold trait expectations from roslibrust_common
                     let server_copy = server.clone();
@@ -211,9 +217,7 @@ impl roslibrust_common::ServiceProvider for ZenohClient {
                             continue;
                         }
                     };
-                    // TODO Need to swap send_response with send_response_async when fix for that merges
-                    // https://github.com/ZettaScaleLabs/ros-z/pull/5
-                    let send_result = service.send_response(&valid_response, &query);
+                    let send_result = service.send_response_async(&valid_response, &query).await;
                     match send_result {
                         Ok(()) => {}
                         Err(e) => {
@@ -326,7 +330,7 @@ mod tests {
                 })
             };
 
-            client
+            let _service = client
                 .advertise_service::<roslibrust_test::ros2::std_srvs::SetBool, _>(
                     "/test_service_server_callable_node/set_bool",
                     server_fn,

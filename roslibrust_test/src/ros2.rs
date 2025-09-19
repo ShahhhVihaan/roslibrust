@@ -642,6 +642,7 @@ string message"####;
         const MD5SUM: &'static str = "e6ac9bbde83d0d3186523c3687aecaee";
         const ROS2_HASH: &'static str =
             "RIHS01_6b91084c9f8bffd9b0c1f6883e0e8e491a831f4fc6c6aec77a4efaf3f1ea90b5";
+        const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::srv::dds_::AddDiagnostics_";
         type Request = AddDiagnosticsRequest;
         type Response = AddDiagnosticsResponse;
     }
@@ -728,6 +729,7 @@ string value"####;
         const MD5SUM: &'static str = "ac21b1bab7ab17546986536c22eb34e9";
         const ROS2_HASH: &'static str =
             "RIHS01_0e0fc2754cadcf8dd57459806c78a7c3b31ddc65b011a630fd8ce3bcddc00583";
+        const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::srv::dds_::SelfTest_";
         type Request = SelfTestRequest;
         type Response = SelfTestResponse;
     }
@@ -3845,6 +3847,7 @@ uint32 nanosec"####;
         const MD5SUM: &'static str = "7bff8b2620dbaeb0925e81085fcfa292";
         const ROS2_HASH: &'static str =
             "RIHS01_c8ae77c9995b3554b5ba80e4d4d443f970ac65143102a1d893ec24fc07b31147";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::GetMap_";
         type Request = GetMapRequest;
         type Response = GetMapResponse;
     }
@@ -4363,6 +4366,7 @@ uint32 nanosec"####;
         const MD5SUM: &'static str = "a08000c8d6c102a04c555fedbdfbde12";
         const ROS2_HASH: &'static str =
             "RIHS01_234f7aff100f5edb8150366601687b027bcdc253db47decb88fff846193fe5e8";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::GetPlan_";
         type Request = GetPlanRequest;
         type Response = GetPlanResponse;
     }
@@ -4725,6 +4729,7 @@ uint32 nanosec"####;
         const MD5SUM: &'static str = "7631a819bf39865de4324e3d28f5e85f";
         const ROS2_HASH: &'static str =
             "RIHS01_1a192ac56c40fed2767dac26f0b371785372276bd465c902676d2dca135aae5a";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::LoadMap_";
         type Request = LoadMapRequest;
         type Response = LoadMapResponse;
     }
@@ -5241,6 +5246,7 @@ bool success"####;
         const MD5SUM: &'static str = "2ce17df740c0777cc84f0a6673c7ef43";
         const ROS2_HASH: &'static str =
             "RIHS01_5e11a5b2ca53d8ae85b666a019f16c9904ebc787828f1f566c4e048a1ddedfb4";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::SetMap_";
         type Request = SetMapRequest;
         type Response = SetMapResponse;
     }
@@ -5531,6 +5537,7 @@ int64 b"####;
         const MD5SUM: &'static str = "6a2e34150c00229791cc89ff309fff21";
         const ROS2_HASH: &'static str =
             "RIHS01_cbdcb755e63eba37467c9846fe9f0b458c2989832e888dfd39ecbf8991800ef7";
+        const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::srv::dds_::AddTwoInts_";
         type Request = AddTwoIntsRequest;
         type Response = AddTwoIntsResponse;
     }
@@ -8228,6 +8235,7 @@ string status_message                    # Used to give details about success"##
         const MD5SUM: &'static str = "09f27e7f0ee56f224480abfd6cd869c0";
         const ROS2_HASH: &'static str =
             "RIHS01_a10cca5d33dc637c8d49db50ab288701a3592bb9cd854f2f16a0659613b68984";
+        const ROS2_TYPE_NAME: &'static str = "sensor_msgs::srv::dds_::SetCameraInfo_";
         type Request = SetCameraInfoRequest;
         type Response = SetCameraInfoResponse;
     }
@@ -10083,6 +10091,7 @@ pub mod std_srvs {
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const ROS2_HASH: &'static str =
             "RIHS01_5888399dedec5ccc85ea6451949fd2c9f97bfdf963f9a588821639fcd31b5d19";
+        const ROS2_TYPE_NAME: &'static str = "std_srvs::srv::dds_::Empty_";
         type Request = EmptyRequest;
         type Response = EmptyResponse;
     }
@@ -10138,6 +10147,7 @@ string message # informational, e.g. for error messages"####;
         const MD5SUM: &'static str = "09fb03525b03e7ea1fd3992bafd87e16";
         const ROS2_HASH: &'static str =
             "RIHS01_abe9e4bb6b41b40e6789712c00ec8871923e089af3f667a79992a428cff2da0a";
+        const ROS2_TYPE_NAME: &'static str = "std_srvs::srv::dds_::SetBool_";
         type Request = SetBoolRequest;
         type Response = SetBoolResponse;
     }
@@ -10190,6 +10200,7 @@ string message # informational, e.g. for error messages"####;
         const MD5SUM: &'static str = "937c9679a518e3a18d831e57125ea522";
         const ROS2_HASH: &'static str =
             "RIHS01_eeff2cd6fa5ad9d27cdf4dec64818317839b62f212a91e6b5304b634b2062c5f";
+        const ROS2_TYPE_NAME: &'static str = "std_srvs::srv::dds_::Trigger_";
         type Request = TriggerRequest;
         type Response = TriggerResponse;
     }
@@ -20039,6 +20050,8 @@ float32 v"####;
         const MD5SUM: &'static str = "3498b331821fc65db485e759de4734e7";
         const ROS2_HASH: &'static str =
             "RIHS01_bfdfaa861f4a8422b4ec3bd02c6681e4a45a83bdc2913d8facdf923d8ad1376a";
+        const ROS2_TYPE_NAME: &'static str =
+            "visualization_msgs::srv::dds_::GetInteractiveMarkers_";
         type Request = GetInteractiveMarkersRequest;
         type Response = GetInteractiveMarkersResponse;
     }

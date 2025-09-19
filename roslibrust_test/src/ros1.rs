@@ -420,6 +420,7 @@ string message"####;
         const ROS_SERVICE_NAME: &'static str = "diagnostic_msgs/AddDiagnostics";
         const MD5SUM: &'static str = "e6ac9bbde83d0d3186523c3687aecaee";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::srv::dds_::AddDiagnostics_";
         type Request = AddDiagnosticsRequest;
         type Response = AddDiagnosticsResponse;
     }
@@ -497,6 +498,7 @@ string value # a value to track over time"####;
         const ROS_SERVICE_NAME: &'static str = "diagnostic_msgs/SelfTest";
         const MD5SUM: &'static str = "ac21b1bab7ab17546986536c22eb34e9";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::srv::dds_::SelfTest_";
         type Request = SelfTestRequest;
         type Response = SelfTestResponse;
     }
@@ -4991,6 +4993,7 @@ string frame_id"####;
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/GetMap";
         const MD5SUM: &'static str = "6cdd0a18e0aff5b0a3ca2326a89b54ff";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::GetMap_";
         type Request = GetMapRequest;
         type Response = GetMapResponse;
     }
@@ -5362,6 +5365,7 @@ string frame_id"####;
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/GetPlan";
         const MD5SUM: &'static str = "421c8ea4d21c6c9db7054b4bbdf1e024";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::GetPlan_";
         type Request = GetPlanRequest;
         type Response = GetPlanResponse;
     }
@@ -5639,6 +5643,7 @@ string frame_id"####;
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/LoadMap";
         const MD5SUM: &'static str = "22e647fdfbe3b23c8c9f419908afaebd";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::LoadMap_";
         type Request = LoadMapRequest;
         type Response = LoadMapResponse;
     }
@@ -6040,6 +6045,7 @@ string frame_id"####;
         const ROS_SERVICE_NAME: &'static str = "nav_msgs/SetMap";
         const MD5SUM: &'static str = "c36922319011e63ed7784112ad4fdd32";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "nav_msgs::srv::dds_::SetMap_";
         type Request = SetMapRequest;
         type Response = SetMapResponse;
     }
@@ -6138,6 +6144,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/DeleteParam";
         const MD5SUM: &'static str = "c1f3d28f1b044c871e6eff2e9fc3c667";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::DeleteParam_";
         type Request = DeleteParamRequest;
         type Response = DeleteParamResponse;
     }
@@ -6187,6 +6194,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetActionServers";
         const MD5SUM: &'static str = "46807ba271844ac5ba4730a47556b236";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::GetActionServers_";
         type Request = GetActionServersRequest;
         type Response = GetActionServersResponse;
     }
@@ -6240,6 +6248,7 @@ string default"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetParam";
         const MD5SUM: &'static str = "e36fd90759dbac1c5159140a7fa8c644";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::GetParam_";
         type Request = GetParamRequest;
         type Response = GetParamResponse;
     }
@@ -6289,6 +6298,7 @@ string default"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetParamNames";
         const MD5SUM: &'static str = "dc7ae3609524b18034e49294a4ce670e";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::GetParamNames_";
         type Request = GetParamNamesRequest;
         type Response = GetParamNamesResponse;
     }
@@ -6338,6 +6348,7 @@ string default"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/GetTime";
         const MD5SUM: &'static str = "556a4fb76023a469987922359d08a844";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::GetTime_";
         type Request = GetTimeRequest;
         type Response = GetTimeResponse;
     }
@@ -6389,6 +6400,7 @@ string default"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/HasParam";
         const MD5SUM: &'static str = "ed3df286bd6dff9b961770f577454ea9";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::HasParam_";
         type Request = HasParamRequest;
         type Response = HasParamResponse;
     }
@@ -6449,6 +6461,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/MessageDetails";
         const MD5SUM: &'static str = "f9c88144f6f6bd888dd99d4e0411905d";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::MessageDetails_";
         type Request = MessageDetailsRequest;
         type Response = MessageDetailsResponse;
     }
@@ -6504,6 +6517,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/NodeDetails";
         const MD5SUM: &'static str = "e1d0ced5ab8d5edb5fc09c98eb1d46f6";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::NodeDetails_";
         type Request = NodeDetailsRequest;
         type Response = NodeDetailsResponse;
     }
@@ -6553,6 +6567,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/Nodes";
         const MD5SUM: &'static str = "3d07bfda1268b4f76b16b7ba8a82665d";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::Nodes_";
         type Request = NodesRequest;
         type Response = NodesResponse;
     }
@@ -6604,6 +6619,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/Publishers";
         const MD5SUM: &'static str = "cb37f09944e7ba1fc08ee38f7a94291d";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::Publishers_";
         type Request = PublishersRequest;
         type Response = PublishersResponse;
     }
@@ -6655,6 +6671,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/SearchParam";
         const MD5SUM: &'static str = "dfadc39f113c1cc6d7759508d8461d5a";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::SearchParam_";
         type Request = SearchParamRequest;
         type Response = SearchParamResponse;
     }
@@ -6706,6 +6723,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceHost";
         const MD5SUM: &'static str = "a1b60006f8ee69637c856c94dd192f5a";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServiceHost_";
         type Request = ServiceHostRequest;
         type Response = ServiceHostResponse;
     }
@@ -6757,6 +6775,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceNode";
         const MD5SUM: &'static str = "bd2a0a45fd7a73a86c8d6051d5a6db8a";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServiceNode_";
         type Request = ServiceNodeRequest;
         type Response = ServiceNodeResponse;
     }
@@ -6808,6 +6827,7 @@ string[] services"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceProviders";
         const MD5SUM: &'static str = "f30b41d5e347454ae5483ee95eef5cc6";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServiceProviders_";
         type Request = ServiceProvidersRequest;
         type Response = ServiceProvidersResponse;
     }
@@ -6868,6 +6888,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceRequestDetails";
         const MD5SUM: &'static str = "f9c88144f6f6bd888dd99d4e0411905d";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServiceRequestDetails_";
         type Request = ServiceRequestDetailsRequest;
         type Response = ServiceRequestDetailsResponse;
     }
@@ -6928,6 +6949,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceResponseDetails";
         const MD5SUM: &'static str = "f9c88144f6f6bd888dd99d4e0411905d";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServiceResponseDetails_";
         type Request = ServiceResponseDetailsRequest;
         type Response = ServiceResponseDetailsResponse;
     }
@@ -6979,6 +7001,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServiceType";
         const MD5SUM: &'static str = "0e24a2dcdf70e483afc092a35a1f15f7";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServiceType_";
         type Request = ServiceTypeRequest;
         type Response = ServiceTypeResponse;
     }
@@ -7028,6 +7051,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/Services";
         const MD5SUM: &'static str = "e44a7e7bcb900acadbcc28b132378f0c";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::Services_";
         type Request = ServicesRequest;
         type Response = ServicesResponse;
     }
@@ -7079,6 +7103,7 @@ string[] constvalues"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/ServicesForType";
         const MD5SUM: &'static str = "93e9fe8ae5a9136008e260fe510bd2b0";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::ServicesForType_";
         type Request = ServicesForTypeRequest;
         type Response = ServicesForTypeResponse;
     }
@@ -7130,6 +7155,7 @@ string value"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/SetParam";
         const MD5SUM: &'static str = "bc6ccc4a57f61779c8eaae61e9f422e0";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::SetParam_";
         type Request = SetParamRequest;
         type Response = SetParamResponse;
     }
@@ -7181,6 +7207,7 @@ string value"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/Subscribers";
         const MD5SUM: &'static str = "cb387b68f5b29bc1456398ee8476b973";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::Subscribers_";
         type Request = SubscribersRequest;
         type Response = SubscribersResponse;
     }
@@ -7232,6 +7259,7 @@ string value"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/TopicType";
         const MD5SUM: &'static str = "0d30b3f53a0fd5036523a7141e524ddf";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::TopicType_";
         type Request = TopicTypeRequest;
         type Response = TopicTypeResponse;
     }
@@ -7283,6 +7311,7 @@ string[] types"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/Topics";
         const MD5SUM: &'static str = "d966d98fc333fa1f3135af765eac1ba8";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::Topics_";
         type Request = TopicsRequest;
         type Response = TopicsResponse;
     }
@@ -7336,6 +7365,7 @@ string[] typedefs_full_text"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/TopicsAndRawTypes";
         const MD5SUM: &'static str = "e1432466c8f64316723276ba07c59d12";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::TopicsAndRawTypes_";
         type Request = TopicsAndRawTypesRequest;
         type Response = TopicsAndRawTypesResponse;
     }
@@ -7387,6 +7417,7 @@ string[] typedefs_full_text"####;
         const ROS_SERVICE_NAME: &'static str = "rosapi/TopicsForType";
         const MD5SUM: &'static str = "56f77ff6da756dd27c1ed16ec721072a";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "rosapi::srv::dds_::TopicsForType_";
         type Request = TopicsForTypeRequest;
         type Response = TopicsForTypeResponse;
     }
@@ -9770,6 +9801,7 @@ string status_message # Used to give details about success"####;
         const ROS_SERVICE_NAME: &'static str = "sensor_msgs/SetCameraInfo";
         const MD5SUM: &'static str = "bef1df590ed75ed1f393692395e15482";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "sensor_msgs::srv::dds_::SetCameraInfo_";
         type Request = SetCameraInfoRequest;
         type Response = SetCameraInfoResponse;
     }
@@ -11230,6 +11262,7 @@ pub mod std_srvs {
         const ROS_SERVICE_NAME: &'static str = "std_srvs/Empty";
         const MD5SUM: &'static str = "d41d8cd98f00b204e9800998ecf8427e";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "std_srvs::srv::dds_::Empty_";
         type Request = EmptyRequest;
         type Response = EmptyResponse;
     }
@@ -11284,6 +11317,7 @@ string message # informational, e.g. for error messages"####;
         const ROS_SERVICE_NAME: &'static str = "std_srvs/SetBool";
         const MD5SUM: &'static str = "09fb03525b03e7ea1fd3992bafd87e16";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "std_srvs::srv::dds_::SetBool_";
         type Request = SetBoolRequest;
         type Response = SetBoolResponse;
     }
@@ -11335,6 +11369,7 @@ string message # informational, e.g. for error messages"####;
         const ROS_SERVICE_NAME: &'static str = "std_srvs/Trigger";
         const MD5SUM: &'static str = "937c9679a518e3a18d831e57125ea522";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "std_srvs::srv::dds_::Trigger_";
         type Request = TriggerRequest;
         type Response = TriggerResponse;
     }
@@ -11919,6 +11954,7 @@ int64 sum"####;
         const ROS_SERVICE_NAME: &'static str = "test_msgs/AddTwoInts";
         const MD5SUM: &'static str = "6a2e34150c00229791cc89ff309fff21";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "test_msgs::srv::dds_::AddTwoInts_";
         type Request = AddTwoIntsRequest;
         type Response = AddTwoIntsResponse;
     }
@@ -11973,6 +12009,7 @@ uint8[] bytes"####;
         const ROS_SERVICE_NAME: &'static str = "test_msgs/RoundTripArray";
         const MD5SUM: &'static str = "6a66b36cb6abf834a48739776dfbe789";
         const ROS2_HASH: &'static str = "";
+        const ROS2_TYPE_NAME: &'static str = "test_msgs::srv::dds_::RoundTripArray_";
         type Request = RoundTripArrayRequest;
         type Response = RoundTripArrayResponse;
     }

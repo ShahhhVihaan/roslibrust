@@ -29,6 +29,7 @@ pub fn generate_service(service: ServiceFile) -> Result<TokenStream, Error> {
     let service_md5sum = service.md5sum;
     // Optional for now until we get all the hashing sorted out
     let service_ros2_hash = service.ros2_hash.unwrap_or_else(|| String::from(""));
+    let ros2_type_name = service.parsed.get_ros2_dds_type_name();
     let struct_name = format_ident!("{}", service.parsed.name);
     let request_name = format_ident!("{}", service.parsed.request_type.name);
     let response_name = format_ident!("{}", service.parsed.response_type.name);
@@ -48,6 +49,7 @@ pub fn generate_service(service: ServiceFile) -> Result<TokenStream, Error> {
             const ROS_SERVICE_NAME: &'static str = #service_type_name;
             const MD5SUM: &'static str = #service_md5sum;
             const ROS2_HASH: &'static str = #service_ros2_hash;
+            const ROS2_TYPE_NAME: &'static str = #ros2_type_name;
             type Request = #request_name;
             type Response = #response_name;
         }

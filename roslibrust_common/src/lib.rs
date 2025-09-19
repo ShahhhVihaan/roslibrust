@@ -89,6 +89,9 @@ pub trait RosServiceType: 'static + Send + Sync {
     /// The computed ROS2 hash of the message file and its dependencies
     /// This field is optional, and only needed when using ros2 native communication
     const ROS2_HASH: &'static str = "";
+    /// The fully qualified type name we need to work with ROS2 zenoh
+    /// e.g. std_srvs::srv::dds_::SetBool_
+    const ROS2_TYPE_NAME: &'static str = "";
     /// The type of data being sent in the request
     type Request: RosMessageType;
     /// The type of the data

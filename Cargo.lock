@@ -2849,7 +2849,7 @@ dependencies = [
 [[package]]
 name = "ros-z"
 version = "0.1.0"
-source = "git+https://github.com/ZettaScaleLabs/ros-z.git#1c0dd043c8e8610b46c72b990a7904beca3f7610"
+source = "git+https://github.com/ZettaScaleLabs/ros-z.git#eeeb6bc44bb67dd31ed5485a7d52235ad9508512"
 dependencies = [
  "cdr",
  "clap 4.5.47",
