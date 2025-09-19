@@ -1,0 +1,150 @@
+name: General CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  HOME: /root
+  # Coupled with our use of the test_log crate this should give us good CI output on failure
+  RUST_LOG: debug
+
+jobs:
+  noetic:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    container: carter12s/roslibrust-ci-noetic:rust_1_90
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Verify rust version
+        run: source /root/.cargo/env; rustc --version
+      - name: Lint
+        run: source /root/.cargo/env; cargo fmt --all -- --check
+      - name: Build Main Lib
+        run: source /root/.cargo/env; cargo build
+        # This step is required to confirm feature combinations work, the main workspace build does all features
+      - name: Build Proc Macro
+        run: source /root/.cargo/env; cargo build -p roslibrust_codegen_macro
+      - name: Unit Tests
+        run: source /root/.cargo/env; RUST_LOG=debug cargo test
+      - name: Start rosbridge
+        run: source /opt/ros/noetic/setup.bash; roslaunch rosbridge_server rosbridge_websocket.launch & disown; rosrun rosapi rosapi_node & sleep 1
+      - name: Integration Tests
+        run: source /opt/ros/noetic/setup.bash; source /root/.cargo/env; RUST_LOG=debug cargo test --features ros1_test,all -- --test-threads 1
+  kilted:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    container: carter12s/roslibrust-ci-kilted:rust_1_90
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Lint
+        run: source /root/.cargo/env; cargo fmt --all -- --check
+      - name: Build Main Lib
+        run: source /root/.cargo/env; cargo build
+        # This step is required to confirm feature combinations work, the main workspace build does all features
+      - name: Build Proc Macro
+        run: source /root/.cargo/env; cargo build -p roslibrust_codegen_macro
+      - name: Unit Tests
+        run: source /root/.cargo/env; cargo test
+      - name: Start services and run integration tests
+        run: |
+          source /opt/ros/kilted/setup.bash
+          ros2 launch rosbridge_server rosbridge_websocket_launch.xml &
+          ros2 run rosapi rosapi_node &
+          ros2 run rmw_zenoh_cpp rmw_zenohd -l tcp/0.0.0.0:7447 > zenoh.log 2>&1 &
+          sleep 2
+          source /root/.cargo/env
+          cargo test --features ros2_zenoh_test,ros2_test -- --test-threads 1
+  iron:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    container: carter12s/roslibrust-ci-iron:rust_1_90
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Lint
+        run: source /root/.cargo/env; cargo fmt --all -- --check
+      - name: Build Main Lib
+        run: source /root/.cargo/env; cargo build
+        # This step is required to confirm feature combinations work, the main workspace build does all features
+      - name: Build Proc Macro
+        run: source /root/.cargo/env; cargo build -p roslibrust_codegen_macro
+      - name: Unit Tests
+        run: source /root/.cargo/env; cargo test
+      - name: Start rosbridge
+        run: source /opt/ros/iron/setup.bash; ros2 launch rosbridge_server rosbridge_websocket_launch.xml & disown; ros2 run rosapi rosapi_node & sleep 1
+      - name: Integration Tests
+        run: source /root/.cargo/env; cargo test --features ros2_test -- --test-threads 1
+  humble:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    container: carter12s/roslibrust-ci-humble:rust_1_90
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Verify rust version
+        run: source /root/.cargo/env; rustc --version
+      - name: Lint
+        run: source /root/.cargo/env; cargo fmt --all -- --check
+      - name: Build Main Lib
+        run: source /root/.cargo/env; cargo build
+        # This step is required to confirm feature combinations work, the main workspace build does all features
+      - name: Build Proc Macro
+        run: source /root/.cargo/env; cargo build -p roslibrust_codegen_macro
+      - name: Unit Tests
+        run: source /root/.cargo/env; cargo test
+      - name: Start rosbridge
+        run: source /opt/ros/humble/setup.bash; ros2 launch rosbridge_server rosbridge_websocket_launch.xml & disown; ros2 run rosapi rosapi_node & sleep 1
+      - name: Integration Tests
+        run: source /root/.cargo/env; cargo test --features ros2_test -- --test-threads 1
+  galactic:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    container: carter12s/roslibrust-ci-galactic:rust_1_90
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Verify rust version
+        run: source /root/.cargo/env; rustc --version
+      - name: Lint
+        run: source /root/.cargo/env; cargo fmt --all -- --check
+      - name: Build Main Lib
+        run: source /root/.cargo/env; cargo build
+        # This step is required to confirm feature combinations work, the main workspace build does all features
+      - name: Build Proc Macro
+        run: source /root/.cargo/env; cargo build -p roslibrust_codegen_macro
+      - name: Unit Tests
+        run: source /root/.cargo/env; cargo test
+      - name: Start rosbridge
+        run: source /opt/ros/galactic/setup.bash; ros2 launch rosbridge_server rosbridge_websocket_launch.xml & disown; ros2 run rosapi rosapi_node & sleep 1
+      - name: Integration Tests
+        run: source /root/.cargo/env; cargo test --features ros2_test -- --test-threads 1

@@ -106,6 +106,4 @@ We uphold the rust lang [Code of Conduct](https://www.rust-lang.org/policies/cod
 
 ### Minimum Supported Rust Version / MSRV
 
-MSRV is currently set to 1.75 to enable `async fn` in traits.
-
-We are likely to increase the MSRV to 1.83 when support for `async closures` lands.
+MSRV is currently 1.85 to support edition 2024.
