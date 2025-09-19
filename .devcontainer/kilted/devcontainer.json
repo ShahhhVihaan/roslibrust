@@ -1,0 +1,16 @@
+{
+    "name": "Kilted",
+    "workspaceFolder": "/roslibrust",
+    "service": "rosbridge",
+    "dockerComposeFile": "../../docker/kilted_compose.yaml",
+    "customizations": {
+    "vscode": {
+      "extensions": [
+        // Rust language server support
+        "rust-lang.rust-analyzer",
+        // Debug support:
+        "vadimcn.vscode-lldb",
+    ]
+    }
+  }
+}

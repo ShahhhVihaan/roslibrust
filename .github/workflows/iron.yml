@@ -1,3 +1,4 @@
+# Note: each job is in a separate workflow to support individual CI badges in the readme
 name: Iron
 
 on:
@@ -12,12 +13,12 @@ env:
   RUST_LOG: debug
 
 jobs:
-  humble:
+  iron:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    container: carter12s/roslibrust-ci-iron:latest
+    container: carter12s/roslibrust-ci-iron:rust_1_90
     timeout-minutes: 20
     steps:
       - name: Checkout repo

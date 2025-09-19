@@ -7,10 +7,10 @@ edition = "2021"
 # We're depending on the macro feature (which will also provide codegen transitively)
 # and the mock backend so we can test our node
 roslibrust = { path = "../roslibrust", features = ["macro", "rosbridge"] }
-tokio = { version = "1.42", features = ["sync", "macros"] }
+tokio = { version = "1", features = ["sync", "macros"] }
 
 [dev-dependencies]
 # For tests we need to macro still, and the mock backend
 roslibrust = { path = "../roslibrust", features = ["macro", "mock"] }
 # We use test-util to pause time in our test
-tokio = { version = "1.42", features = ["test-util"] }
+tokio = { version = "1", features = ["test-util"] }

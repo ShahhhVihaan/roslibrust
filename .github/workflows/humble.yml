@@ -1,3 +1,4 @@
+# Note: each job is in a separate workflow to support individual CI badges in the readme
 name: Humble
 
 on:
@@ -17,7 +18,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    container: carter12s/roslibrust-ci-humble:latest
+    container: carter12s/roslibrust-ci-humble:rust_1_90
     timeout-minutes: 20
     steps:
       - name: Checkout repo
