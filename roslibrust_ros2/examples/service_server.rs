@@ -1,5 +1,5 @@
-use roslibrust_common::traits::*;
 use log::*;
+use roslibrust_common::traits::*;
 
 #[tokio::main]
 async fn main() {
@@ -25,10 +25,7 @@ async fn main() {
 
     // Server will be running for as long as _server is kept alive
     let _server = client
-        .advertise_service::<roslibrust_test::ros2::std_srvs::SetBool, _>(
-            "/set_bool",
-            server_fn,
-        )
+        .advertise_service::<roslibrust_test::ros2::std_srvs::SetBool, _>("/set_bool", server_fn)
         .await
         .unwrap();
     // Server is now up and can be called via command line:
