@@ -13,7 +13,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    image: rust:latest
+    container: rust:latest
     permissions:
       # Make sure we have permissions to push to rep
       contents: write
