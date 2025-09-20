@@ -133,6 +133,5 @@ pub trait ServiceProvider {
 pub trait Ros: 'static + Send + Sync + TopicProvider + ServiceProvider + Clone {}
 // ANCHOR_END: ros_trait
 
-
 /// The Ros trait is auto implemented for any type that implements the required traits
 impl<T: 'static + Send + Sync + TopicProvider + ServiceProvider + Clone> Ros for T {}
