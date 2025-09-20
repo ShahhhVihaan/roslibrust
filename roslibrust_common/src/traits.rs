@@ -2,6 +2,7 @@ use std::future::Future;
 
 use crate::{Result, RosMessageType, RosServiceType, ServiceFn};
 
+// ANCHOR: publish
 /// Indicates that something is a publisher and has our expected publish
 /// Implementors of this trait are expected to auto-cleanup the publisher when dropped
 pub trait Publish<T: RosMessageType> {
@@ -11,6 +12,7 @@ pub trait Publish<T: RosMessageType> {
     // We only plan to work with multi-threaded work stealing executors (e.g. tokio) so we're manually specifying Send
     fn publish(&self, data: &T) -> impl Future<Output = Result<()>> + Send;
 }
+// ANCHOR_END: publish
 
 /// Represents that an object can act as a subscriber.
 /// Types returned by calling [TopicProvider::subscribe], implement this trait.
@@ -45,6 +47,7 @@ where
     }
 }
 
+// ANCHOR: topic_provider
 /// This trait generically describes the capability of something to act as an async interface to a set of topics
 ///
 /// This trait is largely based on ROS concepts, but could be extended to other protocols / concepts.
@@ -74,6 +77,7 @@ pub trait TopicProvider {
         topic: &str,
     ) -> impl Future<Output = Result<Self::Subscriber<T>>> + Send;
 }
+// ANCHOR_END: topic_provider
 
 /// Defines what it means to be something that is callable as a service
 pub trait Service<T: RosServiceType> {
@@ -117,15 +121,18 @@ pub trait ServiceProvider {
         F: ServiceFn<T>;
 }
 
+// ANCHOR: ros_trait
 /// Represents all "standard" ROS functionality generically supported by roslibrust
 ///
-/// Implementors of this trait behave like typical ROS1 node handles.
+/// Implementors of this trait behave like typical ROS node handles.
 /// Cloning the handle does not create additional underlying connections, but instead simply returns another handle
 /// to interact with the underlying node.
 ///
 /// Implementors of this trait are expected to be "self de-registering", when the last node handle for a given
 /// node is dropped, the underlying node is expected to be shut down and clean-up after itself
 pub trait Ros: 'static + Send + Sync + TopicProvider + ServiceProvider + Clone {}
+// ANCHOR_END: ros_trait
+
 
 /// The Ros trait is auto implemented for any type that implements the required traits
 impl<T: 'static + Send + Sync + TopicProvider + ServiceProvider + Clone> Ros for T {}

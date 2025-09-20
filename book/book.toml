@@ -3,3 +3,12 @@ authors = ["carter"]
 language = "en"
 src = "src"
 title = "RosLibRust Documentation"
+
+[rust]
+edition = "2024"
+
+[preprocessor.keeper]
+command = "mdbook-keeper"
+is_workspace = true
+externs = ["roslibrust", "tokio"]
+manifest_dir = "."
