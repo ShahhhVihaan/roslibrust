@@ -2,7 +2,7 @@
 authors = ["carter"]
 language = "en"
 src = "src"
-title = "RosLibRust Documentation"
+title = "RosLibRust Guides"
 
 [rust]
 edition = "2024"
