@@ -1,12 +1,12 @@
 //! This file is part the getting_started.md documentation in the book.
 //! It is included here so it can better be automatically tested
-//! 
+//!
 // ANCHOR: preamble
 // Bring generated messages into scope:
 include!(concat!(env!("OUT_DIR"), "/messages.rs"));
 
 // Bring in traits we need from roslibrust
-use roslibrust::traits::{Publish, Subscribe, Ros};
+use roslibrust::traits::{Publish, Ros, Subscribe};
 
 use std::sync::Arc;
 use tokio::sync::Mutex;
@@ -53,7 +53,7 @@ async fn sub_counter(ros: impl Ros, state: Arc<Mutex<u32>>) {
 
         // Print the message
         println!("Got message: {}", msg.data);
-        
+
         // Decrement our state
         *state.lock().await -= 1;
     }
@@ -84,7 +84,7 @@ async fn main() {
     // Wait for ctrl_c
     tokio::signal::ctrl_c().await.unwrap();
 }
-// ANCHOR_END: main 
+// ANCHOR_END: main
 
 // ANCHOR: test
 // cfg(test) here means that this code is only compile when invoking `cargo test` and doesn't get included in normal builds
@@ -119,8 +119,14 @@ mod test {
         let published_count = *publisher_state.lock().await;
         let subscribed_count = *subscriber_state.lock().await;
         // Check the exact number of messages our publisher and subscriber got
-        assert_eq!(published_count, 10, "Published count should be 10, but was {published_count}");
-        assert_eq!(subscribed_count, 0, "Subscribed count should be 0, but was {subscribed_count}");
+        assert_eq!(
+            published_count, 10,
+            "Published count should be 10, but was {published_count}"
+        );
+        assert_eq!(
+            subscribed_count, 0,
+            "Subscribed count should be 0, but was {subscribed_count}"
+        );
         // Purely for demonstration purposes, show how long this test takes to run
         let tock = std::time::SystemTime::now();
         println!("Test took in realtime {:?}", tock.duration_since(tick));
