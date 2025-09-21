@@ -75,7 +75,7 @@ async fn main() -> roslibrust::Result<()> {
 All of this is backed by common traits for ROS messages, topics, and services. `roslibrust_codegen` provides generation of Rust types from both ROS1 and ROS2 .msg/.srv files and
 `roslibrust_codegen_macro` provides a convenient macro for generating these types:
 
-```rust,no_compile
+```rust,ignore
 // Will generate types from all packages in ROS_PACKAGE_PATH 
 roslibrust_codegen_macro::find_and_generate_ros_messages!();
 ```
