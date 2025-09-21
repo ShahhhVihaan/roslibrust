@@ -102,6 +102,7 @@ pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
 
     let mut base = quote! {
         #[allow(non_snake_case)]
+        #[allow(dead_code)]
         #(#attrs )*
         pub struct #struct_name {
             #(#fields )*
