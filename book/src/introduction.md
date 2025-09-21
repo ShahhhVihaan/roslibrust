@@ -1,8 +1,16 @@
 # Introduction
 
-RosLibRust is a library for interfacing with ROS1 and ROS2, built on Tokio.
+RosLibRust is an alternative to the various existing ROS clients.
+RosLibRust may be a great fit for your project, or you may benefit from one of the other existing clients.
 
-## Why?
+- [ros2rust](https://github.com/ros2-rust/ros2_rust) is ideal if you want to release ROS2 packages to the community, or want to add Rust to an existing ROS2 project. But requires a full ROS2 installation.
+- [rosrust](https://github.com/adnanademovic/rosrust) is a solid ROS1 option, but doesn't support `async` and is un-maintained.
+- [ros2_client](https://docs.rs/ros2-client/latest/ros2_client/) is a pure rust client for ROS2 that supports `async`. However, it can only talk DDS and not Zenoh that ROS2 is migrating to.
+
+RosLibRust is ideal for systems like facility control systems and cloud tools that need to interact with a variety of ROS systems, and don't want to "become ROS" themselves.
+RosLibRust has one API that supports a broad range of ROS versions and protocols.
+
+## Why was RosLibRust created?
 
 RosLibRust was designed to help solve several challenges in the ROS ecosystem:
 
@@ -106,8 +114,31 @@ The full list of features is:
 
 ### Pure Rust Type Generation
 
-coming soon
+RosLibRust has implemented a full parser and code-generator for ROS message types.
+This allows us to generate Rust types from ROS .msg/.srv files at compile time.
+The generated types are fully compatible with all RosLibRust backends.
+Meaning a ROS1 .msg file can be used with ROS2 and vice versa.
+
+The rosbridge backend support "generic" types with parsing fallbacks, see [generic message example](https://github.com/RosLibRust/roslibrust/blob/master/roslibrust/examples/generic_message.rs)
+
+A `build.rs` file can be used to automatically generate Rust types at build time from ROS .msg/.srv files.
+See [example_package](https://github.com/RosLibRust/roslibrust/tree/master/example_package) for a full example.
+
+A proc-macro is also provided for generating types at compile time, see [example_package_macro](https://github.com/RosLibRust/roslibrust/tree/master/example_package_macro) for an example.
+
+This breaks tooling free from needing any ROS installation.
 
 ### Mock Implementation for Testing
 
-coming soon
+A major challenge for incorporating ROS into larger systems is testing.
+Traditionally testing ROS nodes involves either:
+
+1. Breaking all the "ROS Logic" and other logic apart and indpendently testing them.
+1. Launching a full ROS system in a testing environment and interacting with it.
+
+The first approach leads to "extra abstraction" and often causes timing and messaging related bugs to be missed.
+The second approach is brittle, slow, and often a bottle neck for test times.
+
+RosLibRust provides a mock implementation of ROS for testing that allows deterministic "time traveling" tests.
+See [extended getting started guide](extended_getting_started.md#writing-tests-for-our-node) for an example.
+

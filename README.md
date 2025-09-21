@@ -4,8 +4,11 @@
 [![Galactic](https://github.com/roslibrust/roslibrust/actions/workflows/galactic.yml/badge.svg)](https://github.com/roslibrust/roslibrust/actions/workflows/galactic.yml)
 [![Humble](https://github.com/roslibrust/roslibrust/actions/workflows/humble.yml/badge.svg)](https://github.com/roslibrust/roslibrust/actions/workflows/humble.yml)
 [![Iron](https://github.com/roslibrust/roslibrust/actions/workflows/iron.yml/badge.svg)](https://github.com/roslibrust/roslibrust/actions/workflows/iron.yml)
-[![Kilted](https://github.com/roslibrust/roslibrust/actions/workflows/kilted.yml/badge.svg)][https://github.com/roslibrust/roslibrust/actions/workflows/kilted.yml]
-[![License:MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Kilted](https://github.com/roslibrust/roslibrust/actions/workflows/kilted.yml/badge.svg)](https://github.com/roslibrust/roslibrust/actions/workflows/kilted.yml)
+[![License:MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+Documentation about the crate is on [docs.rs](https://docs.rs/roslibrust/latest/roslibrust/),
+extended guides can be found on [roslibrust.github.io](https://roslibrust.github.io/roslibrust/)
 
 An async rust library for interfacing with ROS1 and ROS2, built on Tokio.
 
@@ -72,31 +75,20 @@ async fn main() -> roslibrust::Result<()> {
 All of this is backed by common traits for ROS messages, topics, and services. `roslibrust_codegen` provides generation of Rust types from both ROS1 and ROS2 .msg/.srv files and
 `roslibrust_codegen_macro` provides a convenient macro for generating these types:
 
-```no_compile
+```rust,ignore
 // Will generate types from all packages in ROS_PACKAGE_PATH 
 roslibrust_codegen_macro::find_and_generate_ros_messages!();
 ```
 
-If you want to see what the generated code looks like check [here](https://github.com/RosLibRust/roslibrust/blob/master/roslibrust_test/src/ros1.rs).
+If you want to see what the generated code looks like checkout [our generated messages in our test crate](https://github.com/RosLibRust/roslibrust/blob/master/roslibrust_test/src/ros1.rs).
 While the macro is useful for getting started, we recommend using `roslibrust_codegen` with a `build.rs` as shown in [example_package](https://github.com/RosLibRust/roslibrust/tree/master/example_package).
 This allows cargo to know when message files are edited and automatically re-generate the code.
 
 ## Getting Started / Examples
 
-Examples can be found in [examples](https://github.com/RosLibRust/roslibrust/tree/master/roslibrust/examples).
-We recommend looking at the examples prefixed with `generic_` first, these examples show the recommended style of using `roslibrust` through the generic traits.
-Code written this way can be used with any backend, and critically can be tested with the mock backend.
-
-Examples prefixed with `ros1_`, `rosbridge_`, and `zenoh_` show direct use of specific backends if you are only interested in a single backend.
-Some backends may provide additional functionality not available through the generic traits.
-
-To get started with writing a node with `roslibrust` we recommend looking at [example_package](https://github.com/RosLibRust/roslibrust/tree/master/example_package) and setting up your
-`Cargo.toml` and `build.rs` in a similar way.
-Some important tips to keep in mind with using the crate:
-
-- This crate is built around the [tokio runtime](https://docs.rs/tokio/latest/tokio/) and requires tokio to work. All backends expect to be created inside a tokio runtime.
-- The generic traits `TopicProvider` and `ServiceProvider` are not [object safe](https://doc.rust-lang.org/reference/items/traits.html#object-safety) due to their generic parameters. This means you cannot use them as trait objects with `Box<dyn TopicProvider>` or `Box<dyn ServiceProvider>`. Instead, they should be used as compile time generics like `fn foo(ros: impl TopicProvider)` or `struct MyNode<T: TopicProvider> { ros: T }`.
-- By default the roslibrust crate does not include any backends. You must enable the specific backends you want to use with features in `Cargo.toml` like `roslibrust = { version = "0.12", features = ["ros1"] }`.
+- Checkout the [Quick Getting Started Guide](https://roslibrust.github.io/roslibrust/quick_getting_started.html) for a brief guide on how to get started with RosLibRust.
+- Checkout the [Extended Getting Started Guide](https://roslibrust.github.io/roslibrust/extended_getting_started.html) for a more in depth guide on how to get started with RosLibRust.
+- Examples can be found in [examples](https://github.com/RosLibRust/roslibrust/tree/master/roslibrust/examples).
 
 ## Contributing
 
