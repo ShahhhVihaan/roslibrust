@@ -14,6 +14,7 @@ pub mod actionlib_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -57,6 +58,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "actionlib_msgs::msg::dds_::GoalID_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -152,6 +154,7 @@ uint32 nanosec"####;
         pub const r#LOST: u8 = 9u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -316,6 +319,7 @@ pub mod builtin_interfaces {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -349,6 +353,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "builtin_interfaces::msg::dds_::Duration_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -397,6 +402,7 @@ pub mod diagnostic_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -490,6 +496,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -545,6 +552,7 @@ string value"####;
         pub const r#STALE: u8 = 3u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -570,6 +578,7 @@ string value"####;
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::KeyValue_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -607,6 +616,7 @@ string load_namespace"####;
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::AddDiagnosticsRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -647,6 +657,7 @@ string message"####;
         type Response = AddDiagnosticsResponse;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -666,6 +677,7 @@ string message"####;
         const ROS2_TYPE_NAME: &'static str = "diagnostic_msgs::msg::dds_::SelfTestRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -750,6 +762,7 @@ pub mod geometry_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -785,6 +798,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Accel_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -873,6 +887,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -932,6 +947,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::AccelWithCovariance_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1059,6 +1075,7 @@ uint32 nanosec"####;
             "geometry_msgs::msg::dds_::AccelWithCovarianceStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1113,6 +1130,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Inertia_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1215,6 +1233,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::InertiaStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1241,6 +1260,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Point_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1274,6 +1294,7 @@ float32 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Point32_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1342,6 +1363,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PointStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1378,6 +1400,7 @@ float32 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Polygon_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1471,6 +1494,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PolygonStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1510,6 +1534,7 @@ float64 w 1"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Pose_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1542,6 +1567,7 @@ float64 theta"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Pose2D_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1639,6 +1665,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1735,6 +1762,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1801,6 +1829,7 @@ float64 w 1"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovariance_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1942,6 +1971,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::PoseWithCovarianceStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -1975,6 +2005,7 @@ float64 w 1"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Quaternion_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2045,6 +2076,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::QuaternionStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2089,6 +2121,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Transform_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2211,6 +2244,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TransformStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2247,6 +2281,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Twist_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2337,6 +2372,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2397,6 +2433,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::TwistWithCovariance_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2527,6 +2564,7 @@ uint32 nanosec"####;
             "geometry_msgs::msg::dds_::TwistWithCovarianceStamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2558,6 +2596,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Vector3_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2634,6 +2673,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Vector3Stamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2670,6 +2710,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "geometry_msgs::msg::dds_::Wrench_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2776,6 +2817,7 @@ pub mod nav_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2854,6 +2896,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GridCells_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -2942,6 +2985,7 @@ float64 w 1"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::MapMetaData_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -3114,6 +3158,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::OccupancyGrid_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -3335,6 +3380,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::Odometry_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -3511,6 +3557,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::Path_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -3530,6 +3577,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetMapRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -3852,6 +3900,7 @@ uint32 nanosec"####;
         type Response = GetMapResponse;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -4033,6 +4082,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::GetPlanRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -4371,6 +4421,7 @@ uint32 nanosec"####;
         type Response = GetPlanResponse;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -4395,6 +4446,7 @@ string map_url"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::LoadMapRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -4734,6 +4786,7 @@ uint32 nanosec"####;
         type Response = LoadMapResponse;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5218,6 +5271,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "nav_msgs::msg::dds_::SetMapRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5267,6 +5321,7 @@ pub mod ros2_test_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5288,6 +5343,7 @@ pub mod ros2_test_msgs {
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Bool_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5311,6 +5367,7 @@ uint8[<=5] data"####;
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::BoundedInt_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5337,6 +5394,7 @@ uint8[<=5] data"####;
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::BoundedReferenced_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5363,6 +5421,7 @@ string<=5[<=3] data_matrix"####;
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::BoundedString_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5389,6 +5448,7 @@ char[<=11] data_bounded_array"####;
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Char_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5436,6 +5496,7 @@ string[] s_vec ["hello", "world"]
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Defaults_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5487,6 +5548,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::Stamped_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5510,6 +5572,7 @@ int64 b"####;
         const ROS2_TYPE_NAME: &'static str = "ros2_test_msgs::msg::dds_::AddTwoIntsRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5558,6 +5621,7 @@ pub mod sensor_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5705,6 +5769,7 @@ uint32 nanosec"####;
         pub const r#POWER_SUPPLY_TECHNOLOGY_LIMN: u8 = 6u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5924,6 +5989,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::CameraInfo_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -5969,6 +6035,7 @@ float32[] values"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::ChannelFloat32_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6043,6 +6110,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::CompressedImage_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6114,6 +6182,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::FluidPressure_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6193,6 +6262,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Illuminance_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6283,6 +6353,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Image_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6389,6 +6460,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Imu_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6475,6 +6547,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::JointState_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6544,6 +6617,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Joy_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6586,6 +6660,7 @@ float32 intensity"####;
         pub const r#TYPE_BUZZER: u8 = 2u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6624,6 +6699,7 @@ float32 intensity"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::JoyFeedbackArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6649,6 +6725,7 @@ float32[] echoes  # Multiple values of ranges or intensities.
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::LaserEcho_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6745,6 +6822,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::LaserScan_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -6836,6 +6914,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MagneticField_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7001,6 +7080,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MultiDOFJointState_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7106,6 +7186,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::MultiEchoLaserScan_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7245,6 +7326,7 @@ uint32 nanosec"####;
         pub const r#COVARIANCE_TYPE_KNOWN: u8 = 3u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7299,6 +7381,7 @@ uint16 service"####;
         pub const r#SERVICE_GALILEO: u16 = 8u16;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7414,6 +7497,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::PointCloud_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7524,6 +7608,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::PointCloud2_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7574,6 +7659,7 @@ uint32 count     # How many elements in the field"####;
         pub const r#FLOAT64: u8 = 8u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7680,6 +7766,7 @@ uint32 nanosec"####;
         pub const r#INFRARED: u8 = 1u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7723,6 +7810,7 @@ bool do_rectify"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::RegionOfInterest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7795,6 +7883,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::RelativeHumidity_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7862,6 +7951,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::Temperature_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -7928,6 +8018,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::TimeReference_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8206,6 +8297,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "sensor_msgs::msg::dds_::SetCameraInfoRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8256,6 +8348,7 @@ pub mod service_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8336,6 +8429,7 @@ pub mod shape_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8375,6 +8469,7 @@ uint32[3] vertex_indices"####;
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::Mesh_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8398,6 +8493,7 @@ uint32[3] vertex_indices"####;
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::MeshTriangle_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8425,6 +8521,7 @@ float64[4] coef"####;
         const ROS2_TYPE_NAME: &'static str = "shape_msgs::msg::dds_::Plane_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8561,6 +8658,7 @@ pub mod std_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8587,6 +8685,7 @@ bool data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Bool_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8613,6 +8712,7 @@ byte data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Byte_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8697,6 +8797,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::ByteMultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8723,6 +8824,7 @@ char data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Char_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8750,6 +8852,7 @@ float32 a"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::ColorRGBA_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8769,6 +8872,7 @@ float32 a"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Empty_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8795,6 +8899,7 @@ float32 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float32_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8879,6 +8984,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float32MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8905,6 +9011,7 @@ float64 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float64_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -8989,6 +9096,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Float64MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9032,6 +9140,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Header_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9058,6 +9167,7 @@ int16 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int16_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9142,6 +9252,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int16MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9168,6 +9279,7 @@ int32 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int32_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9252,6 +9364,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int32MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9278,6 +9391,7 @@ int64 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int64_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9362,6 +9476,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int64MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9388,6 +9503,7 @@ int8 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int8_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9472,6 +9588,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::Int8MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9502,6 +9619,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::MultiArrayDimension_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9564,6 +9682,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::MultiArrayLayout_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9590,6 +9709,7 @@ string data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::String_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9616,6 +9736,7 @@ uint16 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt16_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9700,6 +9821,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt16MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9726,6 +9848,7 @@ uint32 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt32_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9810,6 +9933,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt32MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9836,6 +9960,7 @@ uint64 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt64_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9920,6 +10045,7 @@ uint32 stride  # stride of given dimension"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt64MultiArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -9946,6 +10072,7 @@ uint8 data"####;
         const ROS2_TYPE_NAME: &'static str = "std_msgs::msg::dds_::UInt8_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10047,6 +10174,7 @@ pub mod std_srvs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10066,6 +10194,7 @@ pub mod std_srvs {
         const ROS2_TYPE_NAME: &'static str = "std_srvs::msg::dds_::EmptyRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10096,6 +10225,7 @@ pub mod std_srvs {
         type Response = EmptyResponse;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10118,6 +10248,7 @@ pub mod std_srvs {
         const ROS2_TYPE_NAME: &'static str = "std_srvs::msg::dds_::SetBoolRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10152,6 +10283,7 @@ string message # informational, e.g. for error messages"####;
         type Response = SetBoolResponse;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10171,6 +10303,7 @@ string message # informational, e.g. for error messages"####;
         const ROS2_TYPE_NAME: &'static str = "std_srvs::msg::dds_::TriggerRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10221,6 +10354,7 @@ pub mod stereo_msgs {
     use super::trajectory_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10416,6 +10550,7 @@ pub mod trajectory_msgs {
     use super::stereo_msgs;
     use super::visualization_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10542,6 +10677,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::JointTrajectory_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10606,6 +10742,7 @@ uint32 nanosec"####;
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::JointTrajectoryPoint_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10838,6 +10975,7 @@ float64 z"####;
         const ROS2_TYPE_NAME: &'static str = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectory_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -10964,6 +11102,7 @@ pub mod visualization_msgs {
     use super::stereo_msgs;
     use super::trajectory_msgs;
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -11105,6 +11244,7 @@ uint32 nanosec"####;
         pub const r#REMOVE: i32 = 1i32;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -12140,6 +12280,7 @@ float32 v"####;
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::InteractiveMarker_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -12685,6 +12826,7 @@ float32 v"####;
         pub const r#MOVE_ROTATE_3D: u8 = 9u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -12836,6 +12978,7 @@ uint32 nanosec"####;
         pub const r#MOUSE_UP: u8 = 5u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -14867,6 +15010,7 @@ float32 v"####;
             "visualization_msgs::msg::dds_::InteractiveMarkerInit_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -14970,6 +15114,7 @@ uint32 nanosec"####;
             "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -17108,6 +17253,7 @@ float32 v"####;
         pub const r#UPDATE: u8 = 1u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -17416,6 +17562,7 @@ float32 v"####;
         pub const r#DELETEALL: i32 = 3i32;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -17861,6 +18008,7 @@ float32 v"####;
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::MarkerArray_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -17945,6 +18093,7 @@ uint8 command_type"####;
         pub const r#ROSLAUNCH: u8 = 2u8;
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -17975,6 +18124,7 @@ uint8[] data"####;
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::MeshFile_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -18000,6 +18150,7 @@ float32 v"####;
         const ROS2_TYPE_NAME: &'static str = "visualization_msgs::msg::dds_::UVCoordinate_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
@@ -18020,6 +18171,7 @@ float32 v"####;
             "visualization_msgs::msg::dds_::GetInteractiveMarkersRequest_";
     }
     #[allow(non_snake_case)]
+    #[allow(dead_code)]
     #[derive(
         :: roslibrust :: codegen :: Deserialize,
         :: roslibrust :: codegen :: Serialize,
