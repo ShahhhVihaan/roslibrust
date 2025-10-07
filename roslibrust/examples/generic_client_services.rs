@@ -29,7 +29,7 @@ async fn main() {
     impl<T: Ros> MyNode<T> {
         fn handle_service(
             _request: std_srvs::SetBoolRequest,
-        ) -> Result<std_srvs::SetBoolResponse, Box<dyn std::error::Error + Send + Sync>> {
+        ) -> Result<std_srvs::SetBoolResponse, roslibrust::ServiceError> {
             // Not actually doing anything here just example
             // Note: if we did want to set a bool, we'd probably want to use Arc<Mutex<bool>>
             Ok(std_srvs::SetBoolResponse {
