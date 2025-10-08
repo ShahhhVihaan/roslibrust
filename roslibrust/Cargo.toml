@@ -1,23 +1,23 @@
 [package]
 name = "roslibrust"
-version = "0.15.0"
+version = "0.16.0"
 authors = ["carter <carterjschultz@gmail.com>", "ssnover <ssnover95@gmail.com>"]
 edition = "2021"
 license = "MIT"
 readme = "../README.md"
-description = "An library for interfacing with the ROS's rosbridge_server"
+description = "An async trait based interface to ROS1 and ROS2."
 repository = "https://github.com/roslibrust/roslibrust"
 keywords = ["ROS", "robotics", "websocket", "json", "async"]
 categories = ["science::robotics"]
 
 [dependencies]
-roslibrust_common = { path = "../roslibrust_common", version = "0.15" }
-roslibrust_ros1 = { path = "../roslibrust_ros1", version = "0.15", optional = true }
-roslibrust_rosbridge = { path = "../roslibrust_rosbridge", version = "0.15", optional = true }
-roslibrust_zenoh = { path = "../roslibrust_zenoh", version = "0.15", optional = true }
-roslibrust_mock = { path = "../roslibrust_mock", version = "0.15", optional = true }
-roslibrust_codegen = { path = "../roslibrust_codegen", version = "0.15", optional = true }
-roslibrust_codegen_macro = { path = "../roslibrust_codegen_macro", version = "0.15", optional = true }
+roslibrust_common = { path = "../roslibrust_common", version = "0.16" }
+roslibrust_ros1 = { path = "../roslibrust_ros1", version = "0.16", optional = true }
+roslibrust_rosbridge = { path = "../roslibrust_rosbridge", version = "0.16", optional = true }
+roslibrust_zenoh = { path = "../roslibrust_zenoh", version = "0.16", optional = true }
+roslibrust_mock = { path = "../roslibrust_mock", version = "0.16", optional = true }
+roslibrust_codegen = { path = "../roslibrust_codegen", version = "0.16", optional = true }
+roslibrust_codegen_macro = { path = "../roslibrust_codegen_macro", version = "0.16", optional = true }
 
 [dev-dependencies]
 env_logger = "0.11"

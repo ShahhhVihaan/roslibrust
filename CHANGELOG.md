@@ -10,22 +10,14 @@ Steps:
 - Edit change log
 - Revise the version numbers in Cargo.toml files
 - Commit the changes
-- Release packages in order:
-  - roslibrust_common
-  - roslibrust_codegen
-  - roslibrust_codegen_macro
-  - roslibrust_mock
-  - roslibrust_ros1
-  - roslibrust_rosbridge
-  - roslibrust_zenoh
-  - roslibrust
+- Use `cargo publish --workspace`
 - Push to master
 - Tag and push tag
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.16.0 - October 8th, 2025
 
 ### Added
 
