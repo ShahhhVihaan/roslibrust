@@ -20,6 +20,7 @@ Steps:
   - roslibrust_rosbridge
   - roslibrust_zenoh
   - roslibrust
+  - roslibrust_genmsg
 - Push to master
 - Tag and push tag
 
