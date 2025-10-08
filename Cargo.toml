@@ -16,18 +16,6 @@ members = [
     "roslibrust_ros2",
 ]
 resolver = "2"
-# These are the packages we actually publish
-default-members = [
-    "roslibrust",
-    "roslibrust_codegen_macro",
-    "roslibrust_codegen",
-    "roslibrust_common",
-    "roslibrust_ros1",
-    "roslibrust_rosbridge",
-    "roslibrust_zenoh",
-    "roslibrust_genmsg",
-    "roslibrust_mock",
-]
 
 [workspace.dependencies]
 log = "0.4"
