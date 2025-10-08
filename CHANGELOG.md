@@ -10,7 +10,16 @@ Steps:
 - Edit change log
 - Revise the version numbers in Cargo.toml files
 - Commit the changes
-- Use `cargo publish --workspace`
+- Note: Have not gotten `cargo publish --workspace` to work yet
+- Publish each crate individually using `cargo publish` in this order
+  - roslibrust_common
+  - roslibrust_codegen
+  - roslibrust_codegen_macro
+  - roslibrust_mock
+  - roslibrust_ros1
+  - roslibrust_rosbridge
+  - roslibrust_zenoh
+  - roslibrust
 - Push to master
 - Tag and push tag
 
