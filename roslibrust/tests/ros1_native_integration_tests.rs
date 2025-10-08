@@ -395,15 +395,9 @@ mod tests {
             .await
             .unwrap();
 
-        let server_fn = |request: test_msgs::AddTwoIntsRequest| -> Result<
-            test_msgs::AddTwoIntsResponse,
-            Box<dyn std::error::Error + Send + Sync>,
-        > {
+        let server_fn = |request| {
             info!("Got request: {request:?}");
-            return Err(Box::new(std::io::Error::new(
-                std::io::ErrorKind::NotFound,
-                "test message",
-            )));
+            return Err(std::io::Error::new(std::io::ErrorKind::NotFound, "test message").into());
         };
 
         // Create the server

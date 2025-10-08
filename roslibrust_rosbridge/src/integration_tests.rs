@@ -224,13 +224,12 @@ mod integration_tests {
         let opt = ClientHandleOptions::new(LOCAL_WS).timeout(TIMEOUT);
         let client = ClientHandle::new_with_options(opt).await?;
 
-        let cb =
-            |_req: SetBoolRequest| -> Result<SetBoolResponse, Box<dyn std::error::Error + Send + Sync>> {
-                Ok(SetBoolResponse {
-                    success: true,
-                    message: "call_success".to_string(),
-                })
-            };
+        let cb = |_req: SetBoolRequest| {
+            Ok(SetBoolResponse {
+                success: true,
+                message: "call_success".to_string(),
+            })
+        };
 
         let topic = "/self_service_call";
 

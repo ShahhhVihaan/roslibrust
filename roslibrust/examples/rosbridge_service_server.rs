@@ -8,7 +8,7 @@ roslibrust_codegen_macro::find_and_generate_ros_messages!("assets/ros1_common_in
 fn my_service(
     request: std_srvs::SetBoolRequest,
     my_string: &str,
-) -> Result<std_srvs::SetBoolResponse, Box<dyn std::error::Error + Send + Sync>> {
+) -> Result<std_srvs::SetBoolResponse, roslibrust::ServiceError> {
     log::info!("Got request to set bool: {request:?}");
     log::info!("Using my string: {}", my_string); // Use the string here
 
@@ -55,10 +55,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let _handle = client
         .advertise_service::<std_srvs::SetBool, _>(
             "/my_set_bool",
-            move |request: std_srvs::SetBoolRequest| -> Result<
-                std_srvs::SetBoolResponse,
-                Box<dyn std::error::Error + Send + Sync>,
-            > { my_service(request, my_string) },
+            move |request: std_srvs::SetBoolRequest| my_service(request, my_string),
         )
         .await?;
 

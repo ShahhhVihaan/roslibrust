@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 env_logger = "0.10"
-roslibrust = { path = "../roslibrust", features = ["ros1", "codegen", "macro"] }
+roslibrust = { path = "../roslibrust", features = ["ros1", "codegen", "macro", "mock"] }
 lazy_static = "1.4"
 tokio = { workspace = true }
 log = { workspace = true }

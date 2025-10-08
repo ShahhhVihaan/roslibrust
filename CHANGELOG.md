@@ -38,6 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The return type of service functions has been changed from "Box<dyn std::error::Error + Send + Sync + 'static>" to `roslibrust::ServiceError`.
+Which is an alias for `anyhow::Error`. This should make it easier to return errors from service functions, and deals with some tricky lifetime issues around holding ServiceServers
+
 ## 0.15.0 - June 20th, 2025
 
 ### Added

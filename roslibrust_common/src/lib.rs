@@ -98,17 +98,19 @@ pub trait RosServiceType: 'static + Send + Sync {
     type Response: RosMessageType;
 }
 
-// Note: service Fn is currently defined here as it used by ros1 and roslibrust impls
+/// The error type used by [ServiceFn]
+///
+/// When writing service callbacks this is the error type that should be returned.
+pub type ServiceError = anyhow::Error;
+
 /// This trait describes a function which can validly act as a ROS service
 /// server with roslibrust. We're really just using this as a trait alias
 /// as the full definition is overly verbose and trait aliases are unstable.
+///
+/// Note: The error type intentionally does NOT have a 'static bound to allow
+/// for more flexible lifetime inference when used with tokio::spawn and similar.
 pub trait ServiceFn<T: RosServiceType>:
-    Fn(
-        T::Request,
-    ) -> std::result::Result<T::Response, Box<dyn std::error::Error + 'static + Send + Sync>>
-    + Send
-    + Sync
-    + 'static
+    Fn(T::Request) -> std::result::Result<T::Response, ServiceError> + Send + Sync + 'static
 {
 }
 
@@ -116,13 +118,7 @@ pub trait ServiceFn<T: RosServiceType>:
 impl<T, F> ServiceFn<T> for F
 where
     T: RosServiceType,
-    F: Fn(
-            T::Request,
-        )
-            -> std::result::Result<T::Response, Box<dyn std::error::Error + 'static + Send + Sync>>
-        + Send
-        + Sync
-        + 'static,
+    F: Fn(T::Request) -> std::result::Result<T::Response, ServiceError> + Send + Sync + 'static,
 {
 }
 
