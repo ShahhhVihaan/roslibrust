@@ -1,5 +1,6 @@
 //! Module for calculating the ROS2 hash of a message definition via https://github.com/ros-infrastructure/rep/pull/381/files
 
+use anyhow::bail;
 use log::{debug, error, trace};
 use serde::Serialize;
 use serde_json::ser::Formatter;
@@ -11,7 +12,7 @@ use std::{
 use crate::{
     parse::{ParsedMessageFile, ParsedServiceFile},
     utils::RosVersion,
-    ArrayType, FieldInfo, MessageFile,
+    ArrayType, FieldInfo, MessageFile, Ros2Hash,
 };
 
 /// The following structs define the format of the JSON file used for hashing in ROS2
@@ -21,24 +22,31 @@ use crate::{
 ///  - Generate a specifically formatted JSON string of the below structs
 ///  - Calculate the sha256 hash of the JSON string (utf-8)
 ///  - Generate a string of the format RIHS01_<hex hash>
+/// 
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TypeDescriptionFile {
     type_description_msg: TypeDescriptionMsg,
     type_hashes: Vec<TypeHash>,
 }
 
+/// Sub-component of the ROS2 JSON file format for hashing
+/// Should not be used for other purposes
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TypeDescriptionMsg {
     type_description: TypeDescription,
     referenced_type_descriptions: Vec<TypeDescription>,
 }
 
+/// Sub-component of the ROS2 JSON file format for hasing
+/// Should not be used for other purposes
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TypeDescription {
     type_name: String,
     fields: Vec<Field>,
 }
 
+/// Sub-component of the ROS2 JSON file format for hashing
+/// Should not be used for other purposes
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct Field {
     name: String,
@@ -49,6 +57,8 @@ pub struct Field {
     _default_value: String,
 }
 
+/// Sub-component of the ROS2 JSON file format for hashing
+/// Should not be used for other purposes
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct FieldType {
     type_id: u8,
@@ -57,6 +67,8 @@ pub struct FieldType {
     nested_type_name: String,
 }
 
+/// Sub-component of the ROS2 JSON file format for hashing
+/// Should not be used for other purposes
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TypeHash {
     type_name: String,
@@ -68,15 +80,16 @@ pub struct TypeHash {
 pub fn calculate_ros2_hash(
     parsed: &ParsedMessageFile,
     graph: &BTreeMap<String, MessageFile>,
-) -> Option<String> {
-    let type_description_msg = convert_to_type_description(parsed, graph, false)?;
-    Some(calculate_hash(&type_description_msg))
+) -> Ros2Hash {
+    let type_description_msg = convert_to_type_description(parsed, graph, false)
+        .expect("Failed to convert file to a valid ROS2 type description");
+    calculate_hash(&type_description_msg)
 }
 
 pub fn calculate_ros2_srv_hash(
     parsed: &ParsedServiceFile,
     graph: &BTreeMap<String, MessageFile>,
-) -> Option<String> {
+) -> Ros2Hash {
     // Lot's of incredibly messy naming here due to mix of ROS1 and ROS2 naming style
 
     // Literal type that will appear in fields
@@ -199,7 +212,7 @@ pub fn calculate_ros2_srv_hash(
         MessageFile {
             parsed: event,
             // Dummy values
-            ros2_hash: None,
+            ros2_hash: Default::default(),
             md5sum: "".to_string(),
             definition: "".to_string(),
             is_fixed_encoding_length: true,
@@ -210,7 +223,7 @@ pub fn calculate_ros2_srv_hash(
         MessageFile {
             parsed: request,
             // Dummy values
-            ros2_hash: None,
+            ros2_hash: Default::default(),
             md5sum: "".to_string(),
             definition: "".to_string(),
             is_fixed_encoding_length: true,
@@ -221,7 +234,7 @@ pub fn calculate_ros2_srv_hash(
         MessageFile {
             parsed: response,
             // Dummy values
-            ros2_hash: None,
+            ros2_hash: Default::default(),
             md5sum: "".to_string(),
             definition: "".to_string(),
             is_fixed_encoding_length: true,
@@ -229,21 +242,20 @@ pub fn calculate_ros2_srv_hash(
     );
 
     let total_type_description =
-        convert_to_type_description(&total_message_file, &graph_copy, true)?;
-    Some(calculate_hash(&total_type_description))
+        convert_to_type_description(&total_message_file, &graph_copy, true)
+            .expect("Failed to convert service file to a valid ROS2 type description");
+    calculate_hash(&total_type_description)
 }
 
 /// Calculates the hash from a TypeDescriptionMsg struct
-fn calculate_hash(type_description_msg: &TypeDescriptionMsg) -> String {
+fn calculate_hash(type_description_msg: &TypeDescriptionMsg) -> Ros2Hash {
     let type_description_string = to_ros2_json(type_description_msg);
     trace!("Generate type description string: {type_description_string}");
     use sha2::Digest;
     let mut hasher = sha2::Sha256::new();
     hasher.update(type_description_string);
-    let result = hasher.finalize();
-    let hash = format!("RIHS01_{result:x}");
-    trace!("Calculated hash: {hash}");
-    hash
+    let result: [u8; 32] = hasher.finalize().into();
+    Ros2Hash(result)
 }
 
 /// Taking in a parsed representation of a message convert it to the ROS2 specific type representation
@@ -252,7 +264,7 @@ fn convert_to_type_description(
     graph: &BTreeMap<String, MessageFile>,
     // This option is a real hack, but is working around ROS2 vs. ROS1 naming differences
     service_naming: bool,
-) -> Option<TypeDescriptionMsg> {
+) -> Result<TypeDescriptionMsg, anyhow::Error> {
     let mut fields = vec![];
     let mut referenced_type_descriptions = BTreeMap::new();
 
@@ -312,14 +324,14 @@ fn convert_to_type_description(
         });
 
         if !field.field_type.is_primitive() {
-            let sub_message = graph.get(field.get_full_type_name().as_str()).or_else(|| {
-                debug!(
-                    "Failed to find definition for nested type: {} while hashing {} for ROS2",
-                    field.get_full_type_name(),
-                    parsed.get_full_name()
-                );
-                None
-            })?;
+            let sub_message =
+                graph
+                    .get(field.get_full_type_name().as_str())
+                    .ok_or(anyhow::anyhow!(
+                        "Failed to find definition for nested type: {} while hashing {} for ROS2",
+                        field.get_full_type_name(),
+                        parsed.get_full_name()
+                    ))?;
             let sub_type_description =
                 convert_to_type_description(&sub_message.parsed, graph, true)?;
             for sub_referenced_type in sub_type_description.referenced_type_descriptions {
@@ -337,7 +349,7 @@ fn convert_to_type_description(
         .map(|(_, v)| v)
         .collect::<Vec<_>>();
 
-    Some(TypeDescriptionMsg {
+    Ok(TypeDescriptionMsg {
         type_description: TypeDescription {
             type_name: parsed.get_ros2_full_name(),
             fields,
@@ -580,13 +592,12 @@ fn get_field_type_string(field_type: &crate::FieldType) -> String {
 }
 
 /// Converts our internal representation of a field type to the numeric ID used in the ROS2 hash format
-fn get_field_type_id(field_type: &crate::FieldType) -> Option<u8> {
+fn get_field_type_id(field_type: &crate::FieldType) -> Result<u8, anyhow::Error> {
     let field_type_string = get_field_type_string(field_type);
     match FIELD_TYPE_NAME_TO_ID.get(&field_type_string) {
-        Some(id) => Some(*id),
+        Some(id) => Ok(*id),
         None => {
-            error!("Failed to find field type ID for {}", field_type_string);
-            None
+            bail!("Failed to find field type ID for {}", field_type_string);
         }
     }
 }
@@ -634,7 +645,7 @@ mod tests {
 
             let calculated_hash = super::calculate_hash(&parsed.type_description_msg);
 
-            assert_eq!(calculated_hash, expected_hash);
+            assert_eq!(calculated_hash.to_hash_string(), expected_hash);
         }
     }
 
@@ -690,11 +701,10 @@ mod tests {
         )])
         .expect("Failed to parse test file");
 
-        let hash = super::calculate_ros2_hash(&msg[0], &std::collections::BTreeMap::new())
-            .expect("Failed to calculate hash");
+        let hash = super::calculate_ros2_hash(&msg[0], &std::collections::BTreeMap::new());
 
         assert_eq!(
-            hash,
+            hash.to_hash_string(),
             "RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18"
         );
     }
@@ -715,7 +725,7 @@ mod tests {
 
             let calculated_hash = super::calculate_hash(&parsed.type_description_msg);
 
-            assert_eq!(calculated_hash, expected_hash);
+            assert_eq!(calculated_hash.to_hash_string(), expected_hash);
         }
     }
 
@@ -759,11 +769,10 @@ mod tests {
             .map(|msg| (msg.parsed.get_full_name(), msg))
             .collect::<std::collections::BTreeMap<_, _>>();
 
-        let hash = super::calculate_ros2_srv_hash(&resolved_srv[0].parsed, &graph)
-            .expect("Failed to calculate hash");
+        let hash = super::calculate_ros2_srv_hash(&resolved_srv[0].parsed, &graph);
 
         assert_eq!(
-            hash,
+            hash.to_hash_string(),
             "RIHS01_cbdcb755e63eba37467c9846fe9f0b458c2989832e888dfd39ecbf8991800ef7"
         );
     }

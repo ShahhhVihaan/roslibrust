@@ -66,7 +66,7 @@ pub trait RosMessageType:
     const ROS2_TYPE_NAME: &'static str = "";
     /// The computed ROS2 hash of the message file and its dependencies
     /// This field is optional, and only needed when using ros2 native communication
-    const ROS2_HASH: &'static str = "";
+    const ROS2_HASH: &'static [u8; 32] = &[0; 32];
 }
 
 // This special impl allows for services with no args / returns
@@ -88,7 +88,7 @@ pub trait RosServiceType: 'static + Send + Sync {
     const MD5SUM: &'static str = "";
     /// The computed ROS2 hash of the message file and its dependencies
     /// This field is optional, and only needed when using ros2 native communication
-    const ROS2_HASH: &'static str = "";
+    const ROS2_HASH: &'static [u8; 32] = &[0; 32];
     /// The fully qualified type name we need to work with ROS2 zenoh
     /// e.g. std_srvs::srv::dds_::SetBool_
     const ROS2_TYPE_NAME: &'static str = "";
