@@ -28,7 +28,7 @@ pub fn generate_service(service: ServiceFile) -> Result<TokenStream, Error> {
     let service_type_name = service.get_full_name();
     let service_md5sum = service.md5sum;
     // Optional for now until we get all the hashing sorted out
-    let service_ros2_hash = service.ros2_hash.unwrap_or_else(|| String::from(""));
+    let service_ros2_hash = service.ros2_hash;
     let ros2_type_name = service.parsed.get_ros2_dds_type_name();
     let struct_name = format_ident!("{}", service.parsed.name);
     let request_name = format_ident!("{}", service.parsed.request_type.name);
@@ -48,7 +48,7 @@ pub fn generate_service(service: ServiceFile) -> Result<TokenStream, Error> {
         impl ::roslibrust::RosServiceType for #struct_name {
             const ROS_SERVICE_NAME: &'static str = #service_type_name;
             const MD5SUM: &'static str = #service_md5sum;
-            const ROS2_HASH: &'static str = #service_ros2_hash;
+            const ROS2_HASH: &'static [u8; 32] = &#service_ros2_hash;
             const ROS2_TYPE_NAME: &'static str = #ros2_type_name;
             type Request = #request_name;
             type Response = #response_name;
@@ -94,8 +94,7 @@ pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
     let struct_name = format_ident!("{}", msg.parsed.name);
     let md5sum = msg.md5sum;
     let definition = msg.definition;
-    // TODO MAJOR: when finished with ROS2 hashing logic this should be required
-    let ros2_hash = msg.ros2_hash.unwrap_or_else(|| String::from(""));
+    let ros2_hash = msg.ros2_hash;
 
     // Raw here is only used to make the generated code look better.
     let raw_message_definition = generate_raw_string_literal(&definition);
@@ -112,7 +111,7 @@ pub fn generate_struct(msg: MessageFile) -> Result<TokenStream, Error> {
             const ROS_TYPE_NAME: &'static str = #ros_type_name;
             const MD5SUM: &'static str = #md5sum;
             const DEFINITION: &'static str = #raw_message_definition;
-            const ROS2_HASH: &'static str = #ros2_hash;
+            const ROS2_HASH: &'static [u8; 32] = &#ros2_hash;
             const ROS2_TYPE_NAME: &'static str = #ros2_type_name;
         }
     };

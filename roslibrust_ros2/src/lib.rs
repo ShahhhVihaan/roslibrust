@@ -83,8 +83,7 @@ impl roslibrust_common::TopicProvider for ZenohClient {
             .create_pub::<T>(topic)
             .with_type_info(ros_z::entity::TypeInfo::new(
                 T::ROS2_TYPE_NAME,
-                ros_z::entity::TypeHash::from_rihs_string(T::ROS2_HASH)
-                    .expect("Invalid hash in generated ROS2 hash"),
+                ros_z::entity::TypeHash::new(1, *T::ROS2_HASH),
             ))
             .build()
             // TODO better errors
@@ -101,8 +100,7 @@ impl roslibrust_common::TopicProvider for ZenohClient {
             .create_sub::<T>(topic)
             .with_type_info(ros_z::entity::TypeInfo::new(
                 T::ROS2_TYPE_NAME,
-                ros_z::entity::TypeHash::from_rihs_string(T::ROS2_HASH)
-                    .expect("Invalid hash in generated ROS2 hash"),
+                ros_z::entity::TypeHash::new(1, *T::ROS2_HASH),
             ))
             .build()
             // TODO better errors
@@ -177,8 +175,7 @@ impl roslibrust_common::ServiceProvider for ZenohClient {
             .create_service::<Fake<T>>(topic)
             .with_type_info(ros_z::entity::TypeInfo::new(
                 T::ROS2_TYPE_NAME,
-                ros_z::entity::TypeHash::from_rihs_string(T::ROS2_HASH)
-                    .expect("Invalid hash in generated ROS2 hash"),
+                ros_z::entity::TypeHash::new(1, *T::ROS2_HASH),
             ))
             .build()
             .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;

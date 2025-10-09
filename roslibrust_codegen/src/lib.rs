@@ -10,7 +10,7 @@
 
 use log::*;
 use proc_macro2::TokenStream;
-use quote::quote;
+use quote::{quote, ToTokens};
 use simple_error::{bail, SimpleError as Error};
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use std::fmt::{Debug, Display};
@@ -25,6 +25,7 @@ pub mod utils;
 use utils::RosVersion;
 mod ros2_hashing;
 use ros2_hashing::*;
+mod ros2_builtin_interfaces;
 
 pub mod integral_types;
 pub use integral_types::*;
@@ -39,16 +40,40 @@ pub use serde_big_array::BigArray; // Used in generated code for large fixed siz
 pub use serde_bytes;
 pub use smart_default::SmartDefault; // Used in generated code for default values // Used in generated code for faster Vec<u8> serialization
 
-// Export the common types so they can be found under this namespace for backwards compatibility reasons
-// pub use roslibrust_common::*;
+/// A unique hash per message type calculated via the RIHS01 Ros2 methodology
+#[derive(Clone, Debug)]
+pub struct Ros2Hash([u8; 32]);
+
+impl Ros2Hash {
+    fn to_hash_string(&self) -> String {
+        format!("RIHS01_{}", hex::encode(&self.0))
+    }
+}
+
+impl Default for Ros2Hash {
+    fn default() -> Self {
+        Self([0; 32])
+    }
+}
+
+// Conversion from Ros2Hash to TokenStream for use in generated code
+impl ToTokens for Ros2Hash {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
+        let bytes = self.0;
+        let arr_tokens = bytes
+            .iter()
+            .map(|b| syn::LitInt::new(&format!("0x{:02x}", b), proc_macro2::Span::call_site()));
+
+        tokens.extend(quote! { [ #(#arr_tokens,)* ] });
+    }
+}
 
 #[derive(Clone, Debug)]
 pub struct MessageFile {
     pub(crate) parsed: ParsedMessageFile,
     pub(crate) md5sum: String,
-    // NOTE: ros2 hash is only being set to optional, while we're developing it
-    // Once it's more stable, we can make it required
-    pub(crate) ros2_hash: Option<String>,
+    // Type Hash following the ros2 RIHS01 standard stored as bytes
+    pub(crate) ros2_hash: Ros2Hash,
     // This is the expanded definition of the message for use in message_definition field of
     // a connection header.
     // See how https://wiki.ros.org/ROS/TCPROS references gendeps --cat
@@ -242,7 +267,7 @@ pub struct ServiceFile {
     pub(crate) request: MessageFile,
     pub(crate) response: MessageFile,
     pub(crate) md5sum: String,
-    pub(crate) ros2_hash: Option<String>,
+    pub(crate) ros2_hash: Ros2Hash,
 }
 
 impl ServiceFile {
@@ -653,7 +678,9 @@ pub fn resolve_dependency_graph(
         .map(|msg| MessageMetadata { msg, seen_count: 0 })
         .collect::<VecDeque<_>>();
 
-    let mut resolved_messages = BTreeMap::new();
+    // We seed the initial map with some hard codeded definitions containing types we consider "standard"
+    let mut resolved_messages = ros2_builtin_interfaces::get_builtin_interfaces();
+
     // First resolve the message dependencies
     while let Some(MessageMetadata { msg, seen_count }) = unresolved_messages.pop_front() {
         // Check our resolved messages for each of the fields

@@ -146,7 +146,6 @@ fn strip_comments(line: &str) -> &str {
     line
 }
 
-//TODO it is a little scary that this function appears infallible?
 fn parse_field_type(
     type_str: &str,
     array_info: ArrayType,

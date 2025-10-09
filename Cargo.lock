@@ -2908,8 +2908,10 @@ dependencies = [
 name = "roslibrust_codegen"
 version = "0.16.0"
 dependencies = [
+ "anyhow",
  "chrono",
  "env_logger 0.10.2",
+ "hex",
  "lazy_static",
  "log",
  "md5",
@@ -3067,6 +3069,7 @@ dependencies = [
  "criterion",
  "diffy",
  "env_logger 0.10.2",
+ "hex",
  "lazy_static",
  "log",
  "pprof",
