@@ -83,7 +83,7 @@ impl roslibrust_common::TopicProvider for ZenohClient {
             .create_pub::<T>(topic)
             .with_type_info(ros_z::entity::TypeInfo::new(
                 T::ROS2_TYPE_NAME,
-                ros_z::entity::TypeHash::new(0, *T::ROS2_HASH)
+                ros_z::entity::TypeHash::new(0, *T::ROS2_HASH),
             ))
             .build()
             // TODO better errors

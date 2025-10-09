@@ -22,7 +22,7 @@ use crate::{
 ///  - Generate a specifically formatted JSON string of the below structs
 ///  - Calculate the sha256 hash of the JSON string (utf-8)
 ///  - Generate a string of the format RIHS01_<hex hash>
-/// 
+///
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TypeDescriptionFile {
     type_description_msg: TypeDescriptionMsg,
