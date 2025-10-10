@@ -127,12 +127,31 @@ impl Drop for ZenohServiceServer {
 }
 
 pub struct ZenohServiceClient<T: RosServiceType> {
+    client: ros_z::service::ZClient<Fake<T>>,
     _marker: std::marker::PhantomData<T>,
+}
+
+// Helper struct to work around orphan rule
+struct Fake<T>(std::marker::PhantomData<T>);
+impl<T: RosServiceType> ZService for Fake<T> {
+    type Request = T::Request;
+    type Response = T::Response;
 }
 
 impl<T: RosServiceType> roslibrust_common::Service<T> for ZenohServiceClient<T> {
     async fn call(&self, request: &T::Request) -> Result<T::Response> {
-        todo!()
+        // Send the request
+        self.client
+            .send_request(request)
+            .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;
+
+        // Wait for and take the response
+        let response = self
+            .client
+            .take_response()
+            .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;
+
+        Ok(response)
     }
 }
 
@@ -145,14 +164,29 @@ impl roslibrust_common::ServiceProvider for ZenohClient {
         topic: &str,
         request: T::Request,
     ) -> Result<T::Response> {
-        todo!()
+        // Create a service client and call it once
+        let client = self.service_client::<T>(topic).await?;
+        client.call(&request).await
     }
 
     async fn service_client<T: RosServiceType + 'static>(
         &self,
         topic: &str,
     ) -> Result<Self::ServiceClient<T>> {
-        todo!()
+        let client = self
+            .node
+            .create_client::<Fake<T>>(topic)
+            .with_type_info(ros_z::entity::TypeInfo::new(
+                T::ROS2_TYPE_NAME,
+                ros_z::entity::TypeHash::new(1, *T::ROS2_HASH),
+            ))
+            .build()
+            .map_err(|e| Error::Unexpected(anyhow::anyhow!(e)))?;
+
+        Ok(ZenohServiceClient {
+            client,
+            _marker: std::marker::PhantomData,
+        })
     }
 
     async fn advertise_service<T: RosServiceType + 'static, F>(
@@ -361,6 +395,50 @@ mod tests {
 
             // Protection to make sure we don't leave a ros2 service call running
             srv_call_cmd.kill().unwrap()
+        }
+
+        #[tokio::test(flavor = "multi_thread")]
+        async fn test_service_zenoh_to_zenoh() {
+            // Create service server
+            let node = ZenohClient::new("test_service_server_zenoh").await.unwrap();
+
+            let state = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false));
+            let state_copy = state.clone();
+
+            let server_fn = move |request: roslibrust_test::ros2::std_srvs::SetBoolRequest| {
+                state_copy.store(request.data, std::sync::atomic::Ordering::SeqCst);
+                Ok(roslibrust_test::ros2::std_srvs::SetBoolResponse {
+                    message: "You set my bool!".to_string(),
+                    success: request.data,
+                })
+            };
+
+            let _service = node
+                .advertise_service::<roslibrust_test::ros2::std_srvs::SetBool, _>(
+                    "/test_service_zenoh_to_zenoh/set_bool",
+                    server_fn,
+                )
+                .await
+                .unwrap();
+
+            // Give server time to start
+            tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
+
+            // Create service client and call the service
+            let response = node 
+                .call_service::<roslibrust_test::ros2::std_srvs::SetBool>(
+                    "/test_service_zenoh_to_zenoh/set_bool",
+                    roslibrust_test::ros2::std_srvs::SetBoolRequest { data: true },
+                )
+                .await
+                .expect("Service call should succeed");
+
+            // Verify the response
+            assert_eq!(response.success, true);
+            assert_eq!(response.message, "You set my bool!");
+
+            // Verify the server state was updated
+            assert_eq!(state.load(std::sync::atomic::Ordering::SeqCst), true);
         }
     }
 }
