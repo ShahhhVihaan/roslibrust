@@ -425,7 +425,7 @@ mod tests {
             tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
 
             // Create service client and call the service
-            let response = node 
+            let response = node
                 .call_service::<roslibrust_test::ros2::std_srvs::SetBool>(
                     "/test_service_zenoh_to_zenoh/set_bool",
                     roslibrust_test::ros2::std_srvs::SetBoolRequest { data: true },
