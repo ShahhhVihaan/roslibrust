@@ -95,6 +95,7 @@ tokio = { version = "1", features = ["full"] }
 [dev-dependencies]
 # For testing you'll want to use the "mock" backend if you specify it here, it won't affect your production builds
 roslibrust = { version = "0.15", features = ["mock"] }
+tokio = { version = "1", features = ["test-util"] }
 
 # What crates your code needs to run it's build.rs file
 [build-dependencies]
@@ -138,7 +139,7 @@ cd my_package
 # Make a folder to hold our messages
 mkdir assets
 # Clone the common interfaces into that folder
-git submodules add https://github.com/ros2/common_interfaces assets/common_interfaces
+git submodule add https://github.com/ros2/common_interfaces assets/common_interfaces
 ```
 
 <div class="warning">
@@ -156,7 +157,7 @@ that same repository. To fix this we'll also need to clone the `rcl_interfaces` 
 # Make sure we're in the root of our package
 cd my_package
 # Clone the rcl_interfaces repository into our assets folder
-git submodules add https://github.com/ros2/rcl_interfaces assets/rcl_interfaces
+git submodule add https://github.com/ros2/rcl_interfaces assets/rcl_interfaces
 ```
 
 Now we just need to modify the `search_paths` variable in our `build.rs` file to point at our new messages:
@@ -205,7 +206,7 @@ For this example we'll keep it simple and leave that line in `main.rs`, but in l
 
 ## Writing Our First Node
 
-Your now ready to actually write some code that uses RosLibRust!
+You're now ready to actually write some code that uses RosLibRust!
 
 We're going to start with a basic example of publishing to a topic.
 
