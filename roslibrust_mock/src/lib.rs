@@ -43,6 +43,9 @@ type TypeErasedCallback = Arc<
         + 'static,
 >;
 
+// Internal type for storing services
+type ServiceStore = RwLock<BTreeMap<String, TypeErasedCallback>>;
+
 /// A mock ROS implementation that can be substituted for any roslibrust backend in unit tests.
 ///
 /// Implements [TopicProvider] and [ServiceProvider] to provide basic ros functionality.
@@ -51,7 +54,7 @@ pub struct MockRos {
     // We could probably achieve some fancier type erasure than actually serializing the data
     // but this ends up being pretty simple
     topics: Arc<RwLock<BTreeMap<String, (Channel::Sender<Vec<u8>>, Channel::Receiver<Vec<u8>>)>>>,
-    services: Arc<RwLock<BTreeMap<String, TypeErasedCallback>>>,
+    services: Arc<ServiceStore>,
 }
 
 impl MockRos {
@@ -124,17 +127,47 @@ impl TopicProvider for MockRos {
 /// The handle type returned by calling [MockRos::service_client].
 /// Represents a ROS service connection and allows the service to be called multiple times.
 pub struct MockServiceClient<T: RosServiceType> {
-    callback: TypeErasedCallback,
+    // We hold a weak reference to the service store so we can look up the most recently registered
+    // service server
+    handle: std::sync::Weak<ServiceStore>,
+    // We hold the key we'll use to look up the service server
+    topic: String,
+    // Maker type so Rust understand we're using T internnally without actually holding one.
     _marker: std::marker::PhantomData<T>,
 }
 
 impl<T: RosServiceType> Service<T> for MockServiceClient<T> {
     async fn call(&self, request: &T::Request) -> roslibrust_common::Result<T::Response> {
+        // Check that service store still exists otherwise ROS has been dropped
+        let services = match self.handle.upgrade() {
+            Some(services) => services,
+            None => {
+                return Err(Error::ServerError(
+                    "No connection to MockRos backend? Has it been dropped?".to_string(),
+                ))
+            }
+        };
+
+        // Check if a service exists for this topic
+        let callback = {
+            let services = services.read().await;
+            services.get(&self.topic).cloned()
+        };
+        let callback = match callback {
+            Some(callback) => callback,
+            None => {
+                return Err(Error::ServerError(format!(
+                    "No service server found for topic: {}",
+                    self.topic
+                )))
+            }
+        };
+
         // Serialize incoming data
         let data =
             bincode::serialize(request).map_err(|e| Error::SerializationError(e.to_string()))?;
 
-        let callback = self.callback.clone();
+        let callback = callback.clone();
         // Wrap in a spawn_blocking to uphold trait expectations.
         // Actual service call happens here
         let response = tokio::task::spawn_blocking(move || (callback)(data))
@@ -166,14 +199,13 @@ impl ServiceProvider for MockRos {
         &self,
         topic: &str,
     ) -> roslibrust_common::Result<Self::ServiceClient<T>> {
-        let services = self.services.read().await;
-        if let Some(callback) = services.get(topic) {
-            return Ok(MockServiceClient {
-                callback: callback.clone(),
-                _marker: Default::default(),
-            });
-        }
-        Err(Error::Disconnected)
+        // TODO this is currently infallible
+        // We don't yet support a way to simulate ROS disconnecting in a test
+        Ok(MockServiceClient {
+            handle: Arc::downgrade(&self.services),
+            topic: topic.to_string(),
+            _marker: Default::default(),
+        })
     }
 
     async fn advertise_service<T: RosServiceType + 'static, F>(
@@ -328,5 +360,39 @@ mod tests {
         let mock_ros = MockRos::new();
         let node = MyNode { ros: mock_ros };
         node.run().await;
+    }
+
+    #[tokio::test(flavor = "multi_thread")]
+    async fn test_client_server_order_does_not_matter() {
+        // Test covers a bug case where clients wouldn't connect if created before servers
+        let mock_ros = MockRos::new();
+        let client = mock_ros
+            .service_client::<std_srvs::SetBool>("test_service")
+            .await
+            .unwrap();
+
+        let res1 = client.call(&std_srvs::SetBoolRequest { data: true }).await;
+        assert!(
+            res1.is_err(),
+            "Shouldn't be able to call service before it's advertised"
+        );
+
+        // advertise the service now
+        let server_fn = |request: std_srvs::SetBoolRequest| {
+            Ok(std_srvs::SetBoolResponse {
+                success: request.data,
+                message: "You set my bool!".to_string(),
+            })
+        };
+        mock_ros
+            .advertise_service::<std_srvs::SetBool, _>("test_service", server_fn)
+            .await
+            .unwrap();
+
+        // should work now
+        let request = std_srvs::SetBoolRequest { data: true };
+        let response = client.call(&request).await.unwrap();
+        assert_eq!(response.success, true);
+        assert_eq!(response.message, "You set my bool!");
     }
 }

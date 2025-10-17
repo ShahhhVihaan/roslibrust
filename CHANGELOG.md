@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- MockRos ServiceClients now work correctly if created before the service server is advertised.
+
 ### Changed
 
 - ROS2 message hashes are now [u8; 32] instead of String and codegen will now fail if it cannot be computed instead of leaving a default value.
