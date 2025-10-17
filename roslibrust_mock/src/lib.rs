@@ -141,7 +141,11 @@ impl<T: RosServiceType> Service<T> for MockServiceClient<T> {
         // Check that service store still exists otherwise ROS has been dropped
         let services = match self.handle.upgrade() {
             Some(services) => services,
-            None => return Err(Error::ServerError("No connection to MockRos backend? Has it been dropped?".to_string())),
+            None => {
+                return Err(Error::ServerError(
+                    "No connection to MockRos backend? Has it been dropped?".to_string(),
+                ))
+            }
         };
 
         // Check if a service exists for this topic
@@ -151,7 +155,12 @@ impl<T: RosServiceType> Service<T> for MockServiceClient<T> {
         };
         let callback = match callback {
             Some(callback) => callback,
-            None => return Err(Error::ServerError(format!("No service server found for topic: {}", self.topic))),
+            None => {
+                return Err(Error::ServerError(format!(
+                    "No service server found for topic: {}",
+                    self.topic
+                )))
+            }
         };
 
         // Serialize incoming data
