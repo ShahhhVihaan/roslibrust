@@ -148,6 +148,12 @@ impl<T: RosServiceType> Service<T> for MockServiceClient<T> {
             }
         };
 
+        // Because we might be called in test circumstances where there is a race condition between
+        // creating the service server and calling it.
+        // We do a yield here to hopefully put ourselves at the back of the task queue,
+        // and let tokio create the service_server before we actually make a call.
+        tokio::task::yield_now().await;
+
         // Check if a service exists for this topic
         let callback = {
             let services = services.read().await;
@@ -390,6 +396,42 @@ mod tests {
             .unwrap();
 
         // should work now
+        let request = std_srvs::SetBoolRequest { data: true };
+        let response = client.call(&request).await.unwrap();
+        assert_eq!(response.success, true);
+        assert_eq!(response.message, "You set my bool!");
+    }
+
+    #[tokio::test(start_paused = true)]
+    async fn test_no_pause_needed_for_spawned_server() {
+        // Test covers a bug where if you spawned a server in a different task
+        // It could appear to not be up due to a race condition.
+        let mock_ros = MockRos::new();
+
+        let client = mock_ros
+            .service_client::<std_srvs::SetBool>("test_service")
+            .await
+            .unwrap();
+
+        async fn spawn_server(mock_ros: MockRos) {
+            let server_fn = |request: std_srvs::SetBoolRequest| {
+                Ok(std_srvs::SetBoolResponse {
+                    success: request.data,
+                    message: "You set my bool!".to_string(),
+                })
+            };
+            mock_ros
+                .advertise_service::<std_srvs::SetBool, _>("test_service", server_fn)
+                .await
+                .unwrap();
+
+            let _ = tokio::signal::ctrl_c().await;
+        }
+
+        // Start the server in a spawned task
+        tokio::spawn(spawn_server(mock_ros.clone()));
+
+        // Prior to introducing a yield_now() in ServiceClient::call() this would fail consistently
         let request = std_srvs::SetBoolRequest { data: true };
         let response = client.call(&request).await.unwrap();
         assert_eq!(response.success, true);
