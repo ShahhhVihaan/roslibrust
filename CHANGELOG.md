@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - MockRos ServiceClients now work correctly if created before the service server is advertised.
+- MockRos ServiceClients now perform a yield_now() before calling a service to help avoid race conditions in tests.
 
 ### Changed
 
